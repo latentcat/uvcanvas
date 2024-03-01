@@ -10,7 +10,7 @@ export default function DocsLayout({
     <main className="flex min-h-screen flex-col items-center">
       <div className="relative w-full">
         <HeaderPadding />
-        <div className="flex">
+        <div className="flex flex-col">
           <div className="fixed top-0 hidden md:block h-full w-72 p-6">
             <HeaderPadding />
             <DocsSidebarNav items={navigation} />
