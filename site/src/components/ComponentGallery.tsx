@@ -24,7 +24,7 @@ function ComponentItem(props: ComponentItemProps) {
 
 export function ComponentGallery() {
   return (
-    <div className="grid grid-cols-2 lg:grid-cols-3 _xl:grid-cols-4 gap-3 not-prose">
+    <div className="grid grid-cols-2 lg:grid-cols-3 _xl:grid-cols-4 gap-x-3 gap-y-6 not-prose">
       {componentList.map((item, index) => (
         <ComponentItem {...item} key={item.id}/>
       ))}
