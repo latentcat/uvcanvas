@@ -49,15 +49,19 @@ const genParam = (index: number) => {
 
 const bgList = [
   {
+    image: "/assets/hero/3.jpg",
     ...genParam(3)
   },
   {
+    image: "/assets/hero/2.jpg",
     ...genParam(2)
   },
   {
+    image: "/assets/hero/1.jpg",
     ...genParam(1)
   },
   {
+    image: "/assets/hero/0.jpg",
     ...genParam(0)
   },
 ]
@@ -87,7 +91,7 @@ export default function SectionBgStack() {
                   opacity: item.opacity,
                 }}
               >
-
+                <img src={item.image} alt="" className="w-full h-full object-cover"/>
               </div>
               <AspectRatio ratio={16 / 9}/>
             </motion.div>

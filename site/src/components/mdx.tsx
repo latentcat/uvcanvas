@@ -19,6 +19,8 @@ import {
   Accordion as AccordionUI,
 } from "@/components/ui/accordion"
 import {cn} from "@/lib/utils";
+export {ComponentWrapper} from "@/components/ComponentWrapper";
+
 
 
 export const Accordion = function H2(
@@ -33,7 +35,7 @@ export const Accordion = function H2(
 export function wrapper({ children }: { children: React.ReactNode }) {
   return (
     <article className="flex h-full w-full flex-col items-center pb-10 pt-16 break-words">
-      <Prose className="flex-auto w-full max-w-3xl">
+      <Prose className="flex-auto w-full max-w-4xl">
         {children}
         <footer className="mx-auto mt-16 w-full">
           <Feedback/>
