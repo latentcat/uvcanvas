@@ -2,7 +2,6 @@ import { HeaderPadding } from "@/components/Header";
 import { DocsSidebarNav } from "@/components/docs/DocsSideNav";
 import { navigation } from "@/lib/docs-navigation";
 import React from "react";
-import "uvcanvas/dist/style.css";
 
 export default function DocsLayout({
   children,
