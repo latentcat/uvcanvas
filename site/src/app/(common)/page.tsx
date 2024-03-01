@@ -18,7 +18,7 @@ export default function Home() {
           <UvcanvasLogoFull className="h-16"/>
           <h1 className="hidden">UVCanvas</h1>
           <p className="text-lg text-foreground/70 leading-7 max-w-[480px] w-full text-center break-words">
-            An open source React.js component library for Beautiful shaders canvas, brought to you by{" "}
+            An open source React.js component library for beautifully shaded canvas, brought to you by{" "}
             <Link href="https://latentcat.com" target="_blank" className="text-foreground underline font-semibold">
               Latent Cat
             </Link>
