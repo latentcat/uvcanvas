@@ -39,6 +39,7 @@
     "vite-plugin-lib-inject-css": "^2.0.0"
   },
   "dependencies": {
+    "ogl": "^1.0.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }
