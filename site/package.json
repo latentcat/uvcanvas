@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "yarn --cwd .. build && next build",
+    "build": "yarn run build:uvcanvas && next build",
+    "build:uvcanvas": "yarn --cwd .. install && yarn --cwd .. build",
     "start": "next start",
     "lint": "next lint"
   },
