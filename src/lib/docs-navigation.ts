@@ -10,7 +10,7 @@ export const navigation: NavGroup[] = [
   {
     title: "Getting Started",
     links: [
-      { title: "Introduction", href: "/docs/introduction" },
+      { title: "Introduction", href: "/docs" },
       { title: "All Components", href: "/docs/components" },
     ],
   },

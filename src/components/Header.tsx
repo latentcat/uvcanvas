@@ -12,8 +12,8 @@ import {ChevronDownIcon, Cross1Icon, ArrowTopRightIcon} from "@radix-ui/react-ic
 
 const headerLinks = [
   {
-    name: "Getting Started",
-    href: "/docs/introduction",
+    name: "Docs",
+    href: "/docs",
   },
   {
     name: "Components",

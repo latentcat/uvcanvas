@@ -19,8 +19,8 @@ export default function Home() {
             A React.js component library for Beautiful shaders canvas
           </p>
           <div className="flex gap-4">
-            <Link href="/docs/introduction">
-              <Button>Getting Started</Button>
+            <Link href="/docs">
+              <Button>Get Started</Button>
             </Link>
             <Link href="https://github.com/uvcanvas" target="_blank">
               <Button variant="secondary">
