@@ -50,6 +50,7 @@ export const navigation: NavGroup[] = [
       { title: "Introduction", href: "/docs" },
       { title: "Installation", href: "/docs/installation" },
       { title: "All Components", href: "/docs/components" },
+      { title: "Changelog", href: "/docs/changelog" },
     ],
   },
   {

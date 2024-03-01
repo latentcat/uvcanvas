@@ -20,7 +20,7 @@ const headerLinks = [
     href: "/docs/components",
   },
   {
-    name: "GitHub Repo",
+    name: "GitHub",
     href: "https://github.com/latentcat/uvcanvas",
     target: "_blank",
   },
