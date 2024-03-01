@@ -22,7 +22,7 @@ export default function Home() {
             <Link href="/docs">
               <Button>Get Started</Button>
             </Link>
-            <Link href="https://github.com/uvcanvas" target="_blank">
+            <Link href="https://github.com/latentcat/uvcanvas" target="_blank">
               <Button variant="secondary">
                 <GitHubIcon className="h-4 mr-2"/>
                 GitHub

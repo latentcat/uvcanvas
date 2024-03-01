@@ -21,7 +21,7 @@ const headerLinks = [
   },
   {
     name: "GitHub Repo",
-    href: "https://github.com/uvcanvas",
+    href: "https://github.com/latentcat/uvcanvas",
     target: "_blank",
   },
   {
