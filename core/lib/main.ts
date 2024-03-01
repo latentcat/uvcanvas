@@ -4,3 +4,4 @@ export function helloAnything(thing: string): string {
 
 export { Button } from './components/button'
 export { Input } from './components/input'
+export { Lumiflex } from './components/lumiflex'

@@ -1,12 +1,13 @@
 import './App.css'
-import { Button, Input } from '../';
+import {Lumiflex} from "../lib/components/lumiflex";
 
 function App() {
 
   return (
     <>
-      <Button />
-      <Input />
+      <div>
+        <Lumiflex />
+      </div>
     </>
   )
 }

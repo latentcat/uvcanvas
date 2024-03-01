@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@types/node": "^20.11.24",
-    "@types/react": "^18.2.56",
+    "@types/react": "^18.2.61",
     "@types/react-dom": "^18.2.19",
     "@typescript-eslint/eslint-plugin": "^7.0.2",
     "@typescript-eslint/parser": "^7.0.2",
@@ -37,5 +37,9 @@
     "vite": "^5.1.4",
     "vite-plugin-dts": "^3.7.3",
     "vite-plugin-lib-inject-css": "^2.0.0"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }
