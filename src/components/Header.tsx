@@ -149,7 +149,7 @@ export function Header() {
           <ThemeToggle />
         </div>
       </div>
-      <div className="absolute bottom-0 left-0 h-[1px] w-full bg-foreground/5 translate-y-[1px]" />
+      <div className="absolute bottom-0 left-0 h-[1px] w-full bg-foreground/10 translate-y-[1px]" />
     </div>
   )
 }
