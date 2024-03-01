@@ -16,9 +16,7 @@ export default function DocsLayout({
             <DocsSidebarNav items={navigation} />
           </div>
           <div className="md:pl-72 xl:pr-72 grow">
-            <div className="px-6 lg:px-12">
-              {children}
-            </div>
+            <div className="px-6 lg:px-12">{children}</div>
           </div>
         </div>
       </div>
