@@ -14,7 +14,8 @@
       "import": "./dist/index.es.js",
       "require": "./dist/index.cjs.js",
       "types": "./dist/index.d.ts"
-    }
+    },
+    "./dist/style.css": "./dist/style.css"
   },
   "peerDependencies": {
     "react": "^18.2.0",
