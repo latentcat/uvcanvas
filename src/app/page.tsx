@@ -3,6 +3,7 @@ import {ThemeToggle} from "@/components/ThemeToggle";
 import {UvcanvasLogoFull} from "@/components/Logos";
 import {Button} from "@/components/ui/button";
 import {HeaderPadding} from "@/components/Header";
+import SectionBgStack from "@/app/SectionBgStack";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
           <Button variant="secondary">GitHub</Button>
         </div>
       </div>
+      <SectionBgStack />
     </main>
   );
 }
