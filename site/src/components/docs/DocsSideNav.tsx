@@ -16,7 +16,7 @@ export function DocsSidebarNav({ items }: DocsSidebarNavProps) {
     <div className="w-full">
       {items.map((item, index) => (
         <div key={index} className="pb-4">
-          <h4 className="mb-1 rounded-md px-2 py-1 text-sm font-semibold">
+          <h4 className="mb-1 rounded-md _px-2 py-1 text-sm font-semibold">
             {item.title}
           </h4>
           {item.links.length && (
@@ -44,7 +44,7 @@ export function DocsSidebarNavItems({
           key={index}
           href={item.href}
           className={cn(
-            "group flex w-full items-center rounded-md border border-transparent px-2 py-1 hover:bg-accent",
+            "group flex w-full items-center rounded-md border border-transparent px-3 py-0.5 hover:bg-accent",
             pathname === item.href
               ? "font-medium text-foreground bg-accent"
               : "text-muted-foreground"
