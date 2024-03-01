@@ -1,3 +1,3 @@
 export function Test() {
-  return <div>Test3</div>;
+  return <div className="uvc-text-red-600">Test3</div>;
 }
