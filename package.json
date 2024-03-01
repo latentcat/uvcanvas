@@ -9,7 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@giscus/react": "^3.0.0",
     "@headlessui/react": "^1.7.18",
+    "@headlessui/tailwindcss": "^0.2.0",
     "@hookform/resolvers": "^3.3.4",
     "@mdx-js/loader": "^3.0.1",
     "@mdx-js/react": "^3.0.1",
@@ -43,7 +45,9 @@
     "@radix-ui/react-toggle-group": "^1.0.4",
     "@radix-ui/react-tooltip": "^1.0.7",
     "@sindresorhus/slugify": "^2.2.1",
+    "@tailwindcss/typography": "^0.5.10",
     "@types/mdx": "^2.0.11",
+    "@types/mixpanel-browser": "^2.49.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "cmdk": "^0.2.1",
@@ -51,6 +55,7 @@
     "embla-carousel-react": "^8.0.0",
     "framer-motion": "^11.0.8",
     "mdx-annotations": "^0.1.4",
+    "mixpanel-browser": "^2.49.0",
     "next": "14.1.0",
     "next-themes": "^0.2.1",
     "react": "^18",
@@ -68,7 +73,8 @@
     "transliteration": "^2.3.5",
     "unist-util-filter": "^5.0.1",
     "vaul": "^0.9.0",
-    "zod": "^3.22.4"
+    "zod": "^3.22.4",
+    "zustand": "^4.5.1"
   },
   "devDependencies": {
     "@types/node": "^20",
