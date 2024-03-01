@@ -13,11 +13,11 @@ import {ChevronDownIcon, Cross1Icon, ArrowTopRightIcon} from "@radix-ui/react-ic
 const headerLinks = [
   {
     name: "Getting Started",
-    href: "/getting-started",
+    href: "/docs/introduction",
   },
   {
     name: "Components",
-    href: "/components",
+    href: "/docs/components",
   },
   {
     name: "GitHub Repo",
@@ -140,8 +140,10 @@ function DesktopNavigation(props: React.ComponentPropsWithoutRef<'nav'>) {
 
 export function Header() {
   return (
-    <div className="fixed z-10 w-full bg-background h-14 flex items-center justify-between px-6 lg:px-12 break-words">
-      <UvcanvasLogoFull className="h-7"/>
+    <div className="fixed z-10 w-full bg-background h-14 flex items-center justify-between px-6 _lg:px-12 break-words">
+      <Link href="/" className="p-2 -m-2">
+        <UvcanvasLogoFull className="h-7"/>
+      </Link>
       <div className="flex items-center">
         <MobileNavigation className="pointer-events-auto md:hidden" />
         <DesktopNavigation className="pointer-events-auto hidden md:block" />

@@ -4,6 +4,8 @@ import {UvcanvasLogoFull} from "@/components/Logos";
 import {Button} from "@/components/ui/button";
 import {HeaderPadding} from "@/components/Header";
 import SectionBgStack, {Glow} from "@/app/SectionBgStack";
+import Link from "next/link";
+import {GitHubIcon} from "@/components/LogosBrand";
 
 export default function Home() {
   return (
@@ -17,8 +19,15 @@ export default function Home() {
             A React.js component library for Beautiful shaders canvas
           </p>
           <div className="flex gap-4">
-            <Button>Getting Started</Button>
-            <Button variant="secondary">GitHub</Button>
+            <Link href="/docs/introduction">
+              <Button>Getting Started</Button>
+            </Link>
+            <Link href="https://github.com/uvcanvas" target="_blank">
+              <Button variant="secondary">
+                <GitHubIcon className="h-4 mr-2"/>
+                GitHub
+              </Button>
+            </Link>
           </div>
         </div>
         <SectionBgStack/>

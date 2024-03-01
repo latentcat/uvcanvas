@@ -11,11 +11,14 @@ export default function DocsLayout({
       <div className="relative w-full">
         <HeaderPadding />
         <div className="flex">
-          <div className="w-72 p-6">
+          <div className="fixed top-0 hidden md:block h-full w-72 p-6">
+            <HeaderPadding />
             <DocsSidebarNav items={navigation} />
           </div>
-          <div className="grow">
-            {children}
+          <div className="md:pl-72 xl:pr-72 grow">
+            <div className="px-6 lg:px-12">
+              {children}
+            </div>
           </div>
         </div>
       </div>

@@ -38,15 +38,15 @@ export function DocsSidebarNavItems({
   pathname,
 }: DocsSidebarNavItemsProps) {
   return items?.length ? (
-    <div className="grid grid-flow-row auto-rows-max text-sm">
+    <div className="grid grid-flow-row auto-rows-max text-sm space-y-[2px]">
       {items.map((item, index) => (
         <Link
           key={index}
           href={item.href}
           className={cn(
-            "group flex w-full items-center rounded-md border border-transparent px-2 py-1 hover:underline",
+            "group flex w-full items-center rounded-md border border-transparent px-2 py-1 hover:bg-accent",
             pathname === item.href
-              ? "font-medium text-foreground"
+              ? "font-medium text-foreground bg-accent"
               : "text-muted-foreground"
           )}
         >

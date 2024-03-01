@@ -8,17 +8,16 @@ export interface NavGroup {
 
 export const navigation: NavGroup[] = [
   {
-    title: "开始之前",
+    title: "Getting Started",
     links: [
-      { title: "文档缘起", href: "/preface/intro1" },
-      { title: "文档缘起", href: "/preface/intro2" },
+      { title: "Introduction", href: "/docs/introduction" },
+      { title: "All Components", href: "/docs/components" },
     ],
   },
   {
-    title: "test",
+    title: "Components",
     links: [
-      { title: "test1", href: "/preface/intro1" },
-      { title: "test2", href: "/preface/intro2" },
+      { title: "Test", href: "/docs/components/test" },
     ],
   },
 ];
