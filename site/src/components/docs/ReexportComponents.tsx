@@ -1,10 +1,7 @@
 "use client";
 
-import { Lumiflex } from "uvcanvas";
-export { Lumiflex }
+export { Lumiflex, Zenitho } from "uvcanvas";
 
 export function Placeholder() {
-  return (
-    <div></div>
-  )
+  return <div></div>;
 }
