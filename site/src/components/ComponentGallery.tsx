@@ -1,19 +1,17 @@
 import {ComponentWrapper} from "@/components/ComponentWrapper";
 import Link from "next/link";
-import {componentList} from "@/lib/docs-navigation";
+import {ComponentItemProps, componentList} from "@/lib/docs-navigation";
 
 
-interface ComponentItemProps {
-  name: string
-  id: string
-  desc: string
-}
+
 
 function ComponentItem(props: ComponentItemProps) {
   return (
     <Link href={"/docs/components/" + props.id}>
       <div className="flex flex-col items-start">
-        <ComponentWrapper></ComponentWrapper>
+        <ComponentWrapper>
+          <props.component />
+        </ComponentWrapper>
         <h3 className="mt-3 text-base leading-6 font-bold text-foreground">{props.name}</h3>
         <p className="text-sm leading-5 text-foreground/50">{props.desc}</p>
       </div>

@@ -3,8 +3,8 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "main": "dist/main.js",
-  "types": "dist/main.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
@@ -12,11 +12,11 @@
     "**/*.css"
   ],
   "scripts": {
-    "dev": "vite",
-    "build": "tsc --p ./tsconfig.lib.json && vite build",
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "_build": "tsc --p ./tsconfig-build.json && vite build",
     "prepublishOnly": "npm run build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
   },
   "peerDependencies": {
     "react": "^18.2.0",
@@ -33,14 +33,13 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
     "glob": "^10.3.10",
+    "tsup": "^8.0.2",
     "typescript": "^5.2.2",
     "vite": "^5.1.4",
     "vite-plugin-dts": "^3.7.3",
     "vite-plugin-lib-inject-css": "^2.0.0"
   },
   "dependencies": {
-    "ogl": "^1.0.5",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "ogl": "^1.0.5"
   }
 }

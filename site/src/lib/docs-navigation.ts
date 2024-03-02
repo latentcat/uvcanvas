@@ -1,36 +1,49 @@
+import {Lumiflex, Placeholder} from "@/components/docs/ReexportComponents"
+import {Button} from "@/components/mdx";
 
+export interface ComponentItemProps {
+  name: string
+  id: string
+  desc: string
+  component: React.ComponentType
+}
 
-
-export const componentList = [
+export const componentList: ComponentItemProps[] = [
   {
     name: "Lumiflex",
     id: "lumiflex",
     desc: "CSS Gradient",
+    component: Lumiflex,
   },
   {
     name: "Zenitho",
     id: "zenitho",
     desc: "",
+    component: Placeholder,
   },
   {
     name: "Novatrix",
     id: "novatrix",
     desc: "",
+    component: Placeholder,
   },
   {
     name: "Velustro",
     id: "velustro",
     desc: "",
+    component: Placeholder,
   },
   {
     name: "Tranquiluxe",
     id: "tranquiluxe",
     desc: "",
+    component: Placeholder,
   },
   {
     name: "Opulento",
     id: "opulento",
     desc: "",
+    component: Placeholder,
   },
 ]
 

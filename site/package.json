@@ -73,7 +73,7 @@
     "tailwindcss-animate": "^1.0.7",
     "transliteration": "^2.3.5",
     "unist-util-filter": "^5.0.1",
-    "uvcanvas-react": "link:../core",
+    "uvcanvas": "link:../core",
     "vaul": "^0.9.0",
     "zod": "^3.22.4",
     "zustand": "^4.5.1"
