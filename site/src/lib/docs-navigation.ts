@@ -32,8 +32,8 @@ export const componentList: ComponentItemProps[] = [
   {
     name: "Velustro",
     id: "velustro",
-    desc: "Placeholder",
-    component: Placeholder,
+    desc: "Fork from Shadertoy",
+    component: React.lazy(() => import("@/components/registry/Velustro")),
   },
   {
     name: "Tranquiluxe",
