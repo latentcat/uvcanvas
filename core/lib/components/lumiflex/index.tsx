@@ -17,6 +17,7 @@ export function Lumiflex(props: LumiflexProps) {
 
   const [isInit, setIsInit] = useState(false)
   const canvasDom = useRef<HTMLCanvasElement>(null)
+  const ctnDom = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
 
@@ -35,7 +36,9 @@ export function Lumiflex(props: LumiflexProps) {
     camera.position.z = 20;
 
     function resize() {
-      renderer.setSize(window.innerWidth, window.innerHeight);
+      const ctn = ctnDom.current!;
+      console.log(ctn.offsetWidth)
+      renderer.setSize(ctn.offsetWidth, ctn.offsetHeight);
       camera.perspective({
         aspect: gl.canvas.width / gl.canvas.height,
       });
@@ -81,7 +84,7 @@ export function Lumiflex(props: LumiflexProps) {
   }, []);
 
   return (
-    <div className={`${styles.gradientCanvas}`} {...props}>
+    <div ref={ctnDom} className={styles.gradientCanvas} {...props}>
       <canvas ref={canvasDom} />
     </div>
   )
