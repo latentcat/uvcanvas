@@ -21,7 +21,7 @@ export default function Home() {
             An open source React.js component library for beautifully shaded canvas, brought to you by{" "}
             <Link href="https://latentcat.com" target="_blank" className="text-foreground underline font-semibold">
               Latent Cat
-            </Link>
+            </Link>.
           </p>
           <div className="flex gap-4">
             <Link href="/docs">
