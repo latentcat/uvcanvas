@@ -3,8 +3,14 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/esm/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/esm",
+      "require": "./dist/cjs",
+      "types": "./dist/esm"
+    }
+  },
   "files": [
     "dist"
   ],
@@ -34,6 +40,7 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
+    "glob": "^10.3.10",
     "ogl": "^1.0.5"
   }
 }
