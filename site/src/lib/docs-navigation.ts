@@ -14,7 +14,7 @@ export const componentList: ComponentItemProps[] = [
   {
     name: "Lumiflex",
     id: "lumiflex",
-    desc: "Shader Gradient",
+    desc: "Gradient shader",
     component: React.lazy(() => import("@/components/registry/Lumiflex")),
   },
   {
@@ -26,7 +26,7 @@ export const componentList: ComponentItemProps[] = [
   {
     name: "Novatrix",
     id: "novatrix",
-    desc: "Placeholder",
+    desc: "Fork from Shadertoy",
     component: React.lazy(() => import("@/components/registry/Novatrix")),
   },
   {
