@@ -14,7 +14,7 @@ export const componentList: ComponentItemProps[] = [
   {
     name: "Lumiflex",
     id: "lumiflex",
-    desc: "CSS Gradient",
+    desc: "Shader Gradient",
     component: React.lazy(() => import("@/components/registry/Lumiflex")),
   },
   {
@@ -26,25 +26,25 @@ export const componentList: ComponentItemProps[] = [
   {
     name: "Novatrix",
     id: "novatrix",
-    desc: "",
+    desc: "Placeholder",
     component: Placeholder,
   },
   {
     name: "Velustro",
     id: "velustro",
-    desc: "",
+    desc: "Placeholder",
     component: Placeholder,
   },
   {
     name: "Tranquiluxe",
     id: "tranquiluxe",
-    desc: "",
+    desc: "Placeholder",
     component: Placeholder,
   },
   {
     name: "Opulento",
     id: "opulento",
-    desc: "",
+    desc: "Placeholder",
     component: Placeholder,
   },
 ];
