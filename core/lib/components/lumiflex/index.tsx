@@ -32,7 +32,7 @@ export function Lumiflex(props: LumiflexProps) {
     const gl = renderer.gl;
 
     const camera = new Camera(gl);
-    camera.position.z = 5;
+    camera.position.z = 20;
 
     function resize() {
       renderer.setSize(window.innerWidth, window.innerHeight);
