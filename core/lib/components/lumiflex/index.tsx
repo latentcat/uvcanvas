@@ -3,11 +3,36 @@
 import styles from './styles.module.css'
 
 
-import { Renderer, Camera, Transform, Box, Program, Mesh } from 'ogl';
+import {Renderer, Program, Mesh, Color, Triangle} from 'ogl';
 import {useEffect, useRef, useState} from "react";
 
 
 
+const vertex = /* glsl */ `
+    attribute vec2 uv;
+    attribute vec2 position;
+
+    varying vec2 vUv;
+
+    void main() {
+        vUv = uv;
+        gl_Position = vec4(position, 0, 1);
+    }
+`;
+
+const fragment = /* glsl */ `
+    precision highp float;
+
+    uniform float uTime;
+    uniform vec3 uColor;
+
+    varying vec2 vUv;
+
+    void main() {
+        gl_FragColor.rgb = 0.5 + 0.3 * cos(vUv.xyx + uTime) + uColor;
+        gl_FragColor.a = 1.0;
+    }
+`;
 
 interface LumiflexProps {
 
@@ -17,6 +42,7 @@ export function Lumiflex(props: LumiflexProps) {
 
   const [isInit, setIsInit] = useState(false)
   const canvasDom = useRef<HTMLCanvasElement>(null)
+  const ctnDom = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
 
@@ -30,59 +56,73 @@ export function Lumiflex(props: LumiflexProps) {
       canvas: canvasDom.current!
     });
     const gl = renderer.gl;
-
-    const camera = new Camera(gl);
-    camera.position.z = 5;
+    gl.clearColor(1, 1, 1, 1);
 
     function resize() {
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      camera.perspective({
-        aspect: gl.canvas.width / gl.canvas.height,
-      });
+      const ctn = ctnDom.current!;
+      const scale = 1
+      // camera.perspective({
+      //   aspect: gl.canvas.width / gl.canvas.height,
+      // });
+      renderer.setSize(ctn.offsetWidth * scale, ctn.offsetHeight * scale);
     }
     window.addEventListener('resize', resize, false);
     resize();
 
-    const scene = new Transform();
+    // Rather than using a plane (two triangles) to cover the viewport here is a
+    // triangle that includes -1 to 1 range for 'position', and 0 to 1 range for 'uv'.
+    // Excess will be out of the viewport.
 
-    const geometry = new Box(gl);
+    //         position                uv
+    //      (-1, 3)                  (0, 2)
+    //         |\                      |\
+    //         |__\(1, 1)              |__\(1, 1)
+    //         |__|_\                  |__|_\
+    //   (-1, -1)   (3, -1)        (0, 0)   (2, 0)
+
+    const geometry = new Triangle(gl);
 
     const program = new Program(gl, {
-      vertex: /* glsl */ `
-            attribute vec3 position;
-
-            uniform mat4 modelViewMatrix;
-            uniform mat4 projectionMatrix;
-
-            void main() {
-                gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-            }
-        `,
-      fragment: /* glsl */ `
-            void main() {
-                gl_FragColor = vec4(1.0);
-            }
-        `,
+      vertex,
+      fragment,
+      uniforms: {
+        uTime: { value: 0 },
+        uColor: { value: new Color(0.3, 0.2, 0.5) },
+      },
     });
 
     const mesh = new Mesh(gl, { geometry, program });
-    mesh.setParent(scene);
 
     requestAnimationFrame(update);
-    function update() {
+    function update(t: number) {
       requestAnimationFrame(update);
 
-      mesh.rotation.y -= 0.04;
-      mesh.rotation.x += 0.03;
+      program.uniforms.uTime.value = t * 0.001;
 
-      renderer.render({ scene, camera });
+      // Don't need a camera if camera uniforms aren't required
+      renderer.render({ scene: mesh });
     }
+
 
   }, []);
 
   return (
-    <div className={`${styles.gradientCanvas}`} {...props}>
-      <canvas ref={canvasDom} />
+    <div
+      ref={ctnDom}
+      className={styles.gradientCanvas}
+      style={{
+        width: "100%",
+        height: "100%",
+      }}
+      {...props}
+    >
+      <canvas
+        ref={canvasDom}
+        style={{
+          width: "100%",
+          height: "100%",
+        }}
+      />
     </div>
   )
 }

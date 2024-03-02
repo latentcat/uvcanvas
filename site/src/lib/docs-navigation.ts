@@ -1,11 +1,13 @@
-import {Lumiflex, Placeholder} from "@/components/docs/ReexportComponents"
-import {Button} from "@/components/mdx";
+import {
+  Placeholder,
+} from "@/components/docs/ReexportComponents";
+import React from "react";
 
 export interface ComponentItemProps {
-  name: string
-  id: string
-  desc: string
-  component: React.ComponentType
+  name: string;
+  id: string;
+  desc: string;
+  component: React.ComponentType;
 }
 
 export const componentList: ComponentItemProps[] = [
@@ -13,13 +15,13 @@ export const componentList: ComponentItemProps[] = [
     name: "Lumiflex",
     id: "lumiflex",
     desc: "CSS Gradient",
-    component: Lumiflex,
+    component: React.lazy(() => import("@/components/registry/Lumiflex")),
   },
   {
     name: "Zenitho",
     id: "zenitho",
-    desc: "",
-    component: Placeholder,
+    desc: "Shader from Stripe",
+    component: React.lazy(() => import("@/components/registry/Zenitho")),
   },
   {
     name: "Novatrix",
@@ -45,8 +47,7 @@ export const componentList: ComponentItemProps[] = [
     desc: "",
     component: Placeholder,
   },
-]
-
+];
 
 export interface NavGroup {
   title: string;
@@ -69,13 +70,10 @@ export const navigation: NavGroup[] = [
   {
     title: "Components",
     links: [
-      ...componentList.map((item, index) => (
-        {
-          title: item.name,
-          href: "/docs/components/" + item.id,
-        }
-      ))
+      ...componentList.map((item, index) => ({
+        title: item.name,
+        href: "/docs/components/" + item.id,
+      })),
     ],
   },
 ];
-
