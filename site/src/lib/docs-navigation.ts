@@ -27,7 +27,7 @@ export const componentList: ComponentItemProps[] = [
     name: "Novatrix",
     id: "novatrix",
     desc: "Placeholder",
-    component: Placeholder,
+    component: React.lazy(() => import("@/components/registry/Novatrix")),
   },
   {
     name: "Velustro",

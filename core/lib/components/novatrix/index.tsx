@@ -25,21 +25,35 @@ const fragment = /* glsl */ `
 
     uniform float uTime;
     uniform vec3 uColor;
+    uniform vec3 uResolution;
 
     varying vec2 vUv;
 
     void main() {
-        gl_FragColor.rgb = 0.5 + 0.3 * cos(vUv.xyx + uTime) + uColor;
-        gl_FragColor.a = 1.0;
+    
+        float mr = min(uResolution.x, uResolution.y);
+        vec2 uv = (vUv.xy * 2.0 - 1.0) * uResolution.xy / mr;
+    
+        float d = -uTime * 0.5;
+        float a = 0.0;
+        for (float i = 0.0; i < 8.0; ++i) {
+            a += cos(i - d - a * uv.x);
+            d += sin(uv.y * i + a);
+        }
+        d += uTime * 0.5;
+        vec3 col = vec3(cos(uv * vec2(d, a)) * 0.6 + 0.4, cos(a + d) * 0.5 + 0.5);
+        col = cos(col * cos(vec3(d, a, 2.5)) * 0.5 + 0.5);
+        gl_FragColor = vec4(col,1.0);
+        
     }
 `;
 
-interface LumiflexProps {
+interface NovatrixProps {
 
 }
 
 
-export function Lumiflex(props: LumiflexProps) {
+export function Novatrix(props: NovatrixProps) {
 
   const [isInit, setIsInit] = useState(false)
   const canvasDom = useRef<HTMLCanvasElement>(null)
@@ -89,6 +103,7 @@ export function Lumiflex(props: LumiflexProps) {
       uniforms: {
         uTime: { value: 0 },
         uColor: { value: new Color(0.3, 0.2, 0.5) },
+        uResolution: { value: new Color(gl.canvas.width, gl.canvas.height, gl.canvas.width / gl.canvas.height) },
       },
     });
 
