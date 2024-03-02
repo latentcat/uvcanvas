@@ -72,8 +72,8 @@ export function Lumiflex(props: LumiflexProps) {
     function update() {
       requestAnimationFrame(update);
 
-      mesh.rotation.y -= 0.04;
-      mesh.rotation.x += 0.03;
+      mesh.rotation.y -= 0.01;
+      mesh.rotation.x += 0.005;
 
       renderer.render({ scene, camera });
     }
