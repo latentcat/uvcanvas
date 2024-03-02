@@ -21,7 +21,7 @@ export const componentList: ComponentItemProps[] = [
   {
     name: "Zenitho",
     id: "zenitho",
-    desc: "",
+    desc: "Shader from Stripe",
     component: Zenitho,
   },
   {
