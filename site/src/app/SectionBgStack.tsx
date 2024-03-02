@@ -86,7 +86,7 @@ export default function SectionBgStack() {
               transition={transitionLg}
             >
               <div
-                className="absolute w-full h-full top-0 left-0 bg-zinc-500"
+                className="absolute w-full h-full top-0 left-0 bg-zinc-200 dark:bg-zinc-800"
                 style={{
                   opacity: item.opacity,
                 }}
