@@ -12,7 +12,7 @@ function ComponentItem(props: ComponentItemProps) {
         <ComponentWrapper>
           <props.component />
         </ComponentWrapper>
-        <h3 className="mt-3 text-base leading-6 font-bold text-foreground">{props.name}</h3>
+        <h3 className="mt-2.5 text-base leading-6 font-bold text-foreground">{props.name}</h3>
         <p className="text-sm leading-5 text-foreground/50">{props.desc}</p>
       </div>
     </Link>
