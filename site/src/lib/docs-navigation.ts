@@ -1,8 +1,7 @@
 import {
-  Lumiflex,
   Placeholder,
-  Zenitho,
 } from "@/components/docs/ReexportComponents";
+import React from "react";
 
 export interface ComponentItemProps {
   name: string;
@@ -16,13 +15,13 @@ export const componentList: ComponentItemProps[] = [
     name: "Lumiflex",
     id: "lumiflex",
     desc: "CSS Gradient",
-    component: Lumiflex,
+    component: React.lazy(() => import("@/components/registry/Lumiflex")),
   },
   {
     name: "Zenitho",
     id: "zenitho",
     desc: "Shader from Stripe",
-    component: Zenitho,
+    component: React.lazy(() => import("@/components/registry/Zenitho")),
   },
   {
     name: "Novatrix",
