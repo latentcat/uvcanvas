@@ -20,6 +20,7 @@ import {
 } from "@/components/ui/accordion"
 import {cn} from "@/lib/utils";
 export {ComponentWrapper} from "@/components/ComponentWrapper";
+export * from "uvcanvas";
 
 
 
