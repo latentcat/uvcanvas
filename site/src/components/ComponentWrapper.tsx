@@ -40,9 +40,7 @@ export function ComponentWrapper(props: ComponentWrapperProps) {
           {/*<TestComponent/>*/}
         </Suspense>
       </div>
-      <div className="absolute w-full h-full top-0 left-0 z-10 rounded-xl ring-1 ring-inset ring-foreground/10">
-
-      </div>
+      <div className="absolute w-full h-full top-0 left-0 rounded-xl ring-1 ring-inset ring-foreground/10" />
       <AspectRatio ratio={16 / 9}/>
     </div>
   )
