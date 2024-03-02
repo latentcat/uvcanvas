@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "build:uvcanvas": "yarn --cwd ../core install && yarn --cwd ../core build",
+    "build:core": "yarn --cwd ../core install && yarn --cwd ../core build",
     "start": "next start",
     "lint": "next lint"
   },
