@@ -71,7 +71,7 @@ export const navigation: NavGroup[] = [
     title: "Components",
     links: [
       ...componentList.map((item, index) => ({
-        title: item.name,
+        title: "<" + item.name + " />",
         href: "/docs/components/" + item.id,
       })),
     ],

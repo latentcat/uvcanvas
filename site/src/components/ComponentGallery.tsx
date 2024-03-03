@@ -12,8 +12,12 @@ function ComponentItem(props: ComponentItemProps) {
         <ComponentWrapper>
           <props.component />
         </ComponentWrapper>
-        <h3 className="mt-2.5 text-base leading-6 font-bold text-foreground">{props.name}</h3>
-        <p className="text-sm leading-5 text-foreground/50">{props.desc}</p>
+        <h3 className="mt-2.5 text-base leading-6 _font-medium text-foreground font-mono">
+          <span className="opacity-50">{"<"}</span>
+          {props.name}
+          <span className="opacity-50">{" />"}</span>
+        </h3>
+        <p className="text-xs leading-5 text-foreground/50">{props.desc}</p>
       </div>
     </Link>
   )
