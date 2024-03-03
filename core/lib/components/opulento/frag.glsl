@@ -487,7 +487,7 @@ void main() {
 
     // Screen coordinates. I've put a cap on the fullscreen resolution to stop
     // the pattern looking too blurred out.
-    vec2 uv = (vUv.xy - .5)*uResolution.xy/max(min(650., uResolution.y), 300.);
+    vec2 uv = (vUv.xy - .5)*uResolution.xy/max(min(650., uResolution.y), 250.);
 
     // Position with some scrolling, and screen rotation to level the pattern.
     vec2 p = rot2(3.14159/12.)*uv + vec2(.8660254, .5)*uTime/16.;
