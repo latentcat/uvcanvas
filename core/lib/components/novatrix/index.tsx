@@ -53,11 +53,8 @@ export function Novatrix(props: NovatrixProps) {
 
   useEffect(() => {
     if (isInit) {
-      console.log(234)
       return;
     } else {
-
-      console.log(234)
       setIsInit(true);
     }
 
