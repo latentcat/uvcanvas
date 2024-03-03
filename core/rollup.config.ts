@@ -6,6 +6,7 @@ import typescript from "@rollup/plugin-typescript";
 import dts from "rollup-plugin-dts";
 import postcss from "rollup-plugin-postcss";
 import pkg from "./package.json" with { type: "json" };
+import { string } from "rollup-plugin-string";
 
 export default [
   defineConfig({
@@ -26,6 +27,9 @@ export default [
     ],
     plugins: [
       typescript(),
+      string({
+        include: "**/*.glsl",
+      }),
       ...glob.sync("lib/**/*.module.css").map((file) =>
         postcss({
           include: file,

@@ -3,32 +3,9 @@ import styles from "./styles.module.css";
 import { Renderer, Program, Mesh, Color, Triangle } from "ogl";
 import React from "react";
 import { useEffect, useRef, useState } from "react";
+import vert from "./vert.glsl"
+import frag from "./frag.glsl"
 
-const vertex = /* glsl */ `
-    attribute vec2 uv;
-    attribute vec2 position;
-
-    varying vec2 vUv;
-
-    void main() {
-        vUv = uv;
-        gl_Position = vec4(position, 0, 1);
-    }
-`;
-
-const fragment = /* glsl */ `
-    precision highp float;
-
-    uniform float uTime;
-    uniform vec3 uColor;
-
-    varying vec2 vUv;
-
-    void main() {
-        gl_FragColor.rgb = 0.5 + 0.3 * cos(vUv.xyx + uTime) + uColor;
-        gl_FragColor.a = 1.0;
-    }
-`;
 
 interface LumiflexProps {}
 
@@ -75,8 +52,8 @@ export function Lumiflex(props: LumiflexProps) {
     const geometry = new Triangle(gl);
 
     const program = new Program(gl, {
-      vertex,
-      fragment,
+      vertex: vert,
+      fragment: frag,
       uniforms: {
         uTime: { value: 0 },
         uColor: { value: new Color(0.3, 0.2, 0.5) },
