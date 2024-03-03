@@ -1,16 +1,20 @@
 {
   "name": "uvcanvas",
-  "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
+  "description": "An open source React.js component library for beautifully shaded canvas, brought to you by Latent Cat.",
+  "author": "Latent Cat Team",
+  "license": "MIT",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
-  "sideEffects": [
-    "**/*.css"
-  ],
+  "homepage": "https://uvcanvas.com",
+  "bugs": {
+    "url": "https://github.com/latentcat/uvcanvas/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/latentcat/uvcanvas"
+  },
   "scripts": {
     "build": "rollup -c rollup.config.ts --configPlugin typescript",
     "dev": "rollup -c --watch --configPlugin typescript",
@@ -42,5 +46,11 @@
   "dependencies": {
     "ogl": "^1.0.5",
     "zustand": "^4.5.2"
-  }
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ]
 }
