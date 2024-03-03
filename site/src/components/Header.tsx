@@ -41,13 +41,14 @@ interface HeaderLinkProps {
   name: string
   href: string
   target?: string
+  onClick?: () => void
 }
 
 
 function MobileNavItem(props: HeaderLinkProps) {
   return (
     <li>
-      <Link href={props.href} target={props.target} className="py-1 font-bold text-xl flex items-center">
+      <Link href={props.href} target={props.target} onClick={props.onClick} className="py-1 font-bold text-xl flex items-center">
         {props.name}{props.target && <ArrowTopRightIcon className="w-5 h-5 ml-2"/>}
       </Link>
     </li>
@@ -60,16 +61,32 @@ function MobileNavigation(
   const [menuOpen, setMenuOpen] = useState(false)
   return (
     <>
-      <Button variant="ghost" size="icon" onClick={() => setMenuOpen(!menuOpen)} className={props.className}>
-        {!menuOpen ? (
-          <Bars3Icon className="h-6 w-6 stroke-foreground"/>
-        ): (
-          <XMarkIcon className="h-6 w-6 text-foreground"/>
+      <div
+        className={clsx(
+          "fixed z-20 w-full bg-background h-14 flex md:hidden items-center justify-between px-6 _lg:px-12 break-words",
+          props.className,
         )}
-      </Button>
+      >
+        <Link href="/" className="p-2 -m-2">
+          <UvcanvasLogoFull className="h-7"/>
+        </Link>
+        <div className="flex items-center">
+          <div className="mr-4">
+            <ThemeToggle/>
+          </div>
+          <Button variant="ghost" size="icon" onClick={() => setMenuOpen(!menuOpen)}>
+            {!menuOpen ? (
+              <Bars3Icon className="h-6 w-6 stroke-foreground"/>
+            ) : (
+              <XMarkIcon className="h-6 w-6 text-foreground"/>
+            )}
+          </Button>
+        </div>
+        <div className="absolute bottom-0 left-0 h-[1px] w-full bg-foreground/10 translate-y-[1px]"/>
+      </div>
       <motion.div
         className={clsx(
-          "fixed -z-10 w-full top-0 left-0 bg-black overflow-hidden",
+          "fixed z-10 w-full top-0 left-0 bg-background overflow-hidden",
           menuOpen ? "block" : "hidden"
         )}
         animate={{
@@ -79,7 +96,7 @@ function MobileNavigation(
       >
         <div
           className={clsx(
-            "w-full h-screen top-0 left-0 bg-black flex flex-col",
+            "w-full h-screen top-0 left-0 flex flex-col",
           )}
         >
           <HeaderPadding/>
@@ -92,14 +109,14 @@ function MobileNavigation(
               <nav className="">
                 <ul className="-my-2 text-base text-zinc-800 dark:text-zinc-200">
                   {headerLinks.map((item, index) => (
-                    <MobileNavItem key={index} {...item}></MobileNavItem>
+                    <MobileNavItem key={index} {...item} onClick={() => setMenuOpen(false)}></MobileNavItem>
                   ))}
                 </ul>
               </nav>
               <h2 className="mt-12 mb-3 text-sm font-medium text-zinc-600 dark:text-zinc-400">
                 Documentation
               </h2>
-              <DocsSidebarNav items={navigation}/>
+              <DocsSidebarNav items={navigation} onClick={() => setMenuOpen(false)}/>
             </div>
           </div>
         </div>
@@ -131,32 +148,40 @@ function NavItem(props: HeaderLinkProps) {
 
 function DesktopNavigation(props: React.ComponentPropsWithoutRef<'nav'>) {
   return (
-    <nav {...props}>
-      <ul className="flex text-sm _font-medium text-zinc-800 dark:text-zinc-200 items-center">
-        {headerLinks.map((item, index) => (
-          <NavItem key={index} {...item}></NavItem>
-        ))}
-        <li className="ml-4">
-          <ThemeToggle/>
-        </li>
-      </ul>
-    </nav>
+
+    <div
+      className={clsx(
+        "fixed z-20 w-full bg-background h-14 hidden md:flex items-center justify-between px-6 _lg:px-12 break-words",
+        props.className
+      )}
+    >
+      <Link href="/" className="p-2 -m-2">
+        <UvcanvasLogoFull className="h-7"/>
+      </Link>
+      <div className="flex items-center">
+        <nav>
+          <ul className="flex text-sm _font-medium text-zinc-800 dark:text-zinc-200 items-center">
+            {headerLinks.map((item, index) => (
+              <NavItem key={index} {...item}></NavItem>
+            ))}
+            <li className="ml-4">
+              <ThemeToggle/>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div className="absolute bottom-0 left-0 h-[1px] w-full bg-foreground/10 translate-y-[1px]"/>
+    </div>
   )
 }
 
 
 export function Header() {
   return (
-    <div className="fixed z-20 w-full bg-background h-14 flex items-center justify-between px-6 _lg:px-12 break-words">
-      <Link href="/" className="p-2 -m-2">
-        <UvcanvasLogoFull className="h-7"/>
-      </Link>
-      <div className="flex items-center">
-        <MobileNavigation className="pointer-events-auto md:hidden" />
-        <DesktopNavigation className="pointer-events-auto hidden md:block" />
-      </div>
-      <div className="absolute bottom-0 left-0 h-[1px] w-full bg-foreground/10 translate-y-[1px]" />
-    </div>
+    <>
+      <MobileNavigation />
+      <DesktopNavigation />
+    </>
   )
 }
 
