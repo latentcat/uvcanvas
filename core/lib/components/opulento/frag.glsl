@@ -370,16 +370,16 @@ vec3 simplexContour(vec2 p){
     float sf = .004;
 
     // Water.
-    if(d>0. && d2>0.) col = vec3(1, 1.8, 3)*.45;
+    if(d>0. && d2>0.) col = vec3(.3, .3, .3)*.45;
     // Water edging.
-    if(d>0.) col = mix(col, vec3(1, 1.85, 3)*.3, (1. - smoothstep(0., sf, d2 - .012)));
+    if(d>0.) col = mix(col, vec3(.2, .2, .2)*.3, (1. - smoothstep(0., sf, d2 - .012)));
 
     // Beach.
-    col = mix(col, vec3(1.1, .85, .6),  (1. - smoothstep(0., sf, d2)));
+    col = mix(col, vec3(0.5, 0.5, 0.5),  (1. - smoothstep(0., sf, d2)));
     // Beach edging.
-    col = mix(col, vec3(1.5, .9, .6)*.6, (1. - smoothstep(0., sf, d - .012)));
+    col = mix(col, vec3(0.3, 0.3, 0.3)*.6, (1. - smoothstep(0., sf, d - .012)));
 
-    col = mix(col, vec3(1, .8, .6)*vec3(.7, 1., .75)*.95, (1. - smoothstep(0., sf, d)));
+    col = mix(col, vec3(0.1, 0.1, 0.1)*.95, (1. - smoothstep(0., sf, d)));
 
 
 
