@@ -6,8 +6,14 @@ import Link from "next/link";
 import {clsx} from "clsx";
 import {usePathname} from "next/navigation";
 import { Popover, Transition } from '@headlessui/react'
-import {Fragment} from "react";
-import {ChevronDownIcon, Cross1Icon, ArrowTopRightIcon} from "@radix-ui/react-icons";
+import React, {Fragment, useState} from "react";
+import {ChevronDownIcon, Cross1Icon, ArrowTopRightIcon, HamburgerMenuIcon} from "@radix-ui/react-icons";
+import {Bars3Icon, XMarkIcon} from "@heroicons/react/24/outline";
+import {Button} from "@/components/ui/button";
+import { motion } from "framer-motion";
+import {transitionLg, transitionMd} from "@/lib/animations";
+import {DocsSidebarNav} from "@/components/docs/DocsSideNav";
+import {navigation} from "@/lib/docs-navigation";
 
 
 const headerLinks = [
@@ -41,9 +47,9 @@ interface HeaderLinkProps {
 function MobileNavItem(props: HeaderLinkProps) {
   return (
     <li>
-      <Popover.Button as={Link} href={props.href} target={props.target} className="py-1 font-bold text-xl flex items-center">
+      <Link href={props.href} target={props.target} className="py-1 font-bold text-xl flex items-center">
         {props.name}{props.target && <ArrowTopRightIcon className="w-5 h-5 ml-2"/>}
-      </Popover.Button>
+      </Link>
     </li>
   )
 }
@@ -51,56 +57,54 @@ function MobileNavItem(props: HeaderLinkProps) {
 function MobileNavigation(
   props: React.ComponentPropsWithoutRef<typeof Popover>,
 ) {
+  const [menuOpen, setMenuOpen] = useState(false)
   return (
-    <Popover {...props}>
-      <Popover.Button className="group flex items-center rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10">
-        Menu
-        <ChevronDownIcon className="ml-3 h-auto w-2 stroke-zinc-500 group-hover:stroke-zinc-700 dark:group-hover:stroke-zinc-400" />
-      </Popover.Button>
-      <Transition.Root>
-        <Transition.Child
-          as={Fragment}
-          enter="duration-150 ease-out"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-          leave="duration-150 ease-in"
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0"
+    <>
+      <Button variant="ghost" size="icon" onClick={() => setMenuOpen(!menuOpen)} className={props.className}>
+        {!menuOpen ? (
+          <Bars3Icon className="h-6 w-6 stroke-foreground"/>
+        ): (
+          <XMarkIcon className="h-6 w-6 text-foreground"/>
+        )}
+      </Button>
+      <motion.div
+        className={clsx(
+          "fixed -z-10 w-full top-0 left-0 bg-black overflow-hidden",
+          menuOpen ? "block" : "hidden"
+        )}
+        animate={{
+          height: menuOpen ? "100%" : 56,
+        }}
+        transition={transitionLg}
+      >
+        <div
+          className={clsx(
+            "w-full h-screen top-0 left-0 bg-black flex flex-col",
+          )}
         >
-          <Popover.Overlay className="fixed inset-0 z-50 bg-zinc-800/40 backdrop-blur-sm dark:bg-black/80" />
-        </Transition.Child>
-        <Transition.Child
-          as={Fragment}
-          enter="duration-150 ease-out"
-          enterFrom="opacity-0 scale-95"
-          enterTo="opacity-100 scale-100"
-          leave="duration-150 ease-in"
-          leaveFrom="opacity-100 scale-100"
-          leaveTo="opacity-0 scale-95"
-        >
-          <Popover.Panel
-            focus
-            className="fixed inset-x-4 top-8 z-50 origin-top rounded-3xl bg-white p-8 ring-1 ring-zinc-900/5 dark:bg-black dark:ring-zinc-800"
-          >
-            <div className="flex flex-row-reverse items-center justify-between">
-              <Popover.Button aria-label="Close menu" className="-m-1 p-1">
-                <Cross1Icon className="h-6 w-6 text-zinc-500 dark:text-zinc-400" />
-              </Popover.Button>
-              <h2 className="text-sm font-medium text-zinc-600 dark:text-zinc-400">
+          <HeaderPadding/>
+          <div className="grow relative">
+
+            <div className="absolute w-full h-full top-0 left-0 overflow-y-auto px-6 lg:px-12 py-6">
+              <h2 className="mb-4 text-sm font-medium text-zinc-600 dark:text-zinc-400">
                 Menu
               </h2>
+              <nav className="">
+                <ul className="-my-2 text-base text-zinc-800 dark:text-zinc-200">
+                  {headerLinks.map((item, index) => (
+                    <MobileNavItem key={index} {...item}></MobileNavItem>
+                  ))}
+                </ul>
+              </nav>
+              <h2 className="mt-12 mb-3 text-sm font-medium text-zinc-600 dark:text-zinc-400">
+                Documentation
+              </h2>
+              <DocsSidebarNav items={navigation}/>
             </div>
-            <nav className="mt-6">
-              <ul className="-my-2 text-base text-zinc-800 dark:text-zinc-200">
-                {headerLinks.map((item, index) => (
-                  <MobileNavItem key={index} {...item}></MobileNavItem>
-                ))}
-              </ul>
-            </nav>
-          </Popover.Panel>
-        </Transition.Child>
-      </Transition.Root>
-    </Popover>
+          </div>
+        </div>
+      </motion.div>
+    </>
   )
 }
 
@@ -128,10 +132,13 @@ function NavItem(props: HeaderLinkProps) {
 function DesktopNavigation(props: React.ComponentPropsWithoutRef<'nav'>) {
   return (
     <nav {...props}>
-      <ul className="flex text-sm _font-medium text-zinc-800 dark:text-zinc-200">
+      <ul className="flex text-sm _font-medium text-zinc-800 dark:text-zinc-200 items-center">
         {headerLinks.map((item, index) => (
           <NavItem key={index} {...item}></NavItem>
         ))}
+        <li className="ml-4">
+          <ThemeToggle/>
+        </li>
       </ul>
     </nav>
   )
@@ -140,16 +147,13 @@ function DesktopNavigation(props: React.ComponentPropsWithoutRef<'nav'>) {
 
 export function Header() {
   return (
-    <div className="fixed z-10 w-full bg-background h-14 flex items-center justify-between px-6 _lg:px-12 break-words">
+    <div className="fixed z-20 w-full bg-background h-14 flex items-center justify-between px-6 _lg:px-12 break-words">
       <Link href="/" className="p-2 -m-2">
         <UvcanvasLogoFull className="h-7"/>
       </Link>
       <div className="flex items-center">
         <MobileNavigation className="pointer-events-auto md:hidden" />
         <DesktopNavigation className="pointer-events-auto hidden md:block" />
-        <div className="ml-4">
-          <ThemeToggle />
-        </div>
       </div>
       <div className="absolute bottom-0 left-0 h-[1px] w-full bg-foreground/10 translate-y-[1px]" />
     </div>
