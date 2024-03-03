@@ -6,9 +6,9 @@ export default function typographyStyles({ theme }: PluginUtils) {
       css: {
         '--tw-prose-body': theme('colors.zinc.700'),
         '--tw-prose-headings': theme('colors.zinc.900'),
-        '--tw-prose-links': theme('colors.emerald.500'),
-        '--tw-prose-links-hover': theme('colors.emerald.600'),
-        '--tw-prose-links-underline': theme('colors.emerald.500 / 0.3'),
+        '--tw-prose-links': theme('colors.foreground'),
+        '--tw-prose-links-hover': theme('colors.foreground'),
+        '--tw-prose-links-underline': theme('colors.foreground / 0.3'),
         '--tw-prose-bold': theme('colors.zinc.900'),
         '--tw-prose-counters': theme('colors.zinc.500'),
         '--tw-prose-bullets': theme('colors.zinc.300'),
@@ -24,9 +24,9 @@ export default function typographyStyles({ theme }: PluginUtils) {
 
         '--tw-prose-invert-body': theme('colors.zinc.400'),
         '--tw-prose-invert-headings': theme('colors.white'),
-        '--tw-prose-invert-links': theme('colors.emerald.400'),
-        '--tw-prose-invert-links-hover': theme('colors.emerald.500'),
-        '--tw-prose-invert-links-underline': theme('colors.emerald.500 / 0.3'),
+        '--tw-prose-invert-links': theme('colors.foreground'),
+        '--tw-prose-invert-links-hover': theme('colors.foreground'),
+        '--tw-prose-invert-links-underline': theme('colors.foreground / 0.3'),
         '--tw-prose-invert-bold': theme('colors.white'),
         '--tw-prose-invert-counters': theme('colors.zinc.400'),
         '--tw-prose-invert-bullets': theme('colors.zinc.600'),
@@ -277,14 +277,14 @@ export default function typographyStyles({ theme }: PluginUtils) {
         // Inline elements
         a: {
           color: 'var(--tw-prose-links)',
-          textDecoration: 'underline transparent',
+          textDecoration: 'underline var(--tw-prose-links-underline)',
           fontWeight: '500',
           transitionProperty: 'color, text-decoration-color',
           transitionDuration: theme('transitionDuration.DEFAULT'),
           transitionTimingFunction: theme('transitionTimingFunction.DEFAULT'),
           '&:hover': {
             color: 'var(--tw-prose-links-hover)',
-            textDecorationColor: 'var(--tw-prose-links-underline)',
+            textDecorationColor: 'var(--tw-prose-links-hover-underline)',
           },
         },
         ':is(h1, h2, h3) a': {
