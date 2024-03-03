@@ -174,7 +174,7 @@ export default function typographyStyles({ theme }: PluginUtils) {
           fontWeight: '700',
           fontSize: theme('fontSize.3xl')[0],
           ...theme('fontSize.3xl')[1],
-          marginBottom: theme('spacing.12'),
+          marginBottom: theme('spacing.9'),
         },
         h2: {
           color: 'var(--tw-prose-headings)',
