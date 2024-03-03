@@ -41,14 +41,14 @@ export default function Home() {
       <div className="px-6 py-12">
         <div className="w-full flex flex-col items-center">
           <h2 className="text-2xl font-bold">Components</h2>
-          <div className="mt-6">
-            <Link href="/docs/components">
-              <Button>Browse more</Button>
-            </Link>
-          </div>
-          <div className="h-12" />
+          <div className="h-12"/>
           <div className="w-full max-w-5xl">
             <ComponentGallery limit={6}/>
+          </div>
+          <div className="mt-6">
+            <Link href="/docs/components">
+              <Button variant="secondary">Browse more</Button>
+            </Link>
           </div>
         </div>
       </div>
