@@ -24,10 +24,18 @@ function ComponentItem(props: ComponentItemProps) {
 }
 
 
-export function ComponentGallery() {
+interface ComponentGallery {
+  limit?: number
+}
+
+
+export function ComponentGallery(props: ComponentGallery) {
+
+  const list = componentList.slice(0, props.limit || componentList.length)
+
   return (
     <div className="grid grid-cols-2 lg:grid-cols-3 _xl:grid-cols-4 gap-x-3 gap-y-6 not-prose">
-      {componentList.map((item, index) => (
+      {list.map((item, index) => (
         <ComponentItem {...item} key={item.id}/>
       ))}
     </div>

@@ -48,7 +48,7 @@ export default function Home() {
           </div>
           <div className="h-12" />
           <div className="w-full max-w-5xl">
-            <ComponentGallery/>
+            <ComponentGallery limit={6}/>
           </div>
         </div>
       </div>
