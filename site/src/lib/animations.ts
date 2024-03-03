@@ -28,6 +28,12 @@ export const transitionMd = {
 
 export const transitionLg = {
   type: 'spring',
+  duration: 0.5,
+  bounce: 0,
+}
+
+export const transitionXl = {
+  type: 'spring',
   duration: 1.0,
   bounce: 0,
 }

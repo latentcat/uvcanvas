@@ -11,7 +11,7 @@ import {ChevronDownIcon, Cross1Icon, ArrowTopRightIcon, HamburgerMenuIcon} from 
 import {Bars3Icon, XMarkIcon} from "@heroicons/react/24/outline";
 import {Button} from "@/components/ui/button";
 import { motion } from "framer-motion";
-import {transitionLg, transitionMd} from "@/lib/animations";
+import {transitionXl, transitionMd, transitionLg} from "@/lib/animations";
 import {DocsSidebarNav} from "@/components/docs/DocsSideNav";
 import {navigation} from "@/lib/docs-navigation";
 
@@ -92,6 +92,7 @@ function MobileNavigation(
           )}
           animate={{
             height: menuOpen ? "100%" : 56,
+            opacity: menuOpen ? 1 : 0,
           }}
           transition={transitionLg}
         >
@@ -101,7 +102,14 @@ function MobileNavigation(
             )}
           >
             <HeaderPadding/>
-            <div className="grow relative">
+            <motion.div
+              className="grow relative"
+              animate={{
+                y: menuOpen ? 0 : -20,
+                // opacity: menuOpen ? 1 : 0,
+              }}
+              transition={transitionLg}
+            >
 
               <div className="absolute w-full h-full top-0 left-0 overflow-y-auto px-6 lg:px-12 py-6">
                 <nav className="">
@@ -114,7 +122,7 @@ function MobileNavigation(
                 <div className="h-6"/>
                 <DocsSidebarNav items={navigation} onClick={() => setMenuOpen(false)}/>
               </div>
-            </div>
+            </motion.div>
           </div>
         </motion.div>
       </div>

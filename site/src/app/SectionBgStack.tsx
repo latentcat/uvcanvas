@@ -3,7 +3,7 @@
 import {AspectRatio} from "@/components/ui/aspect-ratio";
 import {clsx} from "clsx";
 import {motion} from "framer-motion"
-import {transitionLg} from "@/lib/animations";
+import {transitionXl} from "@/lib/animations";
 import {useId} from "react";
 
 
@@ -83,7 +83,7 @@ export default function SectionBgStack() {
                 scale: item.scale,
                 filter: `blur(${item.blur}px)`,
               }}
-              transition={transitionLg}
+              transition={transitionXl}
             >
               <div
                 className="absolute w-full h-full top-0 left-0 bg-zinc-200 dark:bg-zinc-800"
