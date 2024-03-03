@@ -67,7 +67,7 @@ function MobileNavigation(
           props.className,
         )}
       >
-        <Link href="/" className="p-2 -m-2">
+        <Link href="/" className="p-2 -m-2" onClick={() => setMenuOpen(false)}>
           <UvcanvasLogoFull className="h-7"/>
         </Link>
         <div className="flex items-center">
