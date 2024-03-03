@@ -53,8 +53,11 @@ export function Novatrix(props: NovatrixProps) {
 
   useEffect(() => {
     if (isInit) {
+      console.log(234)
       return;
     } else {
+
+      console.log(234)
       setIsInit(true);
     }
 
@@ -74,17 +77,6 @@ export function Novatrix(props: NovatrixProps) {
     }
     window.addEventListener("resize", resize, false);
     resize();
-
-    // Rather than using a plane (two triangles) to cover the viewport here is a
-    // triangle that includes -1 to 1 range for 'position', and 0 to 1 range for 'uv'.
-    // Excess will be out of the viewport.
-
-    //         position                uv
-    //      (-1, 3)                  (0, 2)
-    //         |\                      |\
-    //         |__\(1, 1)              |__\(1, 1)
-    //         |__|_\                  |__|_\
-    //   (-1, -1)   (3, -1)        (0, 0)   (2, 0)
 
     const geometry = new Triangle(gl);
 
@@ -106,14 +98,22 @@ export function Novatrix(props: NovatrixProps) {
 
     const mesh = new Mesh(gl, { geometry, program });
 
-    requestAnimationFrame(update);
+    let animateId: number;
+
+    animateId = requestAnimationFrame(update);
+
     function update(t: number) {
-      requestAnimationFrame(update);
+      animateId = requestAnimationFrame(update);
 
       program.uniforms.uTime.value = t * 0.001;
 
       // Don't need a camera if camera uniforms aren't required
       renderer.render({ scene: mesh });
+    }
+
+    return () => {
+      cancelAnimationFrame(animateId);
+      window.removeEventListener("resize", resize);
     }
   }, []);
 

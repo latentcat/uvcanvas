@@ -85,14 +85,22 @@ export function Lumiflex(props: LumiflexProps) {
 
     const mesh = new Mesh(gl, { geometry, program });
 
-    requestAnimationFrame(update);
+    let animateId: number;
+
+    animateId = requestAnimationFrame(update);
+
     function update(t: number) {
-      requestAnimationFrame(update);
+      animateId = requestAnimationFrame(update);
 
       program.uniforms.uTime.value = t * 0.001;
 
       // Don't need a camera if camera uniforms aren't required
       renderer.render({ scene: mesh });
+    }
+
+    return () => {
+      cancelAnimationFrame(animateId);
+      window.removeEventListener("resize", resize);
     }
   }, []);
 
