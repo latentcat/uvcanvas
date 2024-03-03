@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import Gradient from "./Gradient";
+import React from "react";
 
 export function Zenitho() {
   const canvasRef = useRef<HTMLCanvasElement>(null);

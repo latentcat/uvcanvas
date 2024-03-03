@@ -1,12 +1,8 @@
-"use client"
+import styles from "./styles.module.css";
 
-import styles from './styles.module.css'
-
-
-import {Renderer, Program, Mesh, Color, Triangle} from 'ogl';
-import {useEffect, useRef, useState} from "react";
-
-
+import { Renderer, Program, Mesh, Color, Triangle } from "ogl";
+import React from "react";
+import { useEffect, useRef, useState } from "react";
 
 const vertex = /* glsl */ `
     attribute vec2 uv;
@@ -323,40 +319,35 @@ const fragment = /* glsl */ `
     }
 `;
 
-interface VelustroProps {
-
-}
-
+interface VelustroProps {}
 
 export function Velustro(props: VelustroProps) {
-
-  const [isInit, setIsInit] = useState(false)
-  const canvasDom = useRef<HTMLCanvasElement>(null)
-  const ctnDom = useRef<HTMLDivElement>(null)
+  const [isInit, setIsInit] = useState(false);
+  const canvasDom = useRef<HTMLCanvasElement>(null);
+  const ctnDom = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-
     if (isInit) {
-      return
+      return;
     } else {
-      setIsInit(true)
+      setIsInit(true);
     }
 
     const renderer = new Renderer({
-      canvas: canvasDom.current!
+      canvas: canvasDom.current!,
     });
     const gl = renderer.gl;
     gl.clearColor(1, 1, 1, 1);
 
     function resize() {
       const ctn = ctnDom.current!;
-      const scale = 1
+      const scale = 1;
       // camera.perspective({
       //   aspect: gl.canvas.width / gl.canvas.height,
       // });
       renderer.setSize(ctn.offsetWidth * scale, ctn.offsetHeight * scale);
     }
-    window.addEventListener('resize', resize, false);
+    window.addEventListener("resize", resize, false);
     resize();
 
     // Rather than using a plane (two triangles) to cover the viewport here is a
@@ -378,7 +369,13 @@ export function Velustro(props: VelustroProps) {
       uniforms: {
         uTime: { value: 0 },
         uColor: { value: new Color(0.3, 0.2, 0.5) },
-        uResolution: { value: new Color(gl.canvas.width, gl.canvas.height, gl.canvas.width / gl.canvas.height) },
+        uResolution: {
+          value: new Color(
+            gl.canvas.width,
+            gl.canvas.height,
+            gl.canvas.width / gl.canvas.height
+          ),
+        },
       },
     });
 
@@ -393,8 +390,6 @@ export function Velustro(props: VelustroProps) {
       // Don't need a camera if camera uniforms aren't required
       renderer.render({ scene: mesh });
     }
-
-
   }, []);
 
   return (
@@ -415,5 +410,5 @@ export function Velustro(props: VelustroProps) {
         }}
       />
     </div>
-  )
+  );
 }

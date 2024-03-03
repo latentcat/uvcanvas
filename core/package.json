@@ -3,15 +3,8 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "main": "./dist/esm/index.js",
-  "types": "./dist/esm/index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/esm/index.js",
-      "require": "./dist/cjs/index.cjs",
-      "types": "./dist/esm/index.d.ts"
-    }
-  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
@@ -19,8 +12,8 @@
     "**/*.css"
   ],
   "scripts": {
-    "build": "tsup",
-    "dev": "tsup --watch",
+    "build": "rollup -c rollup.config.ts --configPlugin typescript",
+    "dev": "rollup -c --watch --configPlugin typescript",
     "prepublishOnly": "npm run build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
   },
@@ -29,6 +22,7 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@rollup/plugin-typescript": "^11.1.6",
     "@types/node": "^20.11.24",
     "@types/react": "^18.2.61",
     "@types/react-dom": "^18.2.19",
@@ -37,11 +31,15 @@
     "eslint": "^8.56.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
-    "tsup": "^8.0.2",
+    "glob": "^10.3.10",
+    "postcss": "^8.4.35",
+    "rollup": "^4.12.0",
+    "rollup-plugin-dts": "^6.1.0",
+    "rollup-plugin-postcss": "^4.0.2",
+    "tslib": "^2.6.2",
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "glob": "^10.3.10",
     "ogl": "^1.0.5",
     "zustand": "^4.5.2"
   }

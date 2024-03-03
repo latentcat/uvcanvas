@@ -9,14 +9,15 @@
 
     /* Bundler mode */
     "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx",
+    "emitDeclarationOnly": true,
+    "declaration": true,
+    "declarationDir": "dist",
+    "jsx": "react",
 
     /* Linting */
     "strict": true,
   },
-  "include": ["src", "lib"]
+  "include": ["lib"]
 }
