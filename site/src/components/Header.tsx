@@ -84,43 +84,40 @@ function MobileNavigation(
         </div>
         <div className="absolute bottom-0 left-0 h-[1px] w-full bg-foreground/10 translate-y-[1px]"/>
       </div>
-      <motion.div
-        className={clsx(
-          "fixed z-10 w-full top-0 left-0 bg-background overflow-hidden",
-          menuOpen ? "block" : "hidden"
-        )}
-        animate={{
-          height: menuOpen ? "100%" : 56,
-        }}
-        transition={transitionLg}
-      >
-        <div
+      <div className="lg:hidden">
+        <motion.div
           className={clsx(
-            "w-full h-screen top-0 left-0 flex flex-col",
+            "fixed z-10 w-full top-0 left-0 bg-background overflow-hidden",
+            menuOpen ? "block" : "hidden"
           )}
+          animate={{
+            height: menuOpen ? "100%" : 56,
+          }}
+          transition={transitionLg}
         >
-          <HeaderPadding/>
-          <div className="grow relative">
+          <div
+            className={clsx(
+              "w-full h-screen top-0 left-0 flex flex-col",
+            )}
+          >
+            <HeaderPadding/>
+            <div className="grow relative">
 
-            <div className="absolute w-full h-full top-0 left-0 overflow-y-auto px-6 lg:px-12 py-6">
-              <h2 className="mb-4 text-sm font-medium text-zinc-600 dark:text-zinc-400">
-                Menu
-              </h2>
-              <nav className="">
-                <ul className="-my-2 text-base text-zinc-800 dark:text-zinc-200">
-                  {headerLinks.map((item, index) => (
-                    <MobileNavItem key={index} {...item} onClick={() => setMenuOpen(false)}></MobileNavItem>
-                  ))}
-                </ul>
-              </nav>
-              <h2 className="mt-12 mb-3 text-sm font-medium text-zinc-600 dark:text-zinc-400">
-                Documentation
-              </h2>
-              <DocsSidebarNav items={navigation} onClick={() => setMenuOpen(false)}/>
+              <div className="absolute w-full h-full top-0 left-0 overflow-y-auto px-6 lg:px-12 py-6">
+                <nav className="">
+                  <ul className="_-my-2 text-base text-zinc-800 dark:text-zinc-200">
+                    {headerLinks.map((item, index) => (
+                      <MobileNavItem key={index} {...item} onClick={() => setMenuOpen(false)}></MobileNavItem>
+                    ))}
+                  </ul>
+                </nav>
+                <div className="h-6"/>
+                <DocsSidebarNav items={navigation} onClick={() => setMenuOpen(false)}/>
+              </div>
             </div>
           </div>
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
     </>
   )
 }
