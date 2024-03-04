@@ -78,6 +78,8 @@ export function Lumiflex(props: LumiflexProps) {
     return () => {
       cancelAnimationFrame(animateId);
       window.removeEventListener("resize", resize);
+      program.remove()
+      
     }
   }, []);
 

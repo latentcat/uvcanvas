@@ -74,6 +74,7 @@ export function Tranquiluxe(props: TranquiluxeProps) {
     return () => {
       cancelAnimationFrame(animateId);
       window.removeEventListener("resize", resize);
+      program.remove()
     }
   }, []);
 

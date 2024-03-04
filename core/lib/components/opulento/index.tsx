@@ -74,6 +74,7 @@ export function Opulento(props: OpulentoProps) {
     return () => {
       cancelAnimationFrame(animateId);
       window.removeEventListener("resize", resize);
+      program.remove()
     }
   }, []);
 

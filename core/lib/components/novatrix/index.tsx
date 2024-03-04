@@ -73,6 +73,7 @@ export function Novatrix(props: NovatrixProps) {
     return () => {
       cancelAnimationFrame(animateId);
       window.removeEventListener("resize", resize);
+      program.remove()
     }
   }, []);
 

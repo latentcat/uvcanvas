@@ -85,6 +85,7 @@ export function Velustro(props: VelustroProps) {
     return () => {
       cancelAnimationFrame(animateId);
       window.removeEventListener("resize", resize);
+      program.remove()
     }
 
   }, []);
