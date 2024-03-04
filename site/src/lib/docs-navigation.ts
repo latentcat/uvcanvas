@@ -47,42 +47,42 @@ export const componentList: ComponentItemProps[] = [
     desc: "Fork from Shadertoy",
     component: React.lazy(() => import("@/components/registry/Opulento")),
   },
-  {
-    name: "Serenex",
-    id: "serenex",
-    desc: "Placeholder",
-    component: Placeholder,
-  },
-  {
-    name: "Venturo",
-    id: "venturo",
-    desc: "Placeholder",
-    component: Placeholder,
-  },
-  {
-    name: "Quilluxe",
-    id: "quilluxe",
-    desc: "Placeholder",
-    component: Placeholder,
-  },
-  {
-    name: "Artiflexa",
-    id: "artiflexa",
-    desc: "Placeholder",
-    component: Placeholder,
-  },
-  {
-    name: "Luminastra",
-    id: "luminastra",
-    desc: "Placeholder",
-    component: Placeholder,
-  },
-  {
-    name: "Grandeurio",
-    id: "grandeurio",
-    desc: "Placeholder",
-    component: Placeholder,
-  },
+  // {
+  //   name: "Serenex",
+  //   id: "serenex",
+  //   desc: "Placeholder",
+  //   component: Placeholder,
+  // },
+  // {
+  //   name: "Venturo",
+  //   id: "venturo",
+  //   desc: "Placeholder",
+  //   component: Placeholder,
+  // },
+  // {
+  //   name: "Quilluxe",
+  //   id: "quilluxe",
+  //   desc: "Placeholder",
+  //   component: Placeholder,
+  // },
+  // {
+  //   name: "Artiflexa",
+  //   id: "artiflexa",
+  //   desc: "Placeholder",
+  //   component: Placeholder,
+  // },
+  // {
+  //   name: "Luminastra",
+  //   id: "luminastra",
+  //   desc: "Placeholder",
+  //   component: Placeholder,
+  // },
+  // {
+  //   name: "Grandeurio",
+  //   id: "grandeurio",
+  //   desc: "Placeholder",
+  //   component: Placeholder,
+  // },
 ];
 
 export interface NavGroup {
