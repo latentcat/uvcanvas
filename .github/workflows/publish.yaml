@@ -14,6 +14,7 @@ jobs:
           registry-url: "https://registry.npmjs.org"
           # Defaults to the user or organization that owns the workflow file
           scope: "@octocat"
+      - run: cd ./core
       - run: yarn
       - run: yarn publish // for Yarn version 1, use `yarn publish` instead
         env:
