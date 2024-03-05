@@ -8,6 +8,7 @@ import Link from "next/link";
 import {GitHubIcon} from "@/components/LogosBrand";
 import {ComponentGallery} from "@/components/ComponentGallery";
 import {Code, Pre} from "@/components/Code";
+import {GitHubButton} from "@/app/(common)/GitHubButton";
 
 export default function Home() {
   return (
@@ -28,10 +29,7 @@ export default function Home() {
               <Button>Get Started</Button>
             </Link>
             <Link href="https://github.com/latentcat/uvcanvas" target="_blank">
-              <Button variant="secondary">
-                <GitHubIcon className="h-4 mr-2"/>
-                GitHub
-              </Button>
+              <GitHubButton />
             </Link>
           </div>
         </div>
