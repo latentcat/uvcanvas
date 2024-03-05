@@ -3,7 +3,7 @@
 
 An open source React.js component library for beautifully shaded canvas, brought to you by **[Latent Cat](https://latentcat.com)**.
 
-![hero](github/hero.webp)
+![hero](/github/hero.webp)
 
 ## Documentation
 
