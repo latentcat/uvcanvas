@@ -1,6 +1,6 @@
 
 
 export interface TimeProps {
-  t?: number
+  time?: number
   speed?: number
 }

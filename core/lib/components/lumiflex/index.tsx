@@ -72,7 +72,7 @@ export function Lumiflex(props: LumiflexProps) {
     function update(t: number) {
       animateId = requestAnimationFrame(update);
 
-      const { t: time = t * 0.01, speed = 1.0 } = propsRef.current;
+      const { time: time = t * 0.01, speed = 1.0 } = propsRef.current;
 
       // console.log(propsRef.current);
 

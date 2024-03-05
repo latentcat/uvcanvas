@@ -31,7 +31,7 @@ export function ComponentWrapperWithControl__Lumiflex(props: ComponentWrapperWit
       >
         <div className="absolute w-full h-full top-0 left-0 flex flex-col items-center justify-center">
           {render({
-            t: time
+            time: time
           })}
         </div>
         <AspectRatio ratio={16 / 9}/>
