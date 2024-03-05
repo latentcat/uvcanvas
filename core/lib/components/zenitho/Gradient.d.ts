@@ -1,5 +1,18 @@
+declare interface GradientOptions {
+  el: HTMLCanvasElement;
+  gradientColors: string[];
+}
+
+declare class MiniGL {
+  gl: WebGLRenderingContext;
+}
+
 declare class Gradient {
-  initGradient(element: HTMLCanvasElement);
+  minigl: MiniGL;
+  el: HTMLCanvasElement;
+  gradientColors: string[];
+  initGradient(options?: Partial<GradientOptions>);
+  disconnect();
 }
 
 export default Gradient;

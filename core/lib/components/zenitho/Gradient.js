@@ -496,6 +496,7 @@ function e(object, propertyName, val) {
 class Gradient {
   constructor() {
     e(this, "el", void 0),
+      e(this, "gradientColors", void 0),
       e(this, "cssVarRetries", 0),
       e(this, "maxCssVarRetries", 200),
       e(this, "angle", 0),
@@ -511,7 +512,6 @@ class Gradient {
       e(this, "shaderFiles", void 0),
       e(this, "vertexShader", void 0),
       e(this, "sectionColors", void 0),
-      e(this, "computedCanvasStyle", void 0),
       e(this, "conf", void 0),
       e(this, "uniforms", void 0),
       e(this, "t", 1253106),
@@ -558,15 +558,15 @@ class Gradient {
           (this.mesh.material.uniforms.u_shadow_power.value =
             this.width < 600 ? 5 : 6);
       }),
-      e(this, "handleMouseDown", (e) => {
-        this.isGradientLegendVisible &&
-          ((this.isMetaKey = e.metaKey),
-          (this.isMouseDown = !0),
-          !1 === this.conf.playing && requestAnimationFrame(this.animate));
-      }),
-      e(this, "handleMouseUp", () => {
-        this.isMouseDown = !1;
-      }),
+      // e(this, "handleMouseDown", (e) => {
+      //   this.isGradientLegendVisible &&
+      //     ((this.isMetaKey = e.metaKey),
+      //     (this.isMouseDown = !0),
+      //     !1 === this.conf.playing && requestAnimationFrame(this.animate));
+      // }),
+      // e(this, "handleMouseUp", () => {
+      //   this.isMouseDown = !1;
+      // }),
       e(this, "animate", (e) => {
         if (!this.shouldSkipFrame(e) || this.isMouseDown) {
           if (
@@ -587,11 +587,10 @@ class Gradient {
       }),
       e(this, "addIsLoadedClass", () => {
         /*this.isIntersecting && */ !this.isLoadedClass &&
-          ((this.isLoadedClass = !0),
-          this.el.classList.add("isLoaded"),
-          setTimeout(() => {
-            this.el.parentElement.classList.add("isLoaded");
-          }, 3e3));
+          ((this.isLoadedClass = !0), this.el.classList.add("isLoaded"));
+        // setTimeout(() => {
+        //   this.el.parentElement.classList.add("isLoaded");
+        // }, 3e3)
       }),
       e(this, "pause", () => {
         this.conf.playing = false;
@@ -599,9 +598,11 @@ class Gradient {
       e(this, "play", () => {
         requestAnimationFrame(this.animate), (this.conf.playing = true);
       }),
-      e(this, "initGradient", (element) => {
+      e(this, "initGradient", (options) => {
         // this.el = document.querySelector(selector);
-        this.el = element;
+        const { el, gradientColors = [] } = options || {};
+        this.el = el || document.createElement("canvas");
+        this.gradientColors = gradientColors;
         this.connect();
         return this;
       });
@@ -625,14 +626,8 @@ class Gradient {
         rotation: 0,
         playing: true,
       }),
-      document.querySelectorAll("canvas").length < 1
-        ? console.log("DID NOT LOAD HERO STRIPE CANVAS")
-        : ((this.minigl = new MiniGl(this.el, null, null, !0)),
-          requestAnimationFrame(() => {
-            this.el &&
-              ((this.computedCanvasStyle = getComputedStyle(this.el)),
-              this.waitForCssVars());
-          }));
+      ((this.minigl = new MiniGl(this.el, null, null, !0)),
+      (this.init(), this.addIsLoadedClass()));
     /*
         this.scrollObserver = await s.create(.1, !1),
         this.scrollObserver.observe(this.el),
@@ -804,44 +799,11 @@ class Gradient {
       window.addEventListener("resize", this.resize);
   }
   /*
-   * Waiting for the css variables to become available, usually on page load before we can continue.
-   * Using default colors assigned below if no variables have been found after maxCssVarRetries
-   */
-  waitForCssVars() {
-    if (
-      this.computedCanvasStyle &&
-      -1 !==
-        this.computedCanvasStyle
-          .getPropertyValue("--gradient-color-1")
-          .indexOf("#")
-    )
-      this.init(), this.addIsLoadedClass();
-    else {
-      if (
-        ((this.cssVarRetries += 1), this.cssVarRetries > this.maxCssVarRetries)
-      ) {
-        return (
-          (this.sectionColors = [16711680, 16711680, 16711935, 65280, 255]),
-          void this.init()
-        );
-      }
-      requestAnimationFrame(() => this.waitForCssVars());
-    }
-  }
-  /*
    * Initializes the four section colors by retrieving them from css variables.
    */
   initGradientColors() {
-    this.sectionColors = [
-      "--gradient-color-1",
-      "--gradient-color-2",
-      "--gradient-color-3",
-      "--gradient-color-4",
-    ]
-      .map((cssPropertyName) => {
-        let hex = this.computedCanvasStyle
-          .getPropertyValue(cssPropertyName)
-          .trim();
+    this.sectionColors = this.gradientColors
+      .map((hex) => {
         //Check if shorthand hex value was used and double the length so the conversion in normalizeColor will work.
         if (4 === hex.length) {
           const hexTemp = hex

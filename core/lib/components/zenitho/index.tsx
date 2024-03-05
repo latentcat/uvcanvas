@@ -3,25 +3,33 @@ import Gradient from "./Gradient";
 import React from "react";
 
 export function Zenitho() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const style = {
-    "--gradient-color-1": "#ef008f",
-    "--gradient-color-2": "#6ec3f4",
-    "--gradient-color-3": "#7038ff",
-    "--gradient-color-4": "#ffba27",
-  } as React.CSSProperties;
+  const ctnDom = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!canvasRef.current) {
+    if (!ctnDom.current) {
       return;
     }
+
+    const ctn = ctnDom.current;
     const gradient = new Gradient();
-    gradient.initGradient(canvasRef.current);
+    gradient.initGradient({
+      gradientColors: ["#ef008f", "#6ec3f4", "#7038ff", "#ffba27"],
+    });
+    ctn.appendChild(gradient.el);
+    return () => {
+      gradient.disconnect();
+      ctn.removeChild(gradient.el);
+      gradient.minigl.gl.getExtension("WEBGL_lose_context")?.loseContext();
+    };
   }, []);
 
   return (
-    <div>
-      <canvas style={style} ref={canvasRef} />
-    </div>
+    <div
+      ref={ctnDom}
+      style={{
+        width: "100%",
+        height: "100%",
+      }}
+    />
   );
 }

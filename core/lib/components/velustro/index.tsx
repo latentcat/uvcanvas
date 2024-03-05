@@ -80,6 +80,7 @@ export function Velustro(props: VelustroProps) {
       cancelAnimationFrame(animateId);
       window.removeEventListener("resize", resize);
       ctn.removeChild(gl.canvas);
+      gl.getExtension("WEBGL_lose_context")?.loseContext();
     };
   }, []);
 
