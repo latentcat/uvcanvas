@@ -1,6 +1,6 @@
 import {
   Placeholder,
-} from "@/components/docs/ReexportComponents";
+} from "@/components/ReexportComponents";
 import React from "react";
 
 export interface ComponentItemProps {
@@ -100,6 +100,7 @@ export const navigation: NavGroup[] = [
       { title: "Introduction", href: "/docs" },
       { title: "Installation", href: "/docs/installation" },
       { title: "All Components", href: "/docs/components" },
+      { title: "Contributing", href: "/docs/contributing" },
       { title: "Changelog", href: "/docs/changelog" },
     ],
   },

@@ -12,7 +12,7 @@ import {Bars3Icon, XMarkIcon} from "@heroicons/react/24/outline";
 import {Button} from "@/components/ui/button";
 import { motion } from "framer-motion";
 import {transitionXl, transitionMd, transitionLg} from "@/lib/animations";
-import {DocsSidebarNav} from "@/components/docs/DocsSideNav";
+import {DocsSidebarNav} from "@/components/DocsSideNav";
 import {navigation} from "@/lib/docs-navigation";
 
 

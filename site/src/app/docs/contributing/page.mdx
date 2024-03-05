@@ -1,0 +1,174 @@
+export const metadata = {
+    title: 'Contributing',
+}
+
+# Contributing
+
+<Note>
+  Unfinished
+</Note>
+
+Thanks for your interest in contributing to UVCanvas.
+
+Please take a moment to review this document before submitting your first pull request. We also strongly recommend that you check for open issues and pull requests to see if someone else is working on something similar.
+
+If you need any help, feel free to reach out to [@nhciao](https://twitter.com/nhciao).
+
+[//]: # (## About this repository)
+
+[//]: # ()
+[//]: # (This repository is a monorepo.)
+
+[//]: # ()
+[//]: # (- We use [pnpm]&#40;https://pnpm.io&#41; and [`workspaces`]&#40;https://pnpm.io/workspaces&#41; for development.)
+
+[//]: # (- We use [Turborepo]&#40;https://turbo.build/repo&#41; as our build system.)
+
+[//]: # (- We use [changesets]&#40;https://github.com/changesets/changesets&#41; for managing releases.)
+
+## Structure
+
+This repository is structured as follows:
+
+```
+core
+└── lib
+    ├── components
+    └── content
+
+site
+├── public
+└── src
+    ├── app
+    │   ├── (common)
+    │   └── docs
+    ├── components
+    │   ├── registry
+    │   └── ui
+    ├── lib
+    └── mdx
+```
+
+| Path                           | Description                              |
+|--------------------------------|------------------------------------------|
+| `core`                         | The `uvcanvas` package.                  |
+| `core/lib/components`          | The React components of the package.     |
+| `site`                         | The Next.js application for the website. |
+| `site/src/app/docs`            | The MDX docs for the package.            |
+| `site/src/components/registry` | The registry for the components.         |
+
+## Development
+
+### Fork this repo
+
+You can fork this repo by clicking the fork button in the top right corner of this page.
+
+### Clone on your local machine
+
+```bash
+git clone https://github.com/your-username/uvcanvas.git
+```
+
+### Navigate to project directory
+
+```bash
+cd uvcanvas
+```
+
+### Create a new Branch
+
+```bash
+git checkout -b my-new-branch
+```
+
+### Install dependencies
+
+```bash
+cd core
+yarn
+cd ../site
+yarn
+```
+
+## Documentation
+
+The documentation for this project is located in the `site` workspace. You can run the documentation locally by running the following command:
+
+```bash
+cd core
+yarn dev
+
+# In another terminal
+cd site
+yarn dev
+```
+
+Documentation is written using [MDX](https://mdxjs.com). You can find the documentation files in the `site/src/app/docs` directory.
+
+## Components
+
+We use a registry system for developing components. You can find the source code for the components under `core/lib/components`.
+
+When adding or modifying components, please ensure that:
+
+- You update the documentation.
+
+[//]: # (## Commit Convention)
+
+[//]: # ()
+[//]: # (Before you create a Pull Request, please check whether your commits comply with)
+
+[//]: # (the commit conventions used in this repository.)
+
+[//]: # ()
+[//]: # (When you create a commit we kindly ask you to follow the convention)
+
+[//]: # (`category&#40;scope or module&#41;: message` in your commit message while using one of)
+
+[//]: # (the following categories:)
+
+[//]: # ()
+[//]: # (- `feat / feature`: all changes that introduce completely new code or new)
+
+[//]: # (features)
+
+[//]: # (- `fix`: changes that fix a bug &#40;ideally you will additionally reference an)
+
+[//]: # (issue if present&#41;)
+
+[//]: # (- `refactor`: any code related change that is not a fix nor a feature)
+
+[//]: # (- `docs`: changing existing or creating new documentation &#40;i.e. README, docs for)
+
+[//]: # (usage of a lib or cli usage&#41;)
+
+[//]: # (- `build`: all changes regarding the build of the software, changes to)
+
+[//]: # (dependencies or the addition of new dependencies)
+
+[//]: # (- `test`: all changes regarding tests &#40;adding new tests or changing existing)
+
+[//]: # (ones&#41;)
+
+[//]: # (- `ci`: all changes regarding the configuration of continuous integration &#40;i.e.)
+
+[//]: # (github actions, ci system&#41;)
+
+[//]: # (- `chore`: all changes to the repository that do not fit into any of the above)
+
+[//]: # (categories)
+
+[//]: # ()
+[//]: # (e.g. `feat&#40;components&#41;: add new prop to the avatar component`)
+
+[//]: # ()
+[//]: # (If you are interested in the detailed specification you can visit)
+
+[//]: # (https://www.conventionalcommits.org/ or check out the)
+
+[//]: # ([Angular Commit Message Guidelines]&#40;https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#-commit-message-guidelines&#41;.)
+
+## Requests for new components
+
+If you have a request for a new component, please open a discussion on GitHub. We'll be happy to help you out.
+
