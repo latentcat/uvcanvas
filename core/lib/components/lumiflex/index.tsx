@@ -70,6 +70,8 @@ export function Lumiflex(props: LumiflexProps) {
       const time = props.t || t
       const speed = props.speed || 1.0
 
+      console.log(props.t)
+
       program.uniforms.uTime.value = time * speed * 0.001;
 
       // Don't need a camera if camera uniforms aren't required

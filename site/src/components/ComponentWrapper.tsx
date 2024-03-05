@@ -1,8 +1,11 @@
 import {AspectRatio} from "@/components/ui/aspect-ratio";
 import {clsx} from "clsx";
-import {Suspense} from "react";
+import {Suspense, useState} from "react";
 import {Loader2} from "lucide-react";
 
+import { cn } from "@/lib/utils"
+import { Slider } from "@/components/ui/slider"
+import Lumiflex from "@/components/registry/Lumiflex";
 
 interface ComponentWrapperProps extends React.ComponentPropsWithoutRef<'div'> {
 
@@ -45,3 +48,4 @@ export function ComponentWrapper(props: ComponentWrapperProps) {
     </div>
   )
 }
+
