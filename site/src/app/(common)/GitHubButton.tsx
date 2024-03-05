@@ -47,7 +47,7 @@ export function GitHubButton() {
                 opacity: 1,
                 width: "auto",
               }}
-              transition={transitionXl}
+              transition={transitionLg}
             >
               <div
                 className="flex items-center pl-2 opacity-50"
