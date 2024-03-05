@@ -1,13 +1,12 @@
-import styles from "./styles.module.css";
 
 import { Renderer, Program, Mesh, Color, Triangle } from "ogl";
 import React from "react";
 import { useEffect, useRef } from "react";
 import vert from "./vert.glsl";
 import frag from "./frag.glsl";
-import { TimeProps } from "../../types/CommonProps";
+import {CommonProps, ControlProps, TimeProps} from "../../types/CommonProps";
 
-interface LumiflexProps extends TimeProps {}
+interface LumiflexProps extends CommonProps, TimeProps, ControlProps {}
 
 export function Lumiflex(props: LumiflexProps) {
   const propsRef = useRef<LumiflexProps>(props);
@@ -33,24 +32,10 @@ export function Lumiflex(props: LumiflexProps) {
       }
 
       const scale = 1;
-      // camera.perspective({
-      //   aspect: gl.canvas.width / gl.canvas.height,
-      // });
       renderer.setSize(ctn.offsetWidth * scale, ctn.offsetHeight * scale);
     }
     window.addEventListener("resize", resize, false);
     resize();
-
-    // Rather than using a plane (two triangles) to cover the viewport here is a
-    // triangle that includes -1 to 1 range for 'position', and 0 to 1 range for 'uv'.
-    // Excess will be out of the viewport.
-
-    //         position                uv
-    //      (-1, 3)                  (0, 2)
-    //         |\                      |\
-    //         |__\(1, 1)              |__\(1, 1)
-    //         |__|_\                  |__|_\
-    //   (-1, -1)   (3, -1)        (0, 0)   (2, 0)
 
     const geometry = new Triangle(gl);
 
@@ -74,12 +59,8 @@ export function Lumiflex(props: LumiflexProps) {
 
       const { time: time = t * 0.01, speed = 1.0 } = propsRef.current;
 
-      // console.log(propsRef.current);
-
       program.uniforms.uTime.value = time * speed * 0.1;
 
-
-      // Don't need a camera if camera uniforms aren't required
       renderer.render({ scene: mesh });
     }
 
@@ -95,7 +76,6 @@ export function Lumiflex(props: LumiflexProps) {
   return (
     <div
       ref={ctnDom}
-      className={styles.gradientCanvas}
       style={{
         width: "100%",
         height: "100%",
