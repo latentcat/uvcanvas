@@ -1,5 +1,5 @@
 import { LumiflexWithControl } from "@/components/ComponentWrapperWithControl";
-import {Container} from "@/components/Containers";
+import {Container, ContainerWide} from "@/components/Containers";
 import {HeaderPadding} from "@/components/Header";
 
 export default function Page() {
@@ -7,9 +7,11 @@ export default function Page() {
     <div>
       <HeaderPadding />
       <div className="h-12" />
-      <Container>
-        <LumiflexWithControl />
-      </Container>
+      <ContainerWide className="flex flex-col items-center">
+        <div className="max-w-2xl w-full">
+          <LumiflexWithControl />
+        </div>
+      </ContainerWide>
     </div>
   )
 }

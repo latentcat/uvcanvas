@@ -78,6 +78,7 @@ export function Lumiflex(props: LumiflexProps) {
 
       program.uniforms.uTime.value = time * speed * 0.1;
 
+
       // Don't need a camera if camera uniforms aren't required
       renderer.render({ scene: mesh });
     }

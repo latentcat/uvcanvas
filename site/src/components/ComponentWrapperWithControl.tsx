@@ -21,11 +21,11 @@ export function ComponentWrapperWithControl__Lumiflex(props: ComponentWrapperWit
   const [time, setTime] = useState(0)
 
   return (
-    <div>
+    <div className="relative overflow-hidden rounded-xl not-prose">
       <div
         className={clsx(
           className,
-          "relative w-full overflow-hidden rounded-xl bg-foreground/5 not-prose"
+          "relative w-full overflow-hidden bg-foreground/5"
         )}
         {...rest}
       >
@@ -34,21 +34,25 @@ export function ComponentWrapperWithControl__Lumiflex(props: ComponentWrapperWit
             t: time
           })}
         </div>
-        <div className="absolute w-full h-full top-0 left-0 rounded-xl ring-1 ring-inset ring-foreground/10" />
         <AspectRatio ratio={16 / 9}/>
       </div>
 
-      <div>
-        {time}
+
+      <div className="p-6">
+        <div>
+          {time}
+        </div>
+
+        <Slider
+          defaultValue={[50]}
+          max={100}
+          step={1}
+          className={cn("w-[60%]", className)}
+          onValueChange={(value) => setTime(value[0])}
+        />
       </div>
 
-      <Slider
-        defaultValue={[50]}
-        max={100}
-        step={1}
-        className={cn("w-[60%]", className)}
-        onValueChange={(value) => setTime(value[0])}
-      />
+      <div className="absolute w-full h-full top-0 left-0 rounded-xl ring-1 ring-inset ring-foreground/10 pointer-events-none"/>
     </div>
   )
 }
