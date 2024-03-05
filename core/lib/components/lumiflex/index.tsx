@@ -5,8 +5,9 @@ import React from "react";
 import { useEffect, useRef } from "react";
 import vert from "./vert.glsl";
 import frag from "./frag.glsl";
+import {TimeProps} from "../../types/CommonProps";
 
-interface LumiflexProps {}
+interface LumiflexProps extends TimeProps {}
 
 export function Lumiflex(props: LumiflexProps) {
   const ctnDom = useRef<HTMLDivElement>(null);
@@ -66,7 +67,10 @@ export function Lumiflex(props: LumiflexProps) {
     function update(t: number) {
       animateId = requestAnimationFrame(update);
 
-      program.uniforms.uTime.value = t * 0.001;
+      const time = props.t || t
+      const speed = props.speed || 1.0
+
+      program.uniforms.uTime.value = time * speed * 0.001;
 
       // Don't need a camera if camera uniforms aren't required
       renderer.render({ scene: mesh });

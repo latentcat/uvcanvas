@@ -263,10 +263,11 @@ float fieldviz(in vec2 p,in int mode)
 
 vec3 getRGB(in Field fld,in int mode){
 
+    vec3 col = vec3(0., 0., 0.);
+
     if(mode == 0){
         vec2 p = fld.vel;
-        vec3 origCol = vec3(p * 0.5 + 0.5, 1.5);
-        return origCol;
+        col = vec3(p * 0.5 + 0.5, 1.5);
     }
 
     if(mode == 1){
@@ -274,9 +275,11 @@ vec3 getRGB(in Field fld,in int mode){
         float r=cos(p.x+p.y+1.)*.5+.5;
         float g=sin(p.x+p.y+1.)*.5+.5;
         float b=(sin(p.x+p.y)+cos(p.x+p.y))*.3+.5;
-        vec3 col = sin(vec3(-.3,0.1,0.5)+p.x-p.y)*0.65+0.35;
-        return vec3(r,g,b);
+        col = sin(vec3(-.3,0.1,0.5)+p.x-p.y)*0.65+0.35;
+        col = vec3(r,g,b);
     }
+
+    return col;
 
 }
 
