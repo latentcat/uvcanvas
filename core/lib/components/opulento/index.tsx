@@ -2,33 +2,26 @@ import styles from "./styles.module.css";
 
 import { Renderer, Program, Mesh, Color, Triangle } from "ogl";
 import React from "react";
-import { useEffect, useRef, useState } from "react";
-import vert from "./vert.glsl"
-import frag from "./frag.glsl"
+import { useEffect, useRef } from "react";
+import vert from "./vert.glsl";
+import frag from "./frag.glsl";
 
 interface OpulentoProps {}
 
-
 export function Opulento(props: OpulentoProps) {
-  const [isInit, setIsInit] = useState(false);
-  const canvasDom = useRef<HTMLCanvasElement>(null);
   const ctnDom = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (isInit) {
+    if (!ctnDom.current) {
       return;
-    } else {
-      setIsInit(true);
     }
 
-    const renderer = new Renderer({
-      canvas: canvasDom.current!,
-    });
+    const ctn = ctnDom.current;
+    const renderer = new Renderer();
     const gl = renderer.gl;
     gl.clearColor(1, 1, 1, 1);
 
     function resize() {
-      const ctn = ctnDom.current!;
       const scale = 1;
       // camera.perspective({
       //   aspect: gl.canvas.width / gl.canvas.height,
@@ -71,11 +64,12 @@ export function Opulento(props: OpulentoProps) {
       renderer.render({ scene: mesh });
     }
 
+    ctn.appendChild(gl.canvas);
     return () => {
       cancelAnimationFrame(animateId);
       window.removeEventListener("resize", resize);
-      program.remove()
-    }
+      ctn.removeChild(gl.canvas);
+    };
   }, []);
 
   return (
@@ -87,14 +81,6 @@ export function Opulento(props: OpulentoProps) {
         height: "100%",
       }}
       {...props}
-    >
-      <canvas
-        ref={canvasDom}
-        style={{
-          width: "100%",
-          height: "100%",
-        }}
-      />
-    </div>
+    />
   );
 }
