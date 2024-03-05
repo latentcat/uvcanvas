@@ -5,12 +5,17 @@ import React from "react";
 import { useEffect, useRef } from "react";
 import vert from "./vert.glsl";
 import frag from "./frag.glsl";
-import {TimeProps} from "../../types/CommonProps";
+import { TimeProps } from "../../types/CommonProps";
 
 interface LumiflexProps extends TimeProps {}
 
 export function Lumiflex(props: LumiflexProps) {
+  const propsRef = useRef<LumiflexProps>(props);
   const ctnDom = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    propsRef.current = props;
+  });
 
   useEffect(() => {
     if (!ctnDom.current) {
@@ -67,10 +72,9 @@ export function Lumiflex(props: LumiflexProps) {
     function update(t: number) {
       animateId = requestAnimationFrame(update);
 
-      const time = props.t || t
-      const speed = props.speed || 1.0
+      const { t: time = t, speed = 1.0 } = propsRef.current;
 
-      console.log(props.t)
+      // console.log(propsRef.current);
 
       program.uniforms.uTime.value = time * speed * 0.001;
 
