@@ -16,7 +16,7 @@ interface ComponentWrapperWithControlProps extends React.ComponentPropsWithoutRe
 
 
 export function ComponentWrapperWithControl__Lumiflex(props: ComponentWrapperWithControlProps) {
-  const { children, className, ...rest } = props
+  const { children, className, render, ...rest } = props
 
   const [time, setTime] = useState(0)
 
@@ -30,7 +30,7 @@ export function ComponentWrapperWithControl__Lumiflex(props: ComponentWrapperWit
         {...rest}
       >
         <div className="absolute w-full h-full top-0 left-0 flex flex-col items-center justify-center">
-          {props.render({
+          {render({
             t: time
           })}
         </div>

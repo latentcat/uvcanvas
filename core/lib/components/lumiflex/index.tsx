@@ -72,11 +72,11 @@ export function Lumiflex(props: LumiflexProps) {
     function update(t: number) {
       animateId = requestAnimationFrame(update);
 
-      const { t: time = t, speed = 1.0 } = propsRef.current;
+      const { t: time = t * 0.01, speed = 1.0 } = propsRef.current;
 
       // console.log(propsRef.current);
 
-      program.uniforms.uTime.value = time * speed * 0.001;
+      program.uniforms.uTime.value = time * speed * 0.1;
 
       // Don't need a camera if camera uniforms aren't required
       renderer.render({ scene: mesh });
