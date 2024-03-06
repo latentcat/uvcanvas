@@ -19,6 +19,7 @@ export function ParamNumberControl<P extends FieldValues>(props: ControlCommonPr
         <FormControl>
           {props.config?.optional && (
             <Switch
+              className="mr-3"
               checked={props.field.value !== undefined}
               onCheckedChange={(value) => (
                 props.field.onChange(props.field.value !== undefined ? undefined : (props.config?.default || 0))

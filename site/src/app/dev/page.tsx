@@ -7,6 +7,7 @@ import {Lumiflex, Zenitho, Novatrix, Velustro, Tranquiluxe, Opulento, Slides, de
 import rawMdx from "./slides.raw.mdx"
 import {sliceMdxString} from "uvcanvas";
 import {LumiflexWithControl} from "@/components/wrappers/templates/LumiflexWithControl";
+import {TestAnimation} from "@/app/dev/components";
 
 
 const mdxContents = sliceMdxString(rawMdx as unknown as string)
@@ -31,6 +32,8 @@ export default function Page() {
               Velustro,
               Tranquiluxe,
               Opulento,
+
+              TestAnimation,
             }}
           />
           <div className="h-12"/>

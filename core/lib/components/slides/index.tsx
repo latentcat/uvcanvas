@@ -9,6 +9,11 @@ import {AspectRatio} from "@radix-ui/react-aspect-ratio";
 import {useResizeDetector} from "react-resize-detector";
 
 
+interface MetadataProps {
+  step?: number
+}
+
+
 export function Slides({
   mdx,
   components,
@@ -18,11 +23,49 @@ export function Slides({
 }) {
 
   const [currentPage, setCurrentPage] = useState(0);
-  const pageUp = () => setCurrentPage((page) => (page = Math.max(page - 1, 0)));
-  const pageDown = () =>
-    setCurrentPage((page) => (page = Math.min(page + 1, mdx.length - 1)));
-  useHotkeys("left", pageUp);
-  useHotkeys("right", pageDown);
+  const [currentStep, setCurrentStep] = useState(0);
+
+  const metadatas: MetadataProps[] = useMemo(() => (
+    mdx.map((item) => (
+      {
+        ...item.metadata as object
+      }
+    ))
+  ), [mdx])
+
+  const metadata= metadatas[currentPage]
+
+  const step = metadata.step ?? 1
+
+  const pageUp = () => {
+    if (currentStep < step - 1) {
+      setCurrentStep(
+        (step) => step = step + 1
+      )
+    } else if (currentPage < mdx.length - 1) {
+      setCurrentPage(
+        (page) => page = page + 1
+      )
+      setCurrentStep(0)
+    }
+  }
+  const pageDown = () => {
+    if (currentStep > 0) {
+      setCurrentStep(
+        (step) => step = Math.max(step - 1, 0)
+      )
+    } else {
+      if (currentPage > 0 && currentStep === 0) {
+        setCurrentStep((metadatas[currentPage - 1].step ?? 1) - 1)
+      }
+      setCurrentPage(
+        (page) => page = Math.max(page - 1, 0)
+      )
+    }
+  }
+
+  useHotkeys("left", pageDown);
+  useHotkeys("right", pageUp);
 
 
   const { width = 640, height, ref } = useResizeDetector();
@@ -31,6 +74,13 @@ export function Slides({
     "--border": "240 3.7% 15.9%",
     "--vw": `${width * 1 / 100}px`,
   } as React.CSSProperties;
+
+  const constants = {
+    currentPage: currentPage + 1,
+    totalPage: mdx.length,
+    currentStep: currentStep,
+    totalStep: step,
+  }
 
   return (
     <div
@@ -62,6 +112,7 @@ export function Slides({
         >
           {mdx[currentPage]?.default({
             components,
+            ...constants
           })}
         </div>
         <div
