@@ -1,12 +1,12 @@
 "use client";
 
 import { Button } from "@/components/Button";
-import { LumiflexWithControl } from "@/components/ComponentWrapperWithControl";
 import { ContainerWide } from "@/components/Containers";
 import { HeaderPadding } from "@/components/Header";
 import {Lumiflex, Zenitho, Novatrix, Velustro, Tranquiluxe, Opulento, Slides, defaultComponents} from "uvcanvas";
 import rawMdx from "./slides.raw.mdx"
 import {sliceMdxString} from "uvcanvas";
+import {LumiflexWithControl} from "@/components/wrappers/templates/LumiflexWithControl";
 
 
 const mdxContents = sliceMdxString(rawMdx as unknown as string)

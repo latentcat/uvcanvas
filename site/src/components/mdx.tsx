@@ -19,8 +19,8 @@ import {
   Accordion as AccordionUI,
 } from "@/components/ui/accordion"
 import {cn} from "@/lib/utils";
-export * from "@/components/ComponentWrapper";
-export * from "@/components/ComponentWrapperWithControl";
+export * from "@/components/wrappers/ComponentWrapper";
+export * from "@/components/wrappers/ComponentWrapperWithControl";
 export * from "uvcanvas";
 
 

@@ -6,7 +6,7 @@ import {HeaderPadding} from "@/components/Header";
 import SectionBgStack, {Glow} from "@/app/SectionBgStack";
 import Link from "next/link";
 import {GitHubIcon} from "@/components/LogosBrand";
-import {ComponentGallery} from "@/components/ComponentGallery";
+import {ComponentGallery} from "@/components/wrappers/ComponentGallery";
 import {Code, Pre} from "@/components/Code";
 import {GitHubButton} from "@/app/(common)/GitHubButton";
 

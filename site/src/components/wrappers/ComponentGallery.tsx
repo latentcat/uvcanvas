@@ -1,4 +1,4 @@
-import {ComponentWrapper} from "@/components/ComponentWrapper";
+import {ComponentWrapper} from "@/components/wrappers/ComponentWrapper";
 import Link from "next/link";
 import {ComponentItemProps, componentList} from "@/lib/docs-navigation";
 
