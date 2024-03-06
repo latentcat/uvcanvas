@@ -47,6 +47,7 @@
   "dependencies": {
     "@mdx-js/mdx": "^3.0.1",
     "@radix-ui/react-aspect-ratio": "^1.0.3",
+    "@radix-ui/react-icons": "^1.3.0",
     "ogl": "^1.0.5",
     "react-hotkeys-hook": "^4.5.0",
     "react-resize-detector": "^10.0.1",

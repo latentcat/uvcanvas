@@ -25,10 +25,11 @@ export function Slides({
   useHotkeys("right", pageDown);
 
 
-  const { width = 1920, height, ref } = useResizeDetector();
+  const { width = 640, height, ref } = useResizeDetector();
 
   const styleVariables = {
     "--border": "240 3.7% 15.9%",
+    "--vw": `${width * 10}px`,
   } as React.CSSProperties;
 
   return (
@@ -44,8 +45,9 @@ export function Slides({
     >
       <div
         style={{
-          fontSize: `${width * 0.03}`,
+          fontSize: `${width * 0.3}px`,
           position: "relative",
+          zoom: "0.1",
         }}
       >
         <div
@@ -60,6 +62,17 @@ export function Slides({
           {mdx[currentPage]?.default({
             components,
           })}
+        </div>
+        <div
+          style={{
+            position: "absolute",
+            left: "0",
+            top: "0",
+            width: "100%",
+            height: "100%",
+          }}
+        >
+
         </div>
         <AspectRatio ratio={16 / 9}/>
       </div>
