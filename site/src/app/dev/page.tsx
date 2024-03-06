@@ -7,6 +7,7 @@ import { HeaderPadding } from "@/components/Header";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { EvaluateOptions, evaluateSync } from "@mdx-js/mdx";
 import { MDXComponents } from "mdx/types";
+import { useHotkeys } from "react-hotkeys-hook";
 import { useMemo, useState } from "react";
 import * as runtime from "react/jsx-runtime";
 
@@ -38,10 +39,11 @@ function SliceContainer({
   }, [mdx]);
 
   const [currentPage, setCurrentPage] = useState(0);
-  const pageUp = () =>
-    setCurrentPage((page) => (page = Math.min(page + 1, slices.length - 1)));
+  const pageUp = () => setCurrentPage((page) => (page = Math.max(page - 1, 0)));
   const pageDown = () =>
-    setCurrentPage((page) => (page = Math.max(page - 1, 0)));
+    setCurrentPage((page) => (page = Math.min(page + 1, slices.length - 1)));
+  useHotkeys("left", pageUp);
+  useHotkeys("right", pageDown);
 
   return (
     <div>
@@ -50,8 +52,8 @@ function SliceContainer({
           components,
         })}
       </div>
-      <Button arrow="left" onClick={pageDown} />
-      <Button arrow="right" onClick={pageUp} />
+      <Button arrow="left" onClick={pageUp} />
+      <Button arrow="right" onClick={pageDown} />
       <AspectRatio ratio={16 / 9} />
     </div>
   );
