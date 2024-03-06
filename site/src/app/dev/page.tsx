@@ -36,6 +36,20 @@ export default function Page() {
               TestAnimation,
             }}
           />
+          <Slides
+            mdx={mdxContents}
+            components={{
+              ...defaultComponents,
+              Lumiflex,
+              Zenitho,
+              Novatrix,
+              Velustro,
+              Tranquiluxe,
+              Opulento,
+
+              TestAnimation,
+            }}
+          />
           <div className="h-12"/>
           <div className="h-12"/>
         </div>

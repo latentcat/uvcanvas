@@ -7,7 +7,7 @@ import * as runtime from "react/jsx-runtime";
 import React from "react";
 import {AspectRatio} from "@radix-ui/react-aspect-ratio";
 import {useResizeDetector} from "react-resize-detector";
-import {Provider, atom, useAtom } from "jotai";
+import {Provider, atom, useAtom, useStore} from "jotai";
 
 
 const pageAtom = atom(0)
@@ -16,6 +16,16 @@ const stepAtom = atom(0)
 
 interface MetadataProps {
   step?: number
+}
+
+export const CustomProvider = ({ children }: { children: React.ReactNode }) => {
+
+  const store = useStore()
+  return (
+    <Provider store={store}>
+      {children}
+    </Provider>
+  )
 }
 
 
@@ -89,7 +99,7 @@ export function Slides({
 
   return (
 
-    <Provider>
+    <CustomProvider>
       <div
         ref={ref}
         style={{
@@ -136,6 +146,6 @@ export function Slides({
           <AspectRatio ratio={16 / 9}/>
         </div>
       </div>
-    </Provider>
+    </CustomProvider>
   );
 }
