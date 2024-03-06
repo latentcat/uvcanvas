@@ -1,12 +1,11 @@
-
 import { Renderer, Program, Mesh, Color, Triangle } from "ogl";
 import React from "react";
 import { useEffect, useRef } from "react";
 import vert from "./vert.glsl";
 import frag from "./frag.glsl";
-import {CommonProps, ControlProps, TimeProps} from "../../types/CommonProps";
+import { CommonProps, ControlProps, TimeProps } from "../../types/CommonProps";
 
-interface LumiflexProps extends CommonProps, TimeProps, ControlProps {}
+export interface LumiflexProps extends CommonProps, TimeProps, ControlProps {}
 
 export function Lumiflex(props: LumiflexProps) {
   const propsRef = useRef<LumiflexProps>(props);

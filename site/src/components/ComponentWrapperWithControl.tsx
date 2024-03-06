@@ -1,24 +1,29 @@
-"use client"
+"use client";
 
-import {AspectRatio} from "@/components/ui/aspect-ratio";
-import {clsx} from "clsx";
-import {Suspense, useState} from "react";
-import {Loader2} from "lucide-react";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { clsx } from "clsx";
+import { HTMLAttributes } from "react";
 
-import { cn } from "@/lib/utils"
-import { Slider } from "@/components/ui/slider"
+import { cn } from "@/lib/utils";
+import { Slider } from "@/components/ui/slider";
 import Lumiflex from "@/components/registry/Lumiflex";
+import { LumiflexProps } from "uvcanvas/dist/components/lumiflex";
+import { UseFormReturn, useForm, useWatch } from "react-hook-form";
+import { Form, FormControl, FormField, FormItem, FormLabel } from "./ui/form";
+import React from "react";
 
-
-interface ComponentWrapperWithControlProps extends React.ComponentPropsWithoutRef<'div'> {
-  render: (props: React.ComponentProps<typeof Lumiflex>) => React.ReactNode
+interface ComponentWrapperWithControlProps<P extends {}>
+  extends HTMLAttributes<HTMLDivElement> {
+  component: (props: P) => React.ReactNode;
+  render: (form: UseFormReturn<P>) => React.ReactNode;
 }
 
-
-export function ComponentWrapperWithControl__Lumiflex(props: ComponentWrapperWithControlProps) {
-  const { children, className, render, ...rest } = props
-
-  const [time, setTime] = useState(0)
+export function ComponentWrapperWithControl<P extends {}>(
+  props: ComponentWrapperWithControlProps<P>
+) {
+  const { children, className, component: Component, render, ...rest } = props;
+  const form = useForm<P>();
+  const componentProps = useWatch({ control: form.control }) as P;
 
   return (
     <div className="relative overflow-hidden rounded-xl not-prose">
@@ -30,39 +35,44 @@ export function ComponentWrapperWithControl__Lumiflex(props: ComponentWrapperWit
         {...rest}
       >
         <div className="absolute w-full h-full top-0 left-0 flex flex-col items-center justify-center">
-          {render({
-            time: time
-          })}
+          <Component {...componentProps} />
         </div>
-        <AspectRatio ratio={16 / 9}/>
+        <AspectRatio ratio={16 / 9} />
       </div>
-
-
-      <div className="p-6">
-        <div>
-          {time}
-        </div>
-
-        <Slider
-          defaultValue={[50]}
-          max={100}
-          step={1}
-          className={cn("w-[60%]", className)}
-          onValueChange={(value) => setTime(value[0])}
-        />
-      </div>
-
-      <div className="absolute w-full h-full top-0 left-0 rounded-xl ring-1 ring-inset ring-foreground/10 pointer-events-none"/>
+      <Form {...form}>
+        <form className="p-6">{render(form)}</form>
+      </Form>
+      <div className="absolute w-full h-full top-0 left-0 rounded-xl ring-1 ring-inset ring-foreground/10 pointer-events-none" />
     </div>
-  )
+  );
 }
 
 export function LumiflexWithControl() {
   return (
-    <ComponentWrapperWithControl__Lumiflex
-      render={(props) => (
-        <Lumiflex {...props}/>
+    <ComponentWrapperWithControl<LumiflexProps>
+      component={Lumiflex}
+      render={(form) => (
+        <>
+          <FormField
+            control={form.control}
+            name="time"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Time: {field.value}</FormLabel>
+                <FormControl>
+                  <Slider
+                    defaultValue={[50]}
+                    max={100}
+                    step={1}
+                    className={cn("w-[60%]")}
+                    onValueChange={(value) => field.onChange(value[0])}
+                  />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+        </>
       )}
     />
-  )
+  );
 }
