@@ -5,6 +5,9 @@
     "site"
   ],
   "scripts": {
+    "dev": "run-p dev:*",
+    "dev:core": "yarn --cwd ./core dev",
+    "dev:docs": "yarn --cwd ./site dev",
     "lint": "eslint . --cache --fix --max-warnings=0",
     "format": "prettier . --write",
     "prepare": "husky install"
@@ -19,6 +22,7 @@
     "eslint-plugin-react-refresh": "^0.4.5",
     "husky": ">=6",
     "lint-staged": ">=10",
+    "npm-run-all": "^4.1.5",
     "prettier": "^3.2.5",
     "typescript": "^5.3.3"
   },

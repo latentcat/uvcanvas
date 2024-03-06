@@ -18,8 +18,7 @@
   "scripts": {
     "build": "rollup -c rollup.config.ts --configPlugin typescript",
     "dev": "rollup -c --watch --configPlugin typescript",
-    "prepublishOnly": "npm run build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
+    "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
     "react": "^18.2.0",

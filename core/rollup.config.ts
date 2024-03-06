@@ -50,6 +50,7 @@ export default [
     ],
     watch: {
       include: "lib/**",
+      clearScreen: false,
     },
   }),
   defineConfig({
