@@ -4,7 +4,7 @@ import { Button } from "@/components/Button";
 import { LumiflexWithControl } from "@/components/ComponentWrapperWithControl";
 import { ContainerWide } from "@/components/Containers";
 import { HeaderPadding } from "@/components/Header";
-import {Lumiflex, Novatrix, Slides, defaultComponents, Tranquiluxe} from "uvcanvas";
+import {Lumiflex, Zenitho, Novatrix, Velustro, Tranquiluxe, Opulento, Slides, defaultComponents} from "uvcanvas";
 import rawMdx from "./slides.raw.mdx"
 import {sliceMdxString} from "uvcanvas";
 
@@ -25,8 +25,12 @@ export default function Page() {
             mdx={mdxContents}
             components={{
               ...defaultComponents,
+              Lumiflex,
+              Zenitho,
               Novatrix,
+              Velustro,
               Tranquiluxe,
+              Opulento,
             }}
           />
           <div className="h-12"/>

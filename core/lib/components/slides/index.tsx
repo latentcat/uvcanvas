@@ -29,7 +29,7 @@ export function Slides({
 
   const styleVariables = {
     "--border": "240 3.7% 15.9%",
-    "--vw": `${width * 10 / 100}px`,
+    "--vw": `${width * 1 / 100}px`,
   } as React.CSSProperties;
 
   return (
@@ -45,9 +45,9 @@ export function Slides({
     >
       <div
         style={{
-          fontSize: `${width * 0.25}px`,
+          fontSize: `calc(2.5 * var(--vw))`,
           position: "relative",
-          zoom: "0.1",
+          zoom: "1",
         }}
       >
         <div
