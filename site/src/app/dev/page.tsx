@@ -29,6 +29,8 @@ export default function Page() {
               Tranquiluxe,
             }}
           />
+          <div className="h-12"/>
+          <div className="h-12"/>
         </div>
       </ContainerWide>
     </div>
