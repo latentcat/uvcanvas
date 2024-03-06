@@ -16,7 +16,7 @@ export default [
         .map((file) => [
           relative("lib", file.substring(0, file.lastIndexOf("."))),
           file,
-        ])
+        ]),
     ),
     output: [
       {
@@ -38,16 +38,19 @@ export default [
             "dist",
             relative(
               "lib",
-              file.substring(0, file.lastIndexOf(".module.css")) + ".css"
-            )
+              file.substring(0, file.lastIndexOf(".module.css")) + ".css",
+            ),
           ),
-        })
+        }),
       ),
     ],
-    external: [...Object.keys(pkg.dependencies), ...Object.keys(pkg.peerDependencies)],
+    external: [
+      ...Object.keys(pkg.dependencies),
+      ...Object.keys(pkg.peerDependencies),
+    ],
     watch: {
-      include: "lib/**"
-    }
+      include: "lib/**",
+    },
   }),
   defineConfig({
     input: "./dist/index.d.ts",

@@ -1,17 +1,16 @@
 import Link from "next/link";
 
-type ExistName = "ciaochaos" | "shichen" | "cpunisher"
-type Name = ExistName | string
+type ExistName = "ciaochaos" | "shichen" | "cpunisher";
+type Name = ExistName | string;
 
 interface AuthorsProps {
-  names: Name | Name[]
+  names: Name | Name[];
 }
 
 interface AuthorProps {
-  name: string,
-  url: string
+  name: string;
+  url: string;
 }
-
 
 const existAuthors: Record<string, AuthorProps> = {
   ciaochaos: {
@@ -33,28 +32,29 @@ const existAuthors: Record<string, AuthorProps> = {
 };
 
 export function Authors(props: AuthorsProps) {
-
-  let names = props.names
-  if (typeof names === 'string') {
-    names = [names]
+  let names = props.names;
+  if (typeof names === "string") {
+    names = [names];
   }
 
   const authors = names.map((name) => {
     if (existAuthors.hasOwnProperty(name)) {
-      return existAuthors[name]
+      return existAuthors[name];
     }
     return {
       name: name,
       url: "",
-    }
-  })
+    };
+  });
 
   return (
     <>
       {authors.map((author, index, array) => (
         <span key={index}>
           {author.url ? (
-            <Link href={author.url} target="_blank">{author.name}</Link>
+            <Link href={author.url} target="_blank">
+              {author.name}
+            </Link>
           ) : (
             <>{author.name}</>
           )}
@@ -62,5 +62,5 @@ export function Authors(props: AuthorsProps) {
         </span>
       ))}
     </>
-  )
+  );
 }

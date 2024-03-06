@@ -1,14 +1,12 @@
-
-
 export interface CommonProps {
-  onReady?: () => void
+  onReady?: () => void;
 }
 
 export interface TimeProps {
-  time?: number
-  speed?: number
+  time?: number;
+  speed?: number;
 }
 
 export interface ControlProps {
-  paused?: boolean
+  paused?: boolean;
 }

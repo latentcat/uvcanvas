@@ -1,4 +1,3 @@
-
 import { Velustro } from "uvcanvas";
 
-export default Velustro
+export default Velustro;

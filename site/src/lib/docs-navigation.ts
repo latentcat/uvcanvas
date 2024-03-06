@@ -1,6 +1,4 @@
-import {
-  Placeholder,
-} from "@/components/ReexportComponents";
+import { Placeholder } from "@/components/ReexportComponents";
 import React from "react";
 
 export interface ComponentItemProps {

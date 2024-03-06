@@ -1,6 +1,6 @@
 import { LumiflexWithControl } from "@/components/ComponentWrapperWithControl";
-import {Container, ContainerWide} from "@/components/Containers";
-import {HeaderPadding} from "@/components/Header";
+import { Container, ContainerWide } from "@/components/Containers";
+import { HeaderPadding } from "@/components/Header";
 
 export default function Page() {
   return (
@@ -13,5 +13,5 @@ export default function Page() {
         </div>
       </ContainerWide>
     </div>
-  )
+  );
 }

@@ -1,0 +1,28 @@
+{
+  "private": true,
+  "workspaces": [
+    "core",
+    "site"
+  ],
+  "scripts": {
+    "format": "prettier . --write",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^7.1.1",
+    "@typescript-eslint/parser": "^7.1.1",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-only-warn": "^1.1.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "husky": ">=6",
+    "lint-staged": ">=10",
+    "prettier": "^3.2.5",
+    "typescript": "^5.3.3"
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix",
+    "*.--write": "prettier --write"
+  }
+}
