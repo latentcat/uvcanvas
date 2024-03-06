@@ -70,13 +70,13 @@ const FeedbackThanks = forwardRef<React.ElementRef<"div">>(
 );
 
 export function Feedback() {
-  let [submitted, setSubmitted] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     // @ts-ignore
-    let isYes = event.nativeEvent.submitter.dataset.response === "yes";
+    const isYes = event.nativeEvent.submitter.dataset.response === "yes";
 
     mixpanel.track("submit_helpful", {
       isHelpful: isYes,

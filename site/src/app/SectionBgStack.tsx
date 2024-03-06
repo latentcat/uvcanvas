@@ -7,7 +7,7 @@ import { transitionXl } from "@/lib/animations";
 import { useId } from "react";
 
 export function Glow() {
-  let id = useId();
+  const id = useId();
 
   return (
     <div className="absolute inset-0 -z-10 overflow-hidden _bg-gray-50 _dark:bg-gray-950 dark:bg-black">
@@ -30,9 +30,9 @@ export function Glow() {
 }
 
 const genParam = (index: number) => {
-  let start = 10;
-  let k = (1 / (start + index)) * start;
-  let offsetY = 600;
+  const start = 10;
+  const k = (1 / (start + index)) * start;
+  const offsetY = 600;
   return {
     y: -offsetY + k * (offsetY - 120),
     scale: 1.0 * k * (1 - index * 0.1),

@@ -146,7 +146,7 @@ function MobileNavigation(
 }
 
 function NavItem(props: HeaderLinkProps) {
-  let isActive = usePathname() === props.href;
+  const isActive = usePathname() === props.href;
 
   return (
     <li>

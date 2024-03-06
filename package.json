@@ -5,6 +5,7 @@
     "site"
   ],
   "scripts": {
+    "lint": "eslint . --cache --fix --max-warnings=0",
     "format": "prettier . --write",
     "prepare": "husky install"
   },

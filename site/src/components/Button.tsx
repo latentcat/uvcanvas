@@ -47,7 +47,7 @@ export function Button({
     className,
   );
 
-  let arrowIcon = (
+  const arrowIcon = (
     <ArrowIcon
       className={clsx(
         "mt-0.5 h-5 w-5",
@@ -58,7 +58,7 @@ export function Button({
     />
   );
 
-  let inner = (
+  const inner = (
     <>
       {arrow === "left" && arrowIcon}
       {children}
