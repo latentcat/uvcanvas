@@ -1,6 +1,6 @@
 
 import { EvaluateOptions, evaluateSync } from "@mdx-js/mdx";
-import { MDXComponents } from "mdx/types";
+import { MDXComponents, MDXModule } from "mdx/types";
 import { useHotkeys } from "react-hotkeys-hook";
 import { useMemo, useState } from "react";
 import * as runtime from "react/jsx-runtime";
@@ -13,21 +13,14 @@ export function Slides({
   mdx,
   components,
 }: {
-  mdx: string;
+  mdx: MDXModule[];
   components: MDXComponents;
 }) {
-  const slices = useMemo(() => {
-    const rawSlices = mdx.split(/^---$/gm).map((mdx) => mdx.trim());
-    const slices = rawSlices.map(
-      (mdx) => evaluateSync(mdx, runtime as EvaluateOptions).default
-    );
-    return slices;
-  }, [mdx]);
 
   const [currentPage, setCurrentPage] = useState(0);
   const pageUp = () => setCurrentPage((page) => (page = Math.max(page - 1, 0)));
   const pageDown = () =>
-    setCurrentPage((page) => (page = Math.min(page + 1, slices.length - 1)));
+    setCurrentPage((page) => (page = Math.min(page + 1, mdx.length - 1)));
   useHotkeys("left", pageUp);
   useHotkeys("right", pageDown);
 
@@ -45,16 +38,26 @@ export function Slides({
         width: "100%",
         border: "1px hsl(var(--border)) solid",
         borderRadius: "10px",
+        overflow: "hidden",
         ...styleVariables
       }}
     >
       <div
         style={{
           fontSize: `${width * 0.03}`,
+          position: "relative",
         }}
       >
-        <div>
-          {slices[currentPage]?.({
+        <div
+          style={{
+            position: "absolute",
+            left: "0",
+            top: "0",
+            width: "100%",
+            height: "100%",
+          }}
+        >
+          {mdx[currentPage]?.default({
             components,
           })}
         </div>

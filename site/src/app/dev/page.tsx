@@ -4,21 +4,15 @@ import { Button } from "@/components/Button";
 import { LumiflexWithControl } from "@/components/ComponentWrapperWithControl";
 import { ContainerWide } from "@/components/Containers";
 import { HeaderPadding } from "@/components/Header";
-import {Slides} from "uvcanvas";
+import {Lumiflex, Novatrix, Slides, defaultComponents} from "uvcanvas";
+import rawMdx from "./slides.raw.mdx"
+import {sliceMdxString} from "uvcanvas";
 
-const mdx = `
-# Page 1
 
-<Demo />
-
----
-
-# Page 2
-
-Some Text...
-`;
+const mdxContents = sliceMdxString(rawMdx as unknown as string)
 
 export default function Page() {
+
   return (
     <div>
       <HeaderPadding />
@@ -28,10 +22,10 @@ export default function Page() {
           <LumiflexWithControl/>
           <div className="h-12"/>
           <Slides
-            mdx={mdx}
+            mdx={mdxContents}
             components={{
-              h1: (props: any) => <h1 style={{color: "tomato"}} {...props} />,
-              Demo: (props: any) => <h1>This is a demo component</h1>,
+              ...defaultComponents,
+              Novatrix,
             }}
           />
         </div>

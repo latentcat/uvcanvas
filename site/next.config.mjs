@@ -7,6 +7,13 @@ import withSearch from "./src/mdx/search.mjs";
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
+  webpack: (config) => {
+    config.module.rules.push({
+      test: /\.raw\.mdx$/,
+      use: 'raw-loader',
+    });
+    return config;
+  },
   async rewrites() {
     return [
       {
@@ -31,6 +38,7 @@ const nextConfig = {
 };
 
 const withMDX = createMDX({
+  extension: /^(?!.*\.raw\.mdx$).*\.mdx$/,
   options: {
     recmaPlugins,
     remarkPlugins,
