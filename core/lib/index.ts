@@ -4,3 +4,4 @@ export { Novatrix } from "./components/novatrix";
 export { Velustro } from "./components/velustro";
 export { Opulento } from "./components/opulento";
 export { Tranquiluxe } from "./components/tranquiluxe";
+export { Slides } from "./components/slides";

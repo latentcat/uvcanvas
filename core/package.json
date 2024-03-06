@@ -45,7 +45,11 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
+    "@mdx-js/mdx": "^3.0.1",
+    "@radix-ui/react-aspect-ratio": "^1.0.3",
     "ogl": "^1.0.5",
+    "react-hotkeys-hook": "^4.5.0",
+    "react-resize-detector": "^10.0.1",
     "zustand": "^4.5.2"
   },
   "files": [
