@@ -5,6 +5,12 @@ export const defaultComponents = {
   h1: ({ style, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1
       style={{
+        fontSize: "2em",
+        fontWeight: "bold",
+        width: "100%",
+        borderBottom: "calc(0.25 * var(--vw)) rgb(255 255 255 / 0.5) solid",
+        paddingBottom: "calc(1 * var(--vw))",
+        marginBottom: "calc(2 * var(--vw))",
         ...style,
       }}
       {...props}

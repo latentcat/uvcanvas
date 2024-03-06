@@ -29,7 +29,7 @@ export function Slides({
 
   const styleVariables = {
     "--border": "240 3.7% 15.9%",
-    "--vw": `${width * 10}px`,
+    "--vw": `${width * 10 / 100}px`,
   } as React.CSSProperties;
 
   return (
@@ -45,7 +45,7 @@ export function Slides({
     >
       <div
         style={{
-          fontSize: `${width * 0.3}px`,
+          fontSize: `${width * 0.25}px`,
           position: "relative",
           zoom: "0.1",
         }}
@@ -57,6 +57,7 @@ export function Slides({
             top: "0",
             width: "100%",
             height: "100%",
+            padding: "5%",
           }}
         >
           {mdx[currentPage]?.default({
