@@ -7,6 +7,11 @@ import * as runtime from "react/jsx-runtime";
 import React from "react";
 import {AspectRatio} from "@radix-ui/react-aspect-ratio";
 import {useResizeDetector} from "react-resize-detector";
+import {Provider, atom, useAtom } from "jotai";
+
+
+const pageAtom = atom(0)
+const stepAtom = atom(0)
 
 
 interface MetadataProps {
@@ -22,8 +27,8 @@ export function Slides({
   components: MDXComponents;
 }) {
 
-  const [currentPage, setCurrentPage] = useState(0);
-  const [currentStep, setCurrentStep] = useState(0);
+  const [currentPage, setCurrentPage] = useAtom(pageAtom)
+  const [currentStep, setCurrentStep] = useAtom(stepAtom)
 
   const metadatas: MetadataProps[] = useMemo(() => (
     mdx.map((item) => (
@@ -83,51 +88,54 @@ export function Slides({
   }
 
   return (
-    <div
-      ref={ref}
-      style={{
-        width: "100%",
-        border: "1px hsl(var(--border)) solid",
-        borderRadius: "10px",
-        overflow: "hidden",
-        ...styleVariables
-      }}
-    >
+
+    <Provider>
       <div
+        ref={ref}
         style={{
-          fontSize: `calc(2.5 * var(--vw))`,
-          position: "relative",
-          zoom: "1",
+          width: "100%",
+          border: "1px hsl(var(--border)) solid",
+          borderRadius: "10px",
+          overflow: "hidden",
+          ...styleVariables
         }}
       >
         <div
           style={{
-            position: "absolute",
-            left: "0",
-            top: "0",
-            width: "100%",
-            height: "100%",
-            padding: "5%",
+            fontSize: `calc(2.5 * var(--vw))`,
+            position: "relative",
+            zoom: "1",
           }}
         >
-          {mdx[currentPage]?.default({
-            components,
-            ...constants
-          })}
-        </div>
-        <div
-          style={{
-            position: "absolute",
-            left: "0",
-            top: "0",
-            width: "100%",
-            height: "100%",
-          }}
-        >
+          <div
+            style={{
+              position: "absolute",
+              left: "0",
+              top: "0",
+              width: "100%",
+              height: "100%",
+              padding: "5%",
+            }}
+          >
+            {mdx[currentPage]?.default({
+              components,
+              ...constants
+            })}
+          </div>
+          <div
+            style={{
+              position: "absolute",
+              left: "0",
+              top: "0",
+              width: "100%",
+              height: "100%",
+            }}
+          >
 
+          </div>
+          <AspectRatio ratio={16 / 9}/>
         </div>
-        <AspectRatio ratio={16 / 9}/>
       </div>
-    </div>
+    </Provider>
   );
 }
