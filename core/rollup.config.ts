@@ -23,6 +23,7 @@ export default [
         format: "esm",
         dir: "dist",
         banner: '"use client"',
+        chunkFileNames: "[name].js",
       },
     ],
     plugins: [
@@ -44,10 +45,13 @@ export default [
         })
       ),
     ],
-    external: [...Object.keys(pkg.dependencies), ...Object.keys(pkg.peerDependencies)],
+    external: [
+      ...Object.keys(pkg.dependencies),
+      ...Object.keys(pkg.peerDependencies),
+    ],
     watch: {
-      include: "lib/**"
-    }
+      include: "lib/**",
+    },
   }),
   defineConfig({
     input: "./dist/index.d.ts",
