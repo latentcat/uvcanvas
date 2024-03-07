@@ -1,12 +1,27 @@
 
-# Page { props.currentPage + 1 }
 
-- Press the slides element to focus.
-- Press the `left` and `right` keys to switch between pages and animation steps.
-- Press the `f` key or double-click the slides to toggle fullscreen.
+
+<Cover
+  title="Introducing to UVSlides"
+  subtitle="Advanced MDX Slides Component"
+  footer="Latent Cat"
+/>
 
 <Background className="opacity-80">
   <Tranquiluxe />
+</Background>
+
+---
+
+
+  # Page { props.currentPage + 1 }
+
+  - Press the slides element to focus.
+  - Press the `left` and `right` keys to switch between pages and animation steps.
+  - Press the `f` key or double-click the slides to toggle fullscreen.
+
+<Background className="opacity-70">
+  <Novatrix />
 </Background>
 
 ---
@@ -15,21 +30,12 @@ export const metadata = {
   step: 3,
 }
 
-# Page { props.currentPage + 1 } Step { props.currentStep + 1 }
+# Animation
 
-Some Text...
+Steps { props.currentStep + 1 } / 3
 
 <TestAnimation step={props.currentStep} />
 
-<Background className="opacity-70">
-  <Novatrix />
-</Background>
-
----
-
-# Page { props.currentPage + 1 }
-
-Some Text...
 
 <Background className="opacity-80">
   <Zenitho />

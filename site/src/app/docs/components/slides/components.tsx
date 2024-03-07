@@ -11,15 +11,19 @@ export function TestAnimation(props: TestAnimationProps) {
   return (
     <motion.div
       initial={{
-        x: `calc(${props.step * 20} * var(--svw))`
+        x: `${props.step * 10}em`,
+        scale: 0.7,
       }}
       animate={{
-        x: `calc(${props.step * 20} * var(--svw))`
+        x: `${props.step * 10}em`,
+        scale: 1,
       }}
       transition={{ type: 'spring', damping: 10, mass: 0.5, stiffness: 300 }}
-      className="w-[calc(20*var(--svw))] h-[calc(20*var(--svw))] my-[calc(3*var(--svw))] rounded-full bg-white"
+      className="w-[5em] h-[5em] my-[1.5em] rounded-full bg-white text-black flex flex-col items-center justify-center"
     >
-
+      <span className="text-[2em]">
+        {props.step + 1}
+      </span>
     </motion.div>
   )
 }

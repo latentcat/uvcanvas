@@ -27,12 +27,49 @@ export const defaultComponents = {
   ul: (props: React.HTMLAttributes<HTMLUListElement>) => (
     <ul className={styles.ul} {...props} />
   ),
-  Background: ({
+  Cover: ({
     style,
     className,
     children,
     ...props
-  }: React.HTMLAttributes<HTMLDivElement>) => {
+  }: {
+    title: string
+    subtitle?: string
+    header?: string
+    footer?: string
+  } & React.HTMLAttributes<HTMLDivElement>) => {
+    return (
+      <div
+        className={ styles.cover + " " + className}
+        {...props}
+      >
+        <h1>
+          {props.title}
+        </h1>
+        {props.subtitle && (
+          <h2
+            style={{}}
+          >
+            {props.subtitle}
+          </h2>
+        )}
+        <div className={ styles.cover_overlay }>
+          <header>
+            {props.header}
+          </header>
+          <footer>
+            {props.footer}
+          </footer>
+        </div>
+      </div>
+    );
+  },
+  Background: ({
+                 style,
+                 className,
+                 children,
+                 ...props
+               }: React.HTMLAttributes<HTMLDivElement>) => {
     return (
       <div
         style={{
