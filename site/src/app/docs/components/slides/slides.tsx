@@ -1,12 +1,9 @@
 "use client";
 
-import { Button } from "@/components/Button";
-import { ContainerWide } from "@/components/Containers";
-import { HeaderPadding } from "@/components/Header";
+import "uvcanvas/dist/components/slides/default_components/styles.css"
 import {Lumiflex, Zenitho, Novatrix, Velustro, Tranquiluxe, Opulento, Slides, defaultComponents} from "uvcanvas";
 import rawMdx from "./slides.raw.mdx"
 import {sliceMdxString} from "uvcanvas";
-import {LumiflexWithControl} from "@/components/wrappers/templates/LumiflexWithControl";
 import {TestAnimation} from "./components";
 import {SlidesActionButton} from "uvcanvas";
 import {ArrowLeftIcon, ArrowRightIcon} from "@radix-ui/react-icons";

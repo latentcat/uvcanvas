@@ -14,7 +14,7 @@ interface SlidesProps extends HTMLAttributes<HTMLDivElement>{
   components: MDXComponents;
 }
 
-function SlidesInner({ mdx, components, children, style, ...rest }: SlidesProps) {
+function SlidesInner({ mdx, components, children, style, className, ...rest }: SlidesProps) {
   const [currentPage, setCurrentPage] = useAtom(pageAtom);
   const [currentStep, setCurrentStep] = useAtom(stepAtom);
   const [currentMetadatas, setMetadatas] = useAtom(metadatasAtom);
@@ -99,6 +99,7 @@ function SlidesInner({ mdx, components, children, style, ...rest }: SlidesProps)
         ...styleVariables,
         ...style,
       }}
+      className={"uvc__slides " + className}
       {...rest}
     >
       <div

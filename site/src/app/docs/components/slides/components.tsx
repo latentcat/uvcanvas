@@ -16,7 +16,7 @@ export function TestAnimation(props: TestAnimationProps) {
       animate={{
         x: `calc(${props.step * 20} * var(--svw))`
       }}
-      transition={transitionMd}
+      transition={{ type: 'spring', damping: 10, mass: 0.5, stiffness: 300 }}
       className="w-[calc(20*var(--svw))] h-[calc(20*var(--svw))] my-[calc(3*var(--svw))] rounded-full bg-white"
     >
 
