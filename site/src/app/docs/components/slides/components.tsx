@@ -17,7 +17,7 @@ export function TestAnimation(props: TestAnimationProps) {
         x: `calc(${props.step * 20} * var(--vw))`
       }}
       transition={transitionMd}
-      className="w-24 h-24 my-6 rounded-full bg-white"
+      className="w-[calc(20*var(--vw))] h-[calc(20*var(--vw))] my-[calc(3*var(--vw))] rounded-full bg-white"
     >
 
     </motion.div>
