@@ -11,6 +11,7 @@ export const defaultComponents = {
         borderBottom: "calc(0.25 * var(--vw)) rgb(255 255 255 / 0.5) solid",
         paddingBottom: "calc(1 * var(--vw))",
         marginBottom: "calc(2 * var(--vw))",
+        lineHeight: "1.5em",
         ...style,
       }}
       {...props}

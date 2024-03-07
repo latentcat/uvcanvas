@@ -90,6 +90,7 @@ export interface NavGroup {
   links: Array<{
     title: string;
     href: string;
+    tag?: string
   }>;
 }
 
@@ -105,7 +106,13 @@ export const navigation: NavGroup[] = [
     ],
   },
   {
-    title: "Components",
+    title: "General",
+    links: [
+      { title: "<Slides />", href: "/docs/components/slides", tag: "beta" },
+    ],
+  },
+  {
+    title: "Canvas",
     links: [
       ...componentList.map((item, index) => ({
         title: "<" + item.name + " />",

@@ -4,6 +4,7 @@ import { NavGroup } from "@/lib/docs-navigation";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import {Badge} from "@/components/ui/badge";
 
 export interface DocsSidebarNavProps {
   items: NavGroup[]
@@ -48,13 +49,18 @@ export function DocsSidebarNavItems({
           href={item.href}
           onClick={onClick}
           className={cn(
-            "group flex w-full items-center rounded-md border border-transparent px-3 py-0.5 hover:bg-accent",
+            "group flex justify-between w-full items-center rounded-md border border-transparent px-3 py-0.5 hover:bg-accent",
             pathname === item.href
               ? "font-medium text-foreground bg-accent"
               : "text-muted-foreground"
           )}
         >
           {item.title}
+          {item.tag && (
+            <Badge className="px-1.5 py-0 font-normal leading-5 ml-2 border-foreground/20" variant="outline">
+              {item.tag}
+            </Badge>
+          )}
         </Link>
       ))}
     </div>

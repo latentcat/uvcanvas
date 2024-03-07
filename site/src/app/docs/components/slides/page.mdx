@@ -1,0 +1,28 @@
+import SlidesExample from "./slides";
+export const metadata = {
+    title: 'Slides',
+}
+
+# Slides
+
+<SlidesExample />
+
+```mdx
+---
+
+export const metadata = {
+  step: 3,
+}
+
+# Page { props.currentPage + 1 } Step { props.currentStep + 1 }
+
+Some Text...
+
+<TestAnimation step={props.currentStep} />
+
+<Background className="opacity-50">
+  <Novatrix />
+</Background>
+
+---
+```
