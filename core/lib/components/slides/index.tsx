@@ -108,6 +108,7 @@ function SlidesInner({ mdx, components, children, style, className, ...rest }: S
           lineHeight: "1.5em",
           position: "relative",
           zoom: "1",
+          overflow: "hidden",
         }}
       >
         <div

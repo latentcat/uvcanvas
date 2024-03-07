@@ -518,7 +518,8 @@ class Gradient {
       e(this, "last", 0),
       e(this, "width", void 0),
       e(this, "minWidth", 1111),
-      e(this, "height", 600),
+      e(this, "height", void 0),
+      e(this, "minHeight", 1111),
       e(this, "xSegCount", void 0),
       e(this, "ySegCount", void 0),
       e(this, "mesh", void 0),
@@ -549,6 +550,7 @@ class Gradient {
       }),
       e(this, "resize", () => {
         (this.width = window.innerWidth),
+        (this.height = window.innerHeight),
           this.minigl.setSize(this.width, this.height),
           this.minigl.setOrthographicCamera(),
           (this.xSegCount = Math.ceil(this.width * this.conf.density[0])),
