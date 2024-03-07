@@ -103,7 +103,7 @@ function SlidesInner({ mdx, components, children, style, ...rest }: SlidesProps)
     >
       <div
         style={{
-          fontSize: `calc(2.5 * var(--svw))`,
+          fontSize: `calc(2.25 * var(--svw))`,
           lineHeight: "1.5em",
           position: "relative",
           zoom: "1",
@@ -132,6 +132,7 @@ function SlidesInner({ mdx, components, children, style, ...rest }: SlidesProps)
             width: "100%",
             height: "100%",
           }}
+          onDoubleClick={() => setFullscreen(!isFullscreen)}
         ></div>
         {children}
         <div
