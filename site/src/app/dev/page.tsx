@@ -36,6 +36,7 @@ export default function Page() {
               TestAnimation,
             }}
           />
+          <div className="h-12"/>
           <Slides
             mdx={mdxContents}
             components={{

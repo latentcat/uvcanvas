@@ -70,7 +70,7 @@ function SlidesInner({ mdx, components }: SlidesProps) {
   } as React.CSSProperties;
 
   const constants = {
-    currentPage: currentPage + 1,
+    currentPage: currentPage,
     totalPage: mdx.length,
     currentStep: currentStep,
     totalStep: step,
