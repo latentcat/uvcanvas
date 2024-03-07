@@ -41,6 +41,9 @@ export default [
               file.substring(0, file.lastIndexOf(".module")) + ".css"
             )
           ),
+          modules: {
+            generateScopedName: "uvc__[local]",
+          },
         })
       ),
     ],
