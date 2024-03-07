@@ -16,7 +16,7 @@
     "url": "https://github.com/latentcat/uvcanvas"
   },
   "scripts": {
-    "build": "rm -rf ./dist && rollup -c rollup.config.ts --configPlugin typescript",
+    "build": "shx rm -rf ./dist && rollup -c rollup.config.ts --configPlugin typescript",
     "dev": "rollup -c --watch --configPlugin typescript",
     "prepublishOnly": "npm run build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
@@ -42,6 +42,7 @@
     "rollup-plugin-dts": "^6.1.0",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-string": "^3.0.0",
+    "shx": "^0.3.4",
     "tslib": "^2.6.2",
     "typescript": "^5.2.2"
   },
