@@ -1,5 +1,5 @@
 import React from "react";
-import styles from './styles.module.css'
+import styles from "../styles.module.css";
 
 export const defaultComponents = {
   h1: ({ style, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
@@ -18,24 +18,20 @@ export const defaultComponents = {
     />
   ),
   li: (props: React.HTMLAttributes<HTMLLIElement>) => (
-    <li
-      className={styles.li}
-      {...props}
-    />
+    <li className={styles.li} {...props} />
   ),
   ol: (props: React.HTMLAttributes<HTMLOListElement>) => (
-    <ol
-      className={styles.ol}
-      {...props}
-    />
+    <ol className={styles.ol} {...props} />
   ),
   ul: (props: React.HTMLAttributes<HTMLUListElement>) => (
-    <ul
-      className={styles.ul}
-      {...props}
-    />
+    <ul className={styles.ul} {...props} />
   ),
-  Background: ({ style, className, children, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
+  Background: ({
+    style,
+    className,
+    children,
+    ...props
+  }: React.HTMLAttributes<HTMLDivElement>) => {
     return (
       <div
         style={{
@@ -60,6 +56,6 @@ export const defaultComponents = {
           {children}
         </div>
       </div>
-    )
+    );
   },
-}
+};
