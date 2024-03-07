@@ -28,18 +28,31 @@ export const defaultComponents = {
       Demo
     </h1>
   ),
-  Background: ({ style, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
-    <div
-      style={{
-        position: "absolute",
-        left: "0",
-        top: "0",
-        width: "100%",
-        height: "100%",
-        zIndex: "-1",
-        ...style,
-      }}
-      {...props}
-    />
-  ),
+  Background: ({ style, className, children, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
+    return (
+      <div
+        style={{
+          background: "black",
+          position: "absolute",
+          left: "0",
+          top: "0",
+          width: "100%",
+          height: "100%",
+          zIndex: "-1",
+        }}
+        {...props}
+      >
+        <div
+          style={{
+            width: "100%",
+            height: "100%",
+            ...style,
+          }}
+          className={className}
+        >
+          {children}
+        </div>
+      </div>
+    )
+  },
 }

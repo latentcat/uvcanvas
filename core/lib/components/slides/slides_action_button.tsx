@@ -1,5 +1,5 @@
 import React from "react";
-import {useSetAtom} from "jotai/index";
+import {useSetAtom} from "jotai";
 import {setPageAtom} from "./state";
 
 

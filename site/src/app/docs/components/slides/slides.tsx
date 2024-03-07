@@ -20,7 +20,7 @@ export default function SlidesExample() {
 
   return (
     <div
-      className="rounded-lg overflow-hidden not-prose text-foreground"
+      className="rounded-lg overflow-hidden not-prose text-white"
     >
       <Slides
         mdx={mdxContents}

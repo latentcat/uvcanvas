@@ -134,7 +134,11 @@ function SlidesInner({ mdx, components, children, style, ...rest }: SlidesProps)
           }}
         ></div>
         {children}
-        <div style={{ pointerEvents: "none" }}>
+        <div
+          style={{
+            pointerEvents: "none",
+          }}
+        >
           <AspectRatio ratio={16 / 9} />
         </div>
       </div>
