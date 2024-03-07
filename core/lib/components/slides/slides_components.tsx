@@ -8,9 +8,9 @@ export const defaultComponents = {
         fontSize: "2em",
         fontWeight: "bold",
         width: "100%",
-        borderBottom: "calc(0.25 * var(--vw)) rgb(255 255 255 / 0.5) solid",
-        paddingBottom: "calc(1 * var(--vw))",
-        marginBottom: "calc(2 * var(--vw))",
+        borderBottom: "calc(0.25 * var(--svw)) rgb(255 255 255 / 0.5) solid",
+        paddingBottom: "calc(1 * var(--svw))",
+        marginBottom: "calc(2 * var(--svw))",
         lineHeight: "1.5em",
         ...style,
       }}

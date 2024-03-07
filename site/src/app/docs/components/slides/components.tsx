@@ -11,13 +11,13 @@ export function TestAnimation(props: TestAnimationProps) {
   return (
     <motion.div
       initial={{
-        x: `calc(${props.step * 20} * var(--vw))`
+        x: `calc(${props.step * 20} * var(--svw))`
       }}
       animate={{
-        x: `calc(${props.step * 20} * var(--vw))`
+        x: `calc(${props.step * 20} * var(--svw))`
       }}
       transition={transitionMd}
-      className="w-[calc(20*var(--vw))] h-[calc(20*var(--vw))] my-[calc(3*var(--vw))] rounded-full bg-white"
+      className="w-[calc(20*var(--svw))] h-[calc(20*var(--svw))] my-[calc(3*var(--svw))] rounded-full bg-white"
     >
 
     </motion.div>

@@ -60,7 +60,7 @@ export default function Page() {
               className={clsx(
                 "left-[5%] top-1/2 -translate-y-1/2",
                 "absolute opacity-0 group-hover:opacity-100 transition-opacity",
-                "w-[calc(10*var(--vw))] h-[calc(10*var(--vw))]",
+                "w-[calc(10*var(--svw))] h-[calc(10*var(--svw))]",
                 "rounded-full ring-1 ring-white/10 bg-black/30 flex items-center justify-center",
                 "backdrop-saturate-150 backdrop-blur-lg",
               )}
@@ -72,7 +72,7 @@ export default function Page() {
               className={clsx(
                 "right-[5%] top-1/2 -translate-y-1/2",
                 "absolute opacity-0 group-hover:opacity-100 transition-opacity",
-                "w-[calc(10*var(--vw))] h-[calc(10*var(--vw))]",
+                "w-[calc(10*var(--svw))] h-[calc(10*var(--svw))]",
                 "rounded-full ring-1 ring-white/10 bg-black/30 flex items-center justify-center",
                 "backdrop-saturate-150 backdrop-blur-lg",
               )}

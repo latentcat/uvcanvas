@@ -58,8 +58,7 @@ function SlidesInner({ mdx, components, children, style, ...rest }: SlidesProps)
   }, [ref, leftRef, rightRef]);
 
   const styleVariables = {
-    "--border": "240 3.7% 15.9%",
-    "--vw": `${(width * 1) / 100}px`,
+    "--svw": `${(width * 1) / 100}px`,
   } as React.CSSProperties;
 
   const constants = {
@@ -75,7 +74,6 @@ function SlidesInner({ mdx, components, children, style, ...rest }: SlidesProps)
       tabIndex={-1}
       style={{
         width: "100%",
-        border: "1px hsl(var(--border)) solid",
         borderRadius: "10px",
         overflow: "hidden",
         userSelect: "none",
@@ -87,7 +85,7 @@ function SlidesInner({ mdx, components, children, style, ...rest }: SlidesProps)
     >
       <div
         style={{
-          fontSize: `calc(2.5 * var(--vw))`,
+          fontSize: `calc(2.5 * var(--svw))`,
           position: "relative",
           zoom: "1",
         }}
