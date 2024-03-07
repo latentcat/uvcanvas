@@ -7,3 +7,4 @@ export { Tranquiluxe } from "./components/tranquiluxe";
 export { Slides } from "./components/slides";
 export { defaultComponents } from "./components/slides/slides_components";
 export { sliceMdxString } from "./components/slides/slides_slice";
+export { SlidesActionButton } from "./components/slides/slides_action_button";

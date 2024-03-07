@@ -1,32 +1,33 @@
 import { MDXComponents, MDXModule } from "mdx/types";
 import { useHotkeys } from "react-hotkeys-hook";
-import { useEffect, useMemo, useRef } from "react";
+import {HTMLAttributes, useEffect, useMemo, useRef} from "react";
 import React from "react";
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import { useResizeDetector } from "react-resize-detector";
-import { Provider, atom, useAtom } from "jotai";
+import {Provider, atom, useAtom, useSetAtom} from "jotai";
+import {MetadataProps, metadatasAtom, pageAtom, setPageAtom, stepAtom} from "./state";
 
-const pageAtom = atom(0);
-const stepAtom = atom(0);
 
-interface MetadataProps {
-  step?: number;
-}
 
-interface SlidesProps {
+interface SlidesProps extends HTMLAttributes<HTMLDivElement>{
   mdx: MDXModule[];
   components: MDXComponents;
 }
 
-function SlidesInner({ mdx, components }: SlidesProps) {
+function SlidesInner({ mdx, components, children, style, ...rest }: SlidesProps) {
   const [currentPage, setCurrentPage] = useAtom(pageAtom);
   const [currentStep, setCurrentStep] = useAtom(stepAtom);
+  const [currentMetadatas, setMetadatas] = useAtom(metadatasAtom);
+  const setPage = useSetAtom(setPageAtom)
 
   const metadatas: MetadataProps[] = useMemo(
-    () =>
-      mdx.map((item) => ({
+    () => {
+      const tempMetadata: MetadataProps[] = mdx.map((item) => ({
         ...(item.metadata as object),
-      })),
+      }))
+      setMetadatas(tempMetadata)
+      return tempMetadata
+    },
     [mdx]
   );
 
@@ -35,29 +36,21 @@ function SlidesInner({ mdx, components }: SlidesProps) {
   const step = metadata.step ?? 1;
 
   const pageDown = () => {
-    if (currentStep < step - 1) {
-      setCurrentStep(currentStep + 1);
-    } else if (currentPage < mdx.length - 1) {
-      setCurrentPage(currentPage + 1);
-      setCurrentStep(0);
-    }
+    setPage({
+      forward: false
+    })
   };
   const pageUp = () => {
-    if (currentStep > 0) {
-      setCurrentStep(Math.max(currentStep - 1, 0));
-    } else {
-      if (currentPage > 0 && currentStep === 0) {
-        setCurrentStep((metadatas[currentPage - 1].step ?? 1) - 1);
-      }
-      setCurrentPage(Math.max(currentPage - 1, 0));
-    }
+    setPage({
+      forward: true
+    })
   };
 
-  const { width = 640, height, ref } = useResizeDetector();
+  const { width = 320, height, ref } = useResizeDetector();
 
   const containerRef = useRef<HTMLDivElement>(null);
-  const leftRef = useHotkeys<HTMLDivElement>("left", pageUp);
-  const rightRef = useHotkeys<HTMLDivElement>("right", pageDown);
+  const leftRef = useHotkeys<HTMLDivElement>("left", pageDown);
+  const rightRef = useHotkeys<HTMLDivElement>("right", pageUp);
   useEffect(() => {
     ref.current = containerRef.current;
     leftRef.current = containerRef.current;
@@ -85,8 +78,12 @@ function SlidesInner({ mdx, components }: SlidesProps) {
         border: "1px hsl(var(--border)) solid",
         borderRadius: "10px",
         overflow: "hidden",
+        userSelect: "none",
+        outline: "none",
         ...styleVariables,
+        ...style,
       }}
+      {...rest}
     >
       <div
         style={{
@@ -119,7 +116,10 @@ function SlidesInner({ mdx, components }: SlidesProps) {
             height: "100%",
           }}
         ></div>
-        <AspectRatio ratio={16 / 9} />
+        {children}
+        <div style={{ pointerEvents: "none" }}>
+          <AspectRatio ratio={16 / 9} />
+        </div>
       </div>
     </div>
   );
