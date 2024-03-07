@@ -14,11 +14,11 @@ export function TestAnimation(props: TestAnimationProps) {
     >
       <motion.div
         initial={{
-          x: `${(props.step - 1) * 17}em`,
+          x: `${(props.step - 1) * 10}em`,
           scale: 0.7,
         }}
         animate={{
-          x: `${(props.step - 1) * 17}em`,
+          x: `${(props.step - 1) * 10}em`,
           scale: 1,
         }}
         transition={{type: 'spring', damping: 10, mass: 0.5, stiffness: 300}}
