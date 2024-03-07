@@ -5,7 +5,7 @@ import React from "react";
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import { useResizeDetector } from "react-resize-detector";
 import {Provider, atom, useAtom, useSetAtom} from "jotai";
-import {MetadataProps, metadatasAtom, pageAtom, setPageAtom, stepAtom} from "./state";
+import {fullscreenAtom, MetadataProps, metadatasAtom, pageAtom, setPageAtom, stepAtom} from "./state";
 
 
 
@@ -19,6 +19,7 @@ function SlidesInner({ mdx, components, children, style, ...rest }: SlidesProps)
   const [currentStep, setCurrentStep] = useAtom(stepAtom);
   const [currentMetadatas, setMetadatas] = useAtom(metadatasAtom);
   const setPage = useSetAtom(setPageAtom)
+
 
   const metadatas: MetadataProps[] = useMemo(
     () => {
@@ -46,16 +47,31 @@ function SlidesInner({ mdx, components, children, style, ...rest }: SlidesProps)
     })
   };
 
+  const [isFullscreen, setFullscreen] = useAtom(fullscreenAtom);
+  useEffect(() => {
+    if (isFullscreen) {
+      containerRef.current?.requestFullscreen().then(() => {})
+    } else {
+      if (document.fullscreenElement) {
+        document.exitFullscreen().then(() => {})
+      }
+    }
+  }, [isFullscreen]);
+
   const { width = 320, height, ref } = useResizeDetector();
 
   const containerRef = useRef<HTMLDivElement>(null);
   const leftRef = useHotkeys<HTMLDivElement>("left", pageDown);
   const rightRef = useHotkeys<HTMLDivElement>("right", pageUp);
+  const fullscreenRef = useHotkeys<HTMLDivElement>("f", () => setFullscreen(!isFullscreen));
   useEffect(() => {
     ref.current = containerRef.current;
     leftRef.current = containerRef.current;
     rightRef.current = containerRef.current;
   }, [ref, leftRef, rightRef]);
+
+
+
 
   const styleVariables = {
     "--svw": `${(width * 1) / 100}px`,
@@ -74,10 +90,12 @@ function SlidesInner({ mdx, components, children, style, ...rest }: SlidesProps)
       tabIndex={-1}
       style={{
         width: "100%",
-        borderRadius: "10px",
         overflow: "hidden",
         userSelect: "none",
         outline: "none",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
         ...styleVariables,
         ...style,
       }}
@@ -86,6 +104,7 @@ function SlidesInner({ mdx, components, children, style, ...rest }: SlidesProps)
       <div
         style={{
           fontSize: `calc(2.5 * var(--svw))`,
+          lineHeight: "1.5em",
           position: "relative",
           zoom: "1",
         }}

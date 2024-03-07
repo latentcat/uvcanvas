@@ -2,6 +2,7 @@ import {atom} from "jotai";
 
 export const pageAtom = atom(0);
 export const stepAtom = atom(0);
+export const fullscreenAtom = atom(false);
 
 export interface MetadataProps {
   step?: number;
