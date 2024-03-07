@@ -31,15 +31,14 @@ export default [
       string({
         include: "**/*.glsl",
       }),
-      ...glob.sync("lib/**/*.module.css").map((file) =>
+      ...glob.sync("lib/**/*.module.{css,less}").map((file) =>
         postcss({
           include: file,
-          modules: true,
           extract: resolve(
             "dist",
             relative(
               "lib",
-              file.substring(0, file.lastIndexOf(".module.css")) + ".css"
+              file.substring(0, file.lastIndexOf(".module")) + ".css"
             )
           ),
         })
