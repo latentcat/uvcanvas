@@ -5,6 +5,7 @@ export interface CommonControlProps<P> {
   type: ParamTypeLiteralAll
   name: Path<P>
   label: string
+  desc?: string
 }
 
 export interface ParamNumberControlProps {

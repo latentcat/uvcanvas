@@ -74,15 +74,18 @@ export function ComponentWrapperWithControl<P extends {}>(
         <AspectRatio ratio={16 / 9} />
       </div>
       <Form {...form}>
-        <form className="p-6 not-prose">
+        <form className="px-4 not-prose divide-y">
           {params.map((param, index) => (
-            <Fragment key={param.name}>
+            <div
+              key={param.name}
+              className="py-1.5 flex flex-col items-stretch justify-center min-h-[60px]"
+            >
               {renderControls(param)}
-            </Fragment>
+            </div>
           ))}
         </form>
       </Form>
-      <div className="absolute w-full h-full top-0 left-0 rounded-xl ring-1 ring-inset ring-foreground/10 pointer-events-none" />
+      <div className="absolute w-full h-full top-0 left-0 rounded-xl ring-1 ring-inset ring-foreground/20 pointer-events-none" />
     </div>
   );
 }
