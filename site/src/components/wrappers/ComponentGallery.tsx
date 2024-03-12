@@ -1,9 +1,6 @@
-import {ComponentWrapper} from "@/components/wrappers/ComponentWrapper";
+import { ComponentWrapper } from "@/components/wrappers/ComponentWrapper";
 import Link from "next/link";
-import {ComponentItemProps, componentList} from "@/lib/docs-navigation";
-
-
-
+import { ComponentItemProps, componentList } from "@/lib/docs-navigation";
 
 function ComponentItem(props: ComponentItemProps) {
   return (
@@ -20,24 +17,21 @@ function ComponentItem(props: ComponentItemProps) {
         <p className="text-xs leading-5 text-foreground/50">{props.desc}</p>
       </div>
     </Link>
-  )
+  );
 }
-
 
 interface ComponentGallery {
-  limit?: number
+  limit?: number;
 }
 
-
 export function ComponentGallery(props: ComponentGallery) {
-
-  const list = componentList.slice(0, props.limit || componentList.length)
+  const list = componentList.slice(0, props.limit || componentList.length);
 
   return (
     <div className="grid grid-cols-2 lg:grid-cols-3 _xl:grid-cols-4 gap-x-3 gap-y-6 not-prose">
       {list.map((item, index) => (
-        <ComponentItem {...item} key={item.id}/>
+        <ComponentItem {...item} key={item.id} />
       ))}
     </div>
-  )
+  );
 }

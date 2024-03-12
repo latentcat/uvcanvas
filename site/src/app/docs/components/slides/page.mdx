@@ -1,18 +1,15 @@
 import SlidesExample from "./slides";
 export const metadata = {
-    title: 'Slides',
-}
+  title: "Slides",
+};
 
 # Slides
 
-<Note>
-  Unfinished
-</Note>
+<Note>Unfinished</Note>
 
 Slides component is inspired by [Slidev](https://sli.dev/) and other Markdown-based slides tools. Our goal is to create a headless slides component that can convert MDX and JSX in it into React components at runtime or build time, easy to write animations, and integrate UVCanvas backgrounds seamlessly.
 
 <SlidesExample />
-
 
 ## Interactions
 
@@ -24,8 +21,7 @@ Slides component is inspired by [Slidev](https://sli.dev/) and other Markdown-ba
 
 1. Compile or evaluate the MDX file
 
-
-``` md {{ title: "Raw String" }}
+```md {{ title: "Raw String" }}
 # Page { props.currentPage + 1 }
 
 Test
@@ -39,7 +35,7 @@ Test
 ---
 
 export const metadata = {
-  step: 3,
+step: 3,
 }
 
 # Page { props.currentPage + 1 } Step { props.currentStep + 1 }
@@ -57,19 +53,18 @@ Some Text...
 ...
 ```
 
-
-``` tsx
+```tsx
 import { sliceMdxString } from "uvcanvas";
 ```
 
-``` tsx
-const mdxContents = sliceMdxString(mdxString)
+```tsx
+const mdxContents = sliceMdxString(mdxString);
 ```
 
 2. Add the { "<Slides />" } component
 
-``` tsx
-import "uvcanvas/dist/components/slides/default_components/styles.css"
+```tsx
+import "uvcanvas/dist/components/slides/default_components/styles.css";
 import {
   Lumiflex,
   Zenitho,
@@ -78,11 +73,11 @@ import {
   Tranquiluxe,
   Opulento,
   Slides,
-  defaultComponents
+  defaultComponents,
 } from "uvcanvas";
 ```
 
-``` tsx
+```tsx
 <Slides
   mdx={mdxContents}
   components={{
@@ -100,7 +95,7 @@ import {
 
 3. Add controls
 
-``` tsx
+```tsx
 <Slides {...}>
   <SlidesActionButton
     variant="left"
@@ -116,4 +111,3 @@ import {
   </SlidesActionButton>
 </Slides>
 ```
-

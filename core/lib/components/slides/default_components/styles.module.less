@@ -1,67 +1,63 @@
-
-
 .slides {
+  .cover {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-    .cover {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-
-        h1 {
-            font-size: 2em;
-            font-weight: 800;
-        }
-
-        h2 {
-            margin-top: 1em;
-            opacity: 70%;
-        }
-
-        .cover_overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        footer {
-            font-size: 0.9em;
-        }
+    h1 {
+      font-size: 2em;
+      font-weight: 800;
     }
 
-    .ul,
-    .ol {
-        padding-left: 1.375em;
+    h2 {
+      margin-top: 1em;
+      opacity: 70%;
     }
 
-    .ul {
-        list-style-type: disc;
+    .cover_overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
     }
 
-    .ol {
-        list-style-type: decimal;
+    footer {
+      font-size: 0.9em;
     }
+  }
 
-    .li {
-        padding-left: 0.625em;
-    }
+  .ul,
+  .ol {
+    padding-left: 1.375em;
+  }
 
-    .li::marker {
-        color: white;
-    }
+  .ul {
+    list-style-type: disc;
+  }
 
-    .ol > .li::marker {
-        font-size: 0.5em;
-        font-weight: 800;
-    }
+  .ol {
+    list-style-type: decimal;
+  }
+
+  .li {
+    padding-left: 0.625em;
+  }
+
+  .li::marker {
+    color: white;
+  }
+
+  .ol > .li::marker {
+    font-size: 0.5em;
+    font-weight: 800;
+  }
 }
-

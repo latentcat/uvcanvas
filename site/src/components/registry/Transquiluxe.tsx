@@ -1,4 +1,3 @@
-
 import { Tranquiluxe } from "uvcanvas";
 
-export default Tranquiluxe
+export default Tranquiluxe;

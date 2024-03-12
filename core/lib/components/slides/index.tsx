@@ -1,36 +1,44 @@
 import { MDXComponents, MDXModule } from "mdx/types";
 import { useHotkeys } from "react-hotkeys-hook";
-import {HTMLAttributes, useEffect, useMemo, useRef} from "react";
+import { HTMLAttributes, useEffect, useMemo, useRef } from "react";
 import React from "react";
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import { useResizeDetector } from "react-resize-detector";
-import {Provider, atom, useAtom, useSetAtom} from "jotai";
-import {fullscreenAtom, MetadataProps, metadatasAtom, pageAtom, setPageAtom, stepAtom} from "./state";
+import { Provider, atom, useAtom, useSetAtom } from "jotai";
+import {
+  fullscreenAtom,
+  MetadataProps,
+  metadatasAtom,
+  pageAtom,
+  setPageAtom,
+  stepAtom,
+} from "./state";
 
-
-
-interface SlidesProps extends HTMLAttributes<HTMLDivElement>{
+interface SlidesProps extends HTMLAttributes<HTMLDivElement> {
   mdx: MDXModule[];
   components: MDXComponents;
 }
 
-function SlidesInner({ mdx, components, children, style, className, ...rest }: SlidesProps) {
+function SlidesInner({
+  mdx,
+  components,
+  children,
+  style,
+  className,
+  ...rest
+}: SlidesProps) {
   const [currentPage, setCurrentPage] = useAtom(pageAtom);
   const [currentStep, setCurrentStep] = useAtom(stepAtom);
   const [currentMetadatas, setMetadatas] = useAtom(metadatasAtom);
-  const setPage = useSetAtom(setPageAtom)
+  const setPage = useSetAtom(setPageAtom);
 
-
-  const metadatas: MetadataProps[] = useMemo(
-    () => {
-      const tempMetadata: MetadataProps[] = mdx.map((item) => ({
-        ...(item.metadata as object),
-      }))
-      setMetadatas(tempMetadata)
-      return tempMetadata
-    },
-    [mdx]
-  );
+  const metadatas: MetadataProps[] = useMemo(() => {
+    const tempMetadata: MetadataProps[] = mdx.map((item) => ({
+      ...(item.metadata as object),
+    }));
+    setMetadatas(tempMetadata);
+    return tempMetadata;
+  }, [mdx]);
 
   const metadata = metadatas[currentPage];
 
@@ -38,22 +46,22 @@ function SlidesInner({ mdx, components, children, style, className, ...rest }: S
 
   const pageDown = () => {
     setPage({
-      forward: false
-    })
+      forward: false,
+    });
   };
   const pageUp = () => {
     setPage({
-      forward: true
-    })
+      forward: true,
+    });
   };
 
   const [isFullscreen, setFullscreen] = useAtom(fullscreenAtom);
   useEffect(() => {
     if (isFullscreen) {
-      containerRef.current?.requestFullscreen().then(() => {})
+      containerRef.current?.requestFullscreen().then(() => {});
     } else {
       if (document.fullscreenElement) {
-        document.exitFullscreen().then(() => {})
+        document.exitFullscreen().then(() => {});
       }
     }
   }, [isFullscreen]);
@@ -63,15 +71,14 @@ function SlidesInner({ mdx, components, children, style, className, ...rest }: S
   const containerRef = useRef<HTMLDivElement>(null);
   const leftRef = useHotkeys<HTMLDivElement>("left", pageDown);
   const rightRef = useHotkeys<HTMLDivElement>("right", pageUp);
-  const fullscreenRef = useHotkeys<HTMLDivElement>("f", () => setFullscreen(!isFullscreen));
+  const fullscreenRef = useHotkeys<HTMLDivElement>("f", () =>
+    setFullscreen(!isFullscreen),
+  );
   useEffect(() => {
     ref.current = containerRef.current;
     leftRef.current = containerRef.current;
     rightRef.current = containerRef.current;
   }, [ref, leftRef, rightRef]);
-
-
-
 
   const styleVariables = {
     "--svw": `${(width * 1) / 100}px`,

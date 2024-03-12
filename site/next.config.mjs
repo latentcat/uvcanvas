@@ -10,7 +10,7 @@ const nextConfig = {
   webpack: (config) => {
     config.module.rules.push({
       test: /\.raw\.mdx$/,
-      use: 'raw-loader',
+      use: "raw-loader",
     });
     return config;
   },

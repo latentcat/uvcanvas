@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./styles.module.less";
 
-
 export const defaultComponents = {
   h1: ({ style, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1
@@ -33,43 +32,28 @@ export const defaultComponents = {
     children,
     ...props
   }: {
-    title: string
-    subtitle?: string
-    header?: string
-    footer?: string
+    title: string;
+    subtitle?: string;
+    header?: string;
+    footer?: string;
   } & React.HTMLAttributes<HTMLDivElement>) => {
     return (
-      <div
-        className={ styles.cover + " " + className}
-        {...props}
-      >
-        <h1>
-          {props.title}
-        </h1>
-        {props.subtitle && (
-          <h2
-            style={{}}
-          >
-            {props.subtitle}
-          </h2>
-        )}
-        <div className={ styles.cover_overlay }>
-          <header>
-            {props.header}
-          </header>
-          <footer>
-            {props.footer}
-          </footer>
+      <div className={styles.cover + " " + className} {...props}>
+        <h1>{props.title}</h1>
+        {props.subtitle && <h2 style={{}}>{props.subtitle}</h2>}
+        <div className={styles.cover_overlay}>
+          <header>{props.header}</header>
+          <footer>{props.footer}</footer>
         </div>
       </div>
     );
   },
   Background: ({
-                 style,
-                 className,
-                 children,
-                 ...props
-               }: React.HTMLAttributes<HTMLDivElement>) => {
+    style,
+    className,
+    children,
+    ...props
+  }: React.HTMLAttributes<HTMLDivElement>) => {
     return (
       <div
         style={{

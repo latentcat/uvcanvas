@@ -1,6 +1,4 @@
-import {
-  Placeholder,
-} from "@/components/ReexportComponents";
+import { Placeholder } from "@/components/ReexportComponents";
 import React from "react";
 
 export interface ComponentItemProps {
@@ -90,7 +88,7 @@ export interface NavGroup {
   links: Array<{
     title: string;
     href: string;
-    tag?: string
+    tag?: string;
   }>;
 }
 

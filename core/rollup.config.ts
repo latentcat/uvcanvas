@@ -16,7 +16,7 @@ export default [
         .map((file) => [
           relative("lib", file.substring(0, file.lastIndexOf("."))),
           file,
-        ])
+        ]),
     ),
     output: [
       {
@@ -38,13 +38,13 @@ export default [
             "dist",
             relative(
               "lib",
-              file.substring(0, file.lastIndexOf(".module")) + ".css"
-            )
+              file.substring(0, file.lastIndexOf(".module")) + ".css",
+            ),
           ),
           modules: {
             generateScopedName: "uvc__[local]",
           },
-        })
+        }),
       ),
     ],
     external: [

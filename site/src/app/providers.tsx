@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { ThemeProvider as NextThemesProvider } from "next-themes"
-import { type ThemeProviderProps } from "next-themes/dist/types"
+import * as React from "react";
+import { ThemeProvider as NextThemesProvider } from "next-themes";
+import { type ThemeProviderProps } from "next-themes/dist/types";
 import MixpanelAnalytics from "@/components/MixpanelAnalytics";
 
 export function Providers({
-  children
+  children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
@@ -20,5 +20,5 @@ export function Providers({
       <MixpanelAnalytics />
       {children}
     </NextThemesProvider>
-  )
+  );
 }

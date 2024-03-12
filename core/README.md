@@ -1,4 +1,3 @@
-
 # UVCanvas
 
 An open source React.js component library for beautifully shaded canvas, brought to you by **[Latent Cat](https://latentcat.com)**.

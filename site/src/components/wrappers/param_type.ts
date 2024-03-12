@@ -1,44 +1,41 @@
-import {Path} from "react-hook-form";
-
+import { Path } from "react-hook-form";
 
 export interface CommonControlProps<P> {
-  type: ParamTypeLiteralAll
-  name: Path<P>
-  label: string
-  desc?: string
+  type: ParamTypeLiteralAll;
+  name: Path<P>;
+  label: string;
+  desc?: string;
 }
 
 export interface ParamNumberControlProps {
-  type: 'number'
+  type: "number";
   config?: {
-    default?: number
-    optional?: boolean
-    min?: number
-    max?: number
-    step?: number
-  }
+    default?: number;
+    optional?: boolean;
+    min?: number;
+    max?: number;
+    step?: number;
+  };
 }
 
 export interface ParamBooleanControlProps {
-  type: 'boolean'
+  type: "boolean";
   config?: {
-    status: string
-    finished?: boolean
-  }
+    status: string;
+    finished?: boolean;
+  };
 }
-
 
 export type ParamType = (ParamNumberControlProps | ParamBooleanControlProps) & {
   // uuid: string
 };
 
-export type ConfigType<P> = CommonControlProps<P> & ParamType
+export type ConfigType<P> = CommonControlProps<P> & ParamType;
 
-export type ParamConfigType<T extends ParamType> = T['config'];
-export type ParamTypeLiteral<T extends ParamType> = T['type'];
+export type ParamConfigType<T extends ParamType> = T["config"];
+export type ParamTypeLiteral<T extends ParamType> = T["type"];
 
-export type ParamTypeLiteralAll = ParamType['type'];
-
+export type ParamTypeLiteralAll = ParamType["type"];
 
 export const block_attr = {
   start: {
@@ -57,4 +54,4 @@ export const block_attr = {
     color: "#14b8a6",
     name: "Make Branch",
   },
-}
+};

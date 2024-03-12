@@ -43,7 +43,7 @@ export function Opulento(props: OpulentoProps) {
           value: new Color(
             gl.canvas.width,
             gl.canvas.height,
-            gl.canvas.width / gl.canvas.height
+            gl.canvas.width / gl.canvas.height,
           ),
         },
       },
