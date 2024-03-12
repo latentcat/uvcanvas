@@ -30,11 +30,6 @@
     "@types/node": "^20.11.24",
     "@types/react": "^18.2.61",
     "@types/react-dom": "^18.2.19",
-    "@typescript-eslint/eslint-plugin": "^7.0.2",
-    "@typescript-eslint/parser": "^7.0.2",
-    "eslint": "^8.56.0",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.5",
     "glob": "^10.3.10",
     "less": "^4.2.0",
     "postcss": "^8.4.35",
@@ -43,8 +38,7 @@
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-string": "^3.0.0",
     "shx": "^0.3.4",
-    "tslib": "^2.6.2",
-    "typescript": "^5.2.2"
+    "tslib": "^2.6.2"
   },
   "dependencies": {
     "@mdx-js/mdx": "^3.0.1",
