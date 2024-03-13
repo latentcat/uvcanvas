@@ -25,7 +25,7 @@ If you need any help, feel free to reach out to [@nhciao](https://twitter.com/nh
 This repository is structured as follows:
 
 ```
-core
+uvcanvas
 └── lib
     ├── components
     └── content
@@ -45,8 +45,8 @@ site
 
 | Path                           | Description                                 |
 | ------------------------------ | ------------------------------------------- |
-| `core`                         | The `uvcanvas` package.                     |
-| `core/lib/components`          | The React components of the package.        |
+| `uvcanvas`                     | The `uvcanvas` package.                     |
+| `uvcanvas/lib/components`      | The React components of the package.        |
 | `site`                         | The Next.js application for `uvcanvas.com`. |
 | `site/src/app/docs`            | The MDX docs for the package.               |
 | `site/src/components/registry` | The registry for the components.            |
@@ -78,9 +78,6 @@ git checkout -b my-new-branch
 ### Install dependencies
 
 ```bash
-cd core
-yarn
-cd ../site
 yarn
 ```
 
@@ -89,11 +86,6 @@ yarn
 The documentation for this project is located in the `site` workspace. You can run the documentation locally by running the following command:
 
 ```bash
-cd core
-yarn dev
-
-# In another terminal
-cd site
 yarn dev
 ```
 
@@ -101,7 +93,7 @@ Documentation is written using [MDX](https://mdxjs.com). You can find the docume
 
 ## Components
 
-We use a registry system for developing components. You can find the source code for the components under `core/lib/components`.
+We use a registry system for developing components. You can find the source code for the components under `uvcanvas/lib/components`.
 
 When adding or modifying components, please ensure that:
 

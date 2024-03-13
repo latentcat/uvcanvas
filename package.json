@@ -1,13 +1,13 @@
 {
   "private": true,
   "workspaces": [
-    "core",
+    "uvcanvas",
     "site"
   ],
   "scripts": {
     "dev": "run-p dev:*",
-    "dev:core": "yarn --cwd ./core dev",
-    "dev:docs": "yarn --cwd ./site dev",
+    "dev:core": "yarn --cwd ./uvcanvas dev",
+    "dev:site": "yarn --cwd ./site dev",
     "lint": "eslint . --cache --fix --max-warnings=0",
     "format": "prettier . --write",
     "prepare": "husky install"

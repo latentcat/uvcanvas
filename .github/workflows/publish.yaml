@@ -13,8 +13,8 @@ jobs:
           registry-url: "https://registry.npmjs.org"
           scope: "@octocat"
       - run: yarn
-        working-directory: ./core
+        working-directory: ./uvcanvas
       - run: yarn publish
-        working-directory: ./core
+        working-directory: ./uvcanvas
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
