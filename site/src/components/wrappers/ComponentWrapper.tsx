@@ -1,20 +1,10 @@
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { clsx } from "clsx";
-import { Suspense, useState } from "react";
+import { Suspense } from "react";
 import { Loader2 } from "lucide-react";
-
-import { cn } from "@/lib/utils";
-import { Slider } from "@/components/ui/slider";
-import Lumiflex from "@/components/registry/Lumiflex";
 
 interface ComponentWrapperProps extends React.ComponentPropsWithoutRef<"div"> {}
 
-const sleep = (s: number) => new Promise((r) => setTimeout(r, s * 1000));
-
-async function TestComponent() {
-  await sleep(3);
-  return <div></div>;
-}
 async function Loading() {
   return (
     <div className="flex items-center opacity-50 text-sm">

@@ -1,20 +1,14 @@
 "use client";
 
-import "uvcanvas/dist/components/slides/default_components/styles.css";
-import {
-  Lumiflex,
-  Zenitho,
-  Novatrix,
-  Velustro,
-  Tranquiluxe,
-  Opulento,
-  Slides,
-  defaultComponents,
-} from "uvcanvas";
+import { ReactLumiflex } from "@uvcanvas/react";
 import rawMdx from "./slides.raw.mdx";
-import { sliceMdxString } from "uvcanvas";
+import {
+  sliceMdxString,
+  Slides,
+  SlidesActionButton,
+  defaultComponents,
+} from "@uvslides/react";
 import { TestAnimation } from "./components";
-import { SlidesActionButton } from "uvcanvas";
 import { ArrowLeftIcon, ArrowRightIcon } from "@radix-ui/react-icons";
 import clsx from "clsx";
 import React from "react";
@@ -28,13 +22,7 @@ export default function SlidesExample() {
         mdx={mdxContents}
         components={{
           ...defaultComponents,
-          Lumiflex,
-          Zenitho,
-          Novatrix,
-          Velustro,
-          Tranquiluxe,
-          Opulento,
-
+          ReactLumiflex,
           TestAnimation,
         }}
         className="group"

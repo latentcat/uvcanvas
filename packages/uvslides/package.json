@@ -1,0 +1,34 @@
+{
+  "name": "@uvslides/react",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "An open source React.js component library for beautifully shaded canvas, brought to you by Latent Cat.",
+  "author": "Latent Cat Team",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "homepage": "https://uvcanvas.com",
+  "bugs": {
+    "url": "https://github.com/latentcat/uvcanvas/issues"
+  },
+  "repository": "https://github.com/latentcat/uvcanvas",
+  "scripts": {
+    "build": "shx rm -rf ./dist && rollup -c rollup.config.ts --configPlugin typescript",
+    "dev": "rollup -c --watch --configPlugin typescript",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "react": "^18.2.0"
+  },
+  "dependencies": {
+    "@mdx-js/mdx": "^3.0.1",
+    "@radix-ui/react-aspect-ratio": "^1.0.3",
+    "jotai": "^2.7.1",
+    "react-hotkeys-hook": "^4.5.0",
+    "react-resize-detector": "^10.0.1"
+  }
+}

@@ -2,24 +2,16 @@
 
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { clsx } from "clsx";
-import { Fragment, HTMLAttributes } from "react";
+import { HTMLAttributes } from "react";
 
-import { cn } from "@/lib/utils";
-import { Slider } from "@/components/ui/slider";
-import Lumiflex from "@/components/registry/Lumiflex";
-import { LumiflexProps } from "uvcanvas/dist/components/lumiflex";
-import { UseFormReturn, useForm, useWatch } from "react-hook-form";
-import { Form, FormControl, FormField, FormItem, FormLabel } from "../ui/form";
+import { useForm, useWatch } from "react-hook-form";
+import { Form, FormField } from "../ui/form";
 import React from "react";
 import {
   ParamBooleanControl,
   ParamNumberControl,
 } from "@/components/wrappers/ControlParams";
-import {
-  ParamType,
-  CommonControlProps,
-  ConfigType,
-} from "@/components/wrappers/param_type";
+import { ConfigType } from "@/components/wrappers/param_type";
 
 interface ComponentWrapperWithControlProps<P extends {}>
   extends HTMLAttributes<HTMLDivElement> {
@@ -29,15 +21,10 @@ interface ComponentWrapperWithControlProps<P extends {}>
   // render: (form: UseFormReturn<P>) => React.ReactNode;
 }
 
-const paramControlDict = {
-  number: ParamNumberControl,
-  boolean: ParamBooleanControl,
-};
-
 export function ComponentWrapperWithControl<P extends {}>(
   props: ComponentWrapperWithControlProps<P>,
 ) {
-  const { children, className, component: Component, params, ...rest } = props;
+  const { className, component: Component, params, ...rest } = props;
   const form = useForm<P>();
   const componentProps = useWatch({ control: form.control }) as P;
 
@@ -74,7 +61,7 @@ export function ComponentWrapperWithControl<P extends {}>(
       </div>
       <Form {...form}>
         <form className="px-4 not-prose divide-y">
-          {params.map((param, index) => (
+          {params.map((param) => (
             <div
               key={param.name}
               className="py-1.5 flex flex-col items-stretch justify-center min-h-[60px]"

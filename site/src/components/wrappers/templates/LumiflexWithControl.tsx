@@ -1,23 +1,10 @@
-import { LumiflexProps } from "uvcanvas/dist/components/lumiflex";
-import {
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-} from "@/components/ui/form";
-import { Slider } from "@/components/ui/slider";
-import { cn } from "@/lib/utils";
+import { LumiflexState } from "@uvcanvas/react";
 import React from "react";
 import { ComponentWrapperWithControl } from "@/components/wrappers/ComponentWrapperWithControl";
-import { Lumiflex } from "uvcanvas";
-import {
-  ParamType,
-  CommonControlProps,
-  ConfigType,
-  ParamNumberControlProps,
-} from "@/components/wrappers/param_type";
+import { ReactLumiflex } from "@uvcanvas/react";
+import { ConfigType } from "@/components/wrappers/param_type";
 
-const params: ConfigType<LumiflexProps>[] = [
+const params: ConfigType<LumiflexState>[] = [
   {
     type: "number",
     name: "time",
@@ -37,8 +24,8 @@ const params: ConfigType<LumiflexProps>[] = [
 
 export function LumiflexWithControl() {
   return (
-    <ComponentWrapperWithControl<LumiflexProps>
-      component={Lumiflex}
+    <ComponentWrapperWithControl<LumiflexState>
+      component={ReactLumiflex}
       params={params}
     />
   );

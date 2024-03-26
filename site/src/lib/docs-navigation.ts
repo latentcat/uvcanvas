@@ -1,4 +1,3 @@
-import { Placeholder } from "@/components/ReexportComponents";
 import React from "react";
 
 export interface ComponentItemProps {
@@ -13,38 +12,40 @@ export const componentList: ComponentItemProps[] = [
     name: "Lumiflex",
     id: "lumiflex",
     desc: "Gradient shader",
-    component: React.lazy(() => import("@/components/registry/Lumiflex")),
+    component: React.lazy(() =>
+      import("@uvcanvas/react").then((m) => ({ default: m.ReactLumiflex })),
+    ),
   },
-  {
-    name: "Zenitho",
-    id: "zenitho",
-    desc: "Shader from Stripe",
-    component: React.lazy(() => import("@/components/registry/Zenitho")),
-  },
-  {
-    name: "Novatrix",
-    id: "novatrix",
-    desc: "Fork from Shadertoy",
-    component: React.lazy(() => import("@/components/registry/Novatrix")),
-  },
-  {
-    name: "Velustro",
-    id: "velustro",
-    desc: "Fork from Shadertoy",
-    component: React.lazy(() => import("@/components/registry/Velustro")),
-  },
-  {
-    name: "Tranquiluxe",
-    id: "tranquiluxe",
-    desc: "Fork from Shadertoy",
-    component: React.lazy(() => import("@/components/registry/Transquiluxe")),
-  },
-  {
-    name: "Opulento",
-    id: "opulento",
-    desc: "Fork from Shadertoy",
-    component: React.lazy(() => import("@/components/registry/Opulento")),
-  },
+  // {
+  //   name: "Zenitho",
+  //   id: "zenitho",
+  //   desc: "Shader from Stripe",
+  //   component: React.lazy(() => import("@/components/registry/Zenitho")),
+  // },
+  // {
+  //   name: "Novatrix",
+  //   id: "novatrix",
+  //   desc: "Fork from Shadertoy",
+  //   component: React.lazy(() => import("@/components/registry/Novatrix")),
+  // },
+  // {
+  //   name: "Velustro",
+  //   id: "velustro",
+  //   desc: "Fork from Shadertoy",
+  //   component: React.lazy(() => import("@/components/registry/Velustro")),
+  // },
+  // {
+  //   name: "Tranquiluxe",
+  //   id: "tranquiluxe",
+  //   desc: "Fork from Shadertoy",
+  //   component: React.lazy(() => import("@/components/registry/Transquiluxe")),
+  // },
+  // {
+  //   name: "Opulento",
+  //   id: "opulento",
+  //   desc: "Fork from Shadertoy",
+  //   component: React.lazy(() => import("@/components/registry/Opulento")),
+  // },
   // {
   //   name: "Serenex",
   //   id: "serenex",
@@ -112,7 +113,7 @@ export const navigation: NavGroup[] = [
   {
     title: "Canvas",
     links: [
-      ...componentList.map((item, index) => ({
+      ...componentList.map((item) => ({
         title: "<" + item.name + " />",
         href: "/docs/components/" + item.id,
       })),

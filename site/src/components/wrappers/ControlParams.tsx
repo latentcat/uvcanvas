@@ -29,7 +29,7 @@ export function ParamNumberControl<P extends FieldValues>(
             {props.config?.optional && (
               <Checkbox
                 checked={props.field.value !== undefined}
-                onCheckedChange={(value) =>
+                onCheckedChange={() =>
                   props.field.onChange(
                     props.field.value !== undefined
                       ? undefined
