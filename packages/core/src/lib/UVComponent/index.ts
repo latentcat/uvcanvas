@@ -125,11 +125,15 @@ export default function createUVComponentClass<
     }
 
     private onTick(time: DOMHighResTimeStamp) {
+      const noUndefinedStates = Object.fromEntries(
+        Object.entries(this.states).filter(([, value]) => value !== undefined),
+      ) as States;
+
       kernel.render({
         glContext: this.glContext,
         states: {
           time: time * 0.01,
-          ...this.states,
+          ...noUndefinedStates,
         },
       });
       this.animateId = requestAnimationFrame(this.onTick.bind(this));
