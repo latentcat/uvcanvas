@@ -1,7 +1,7 @@
 import { LumiflexState } from "@uvcanvas/react";
 import React from "react";
 import { ComponentWrapperWithControl } from "@/components/wrappers/ComponentWrapperWithControl";
-import { ReactLumiflex } from "@uvcanvas/react";
+import { Lumiflex } from "@uvcanvas/react";
 import { ConfigType } from "@/components/wrappers/param_type";
 
 const params: ConfigType<LumiflexState>[] = [
@@ -25,7 +25,7 @@ const params: ConfigType<LumiflexState>[] = [
 export function LumiflexWithControl() {
   return (
     <ComponentWrapperWithControl<LumiflexState>
-      component={ReactLumiflex}
+      component={Lumiflex}
       params={params}
     />
   );

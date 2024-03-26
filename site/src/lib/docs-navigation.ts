@@ -13,7 +13,7 @@ export const componentList: ComponentItemProps[] = [
     id: "lumiflex",
     desc: "Gradient shader",
     component: React.lazy(() =>
-      import("@uvcanvas/react").then((m) => ({ default: m.ReactLumiflex })),
+      import("@uvcanvas/react").then((m) => ({ default: m.Lumiflex })),
     ),
   },
   // {

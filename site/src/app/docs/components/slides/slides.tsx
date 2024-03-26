@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactLumiflex } from "@uvcanvas/react";
+import { Lumiflex } from "@uvcanvas/react";
 import rawMdx from "./slides.raw.mdx";
 import {
   sliceMdxString,
@@ -22,7 +22,7 @@ export default function SlidesExample() {
         mdx={mdxContents}
         components={{
           ...defaultComponents,
-          ReactLumiflex,
+          Lumiflex,
           TestAnimation,
         }}
         className="group"
