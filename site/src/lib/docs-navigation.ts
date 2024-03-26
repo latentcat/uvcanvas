@@ -22,30 +22,38 @@ export const componentList: ComponentItemProps[] = [
   //   desc: "Shader from Stripe",
   //   component: React.lazy(() => import("@/components/registry/Zenitho")),
   // },
-  // {
-  //   name: "Novatrix",
-  //   id: "novatrix",
-  //   desc: "Fork from Shadertoy",
-  //   component: React.lazy(() => import("@/components/registry/Novatrix")),
-  // },
-  // {
-  //   name: "Velustro",
-  //   id: "velustro",
-  //   desc: "Fork from Shadertoy",
-  //   component: React.lazy(() => import("@/components/registry/Velustro")),
-  // },
-  // {
-  //   name: "Tranquiluxe",
-  //   id: "tranquiluxe",
-  //   desc: "Fork from Shadertoy",
-  //   component: React.lazy(() => import("@/components/registry/Transquiluxe")),
-  // },
-  // {
-  //   name: "Opulento",
-  //   id: "opulento",
-  //   desc: "Fork from Shadertoy",
-  //   component: React.lazy(() => import("@/components/registry/Opulento")),
-  // },
+  {
+    name: "Novatrix",
+    id: "novatrix",
+    desc: "Fork from Shadertoy",
+    component: React.lazy(() =>
+      import("@uvcanvas/react").then((m) => ({ default: m.Novatrix })),
+    ),
+  },
+  {
+    name: "Velustro",
+    id: "velustro",
+    desc: "Fork from Shadertoy",
+    component: React.lazy(() =>
+      import("@uvcanvas/react").then((m) => ({ default: m.Velustro })),
+    ),
+  },
+  {
+    name: "Tranquiluxe",
+    id: "tranquiluxe",
+    desc: "Fork from Shadertoy",
+    component: React.lazy(() =>
+      import("@uvcanvas/react").then((m) => ({ default: m.Tranquiluxe })),
+    ),
+  },
+  {
+    name: "Opulento",
+    id: "opulento",
+    desc: "Fork from Shadertoy",
+    component: React.lazy(() =>
+      import("@uvcanvas/react").then((m) => ({ default: m.Opulento })),
+    ),
+  },
   // {
   //   name: "Serenex",
   //   id: "serenex",

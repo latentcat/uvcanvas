@@ -6,7 +6,7 @@ interface UseUVComponentProps<
   SetupContext extends AnyValues,
 > {
   uvc: UVComponentClass<States, SetupContext>;
-  states: States;
+  states?: Partial<States>;
 }
 
 interface UseUVComponentReturn<
@@ -43,7 +43,9 @@ export default function useUVComponent<
   }, [props.uvc]);
 
   useEffect(() => {
-    uvcRef.current?.setState(props.states);
+    if (props.states) {
+      uvcRef.current?.setState(props.states);
+    }
   }, [props.states]);
 
   return {

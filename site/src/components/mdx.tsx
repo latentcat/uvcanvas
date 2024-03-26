@@ -19,7 +19,13 @@ import { Accordion as AccordionUI } from "@/components/ui/accordion";
 import { cn } from "@/lib/utils";
 export { ComponentWrapper } from "@/components/wrappers/ComponentWrapper";
 export { ComponentWrapperWithControl } from "@/components/wrappers/ComponentWrapperWithControl";
-export { Lumiflex } from "@uvcanvas/react";
+export {
+  Lumiflex,
+  Novatrix,
+  Opulento,
+  Velustro,
+  Tranquiluxe,
+} from "@uvcanvas/react";
 
 export const Accordion = function H2(
   props: React.ComponentPropsWithoutRef<typeof AccordionUI>,
