@@ -16,12 +16,14 @@ export const componentList: ComponentItemProps[] = [
       import("@uvcanvas/react").then((m) => ({ default: m.Lumiflex })),
     ),
   },
-  // {
-  //   name: "Zenitho",
-  //   id: "zenitho",
-  //   desc: "Shader from Stripe",
-  //   component: React.lazy(() => import("@/components/registry/Zenitho")),
-  // },
+  {
+    name: "Zenitho",
+    id: "zenitho",
+    desc: "Shader from Stripe",
+    component: React.lazy(() =>
+      import("@uvcanvas/react").then((m) => ({ default: m.Zenitho })),
+    ),
+  },
   {
     name: "Novatrix",
     id: "novatrix",

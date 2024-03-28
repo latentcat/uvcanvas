@@ -6,6 +6,7 @@ import {
   Opulento,
   Velustro,
   Tranquiluxe,
+  Zenitho,
 } from "@uvcanvas/react";
 import rawMdx from "./slides.raw.mdx";
 import {
@@ -33,6 +34,7 @@ export default function SlidesExample() {
           Opulento,
           Velustro,
           Tranquiluxe,
+          Zenitho,
           TestAnimation,
         }}
         className="group"

@@ -25,6 +25,7 @@ export {
   Opulento,
   Velustro,
   Tranquiluxe,
+  Zenitho,
 } from "@uvcanvas/react";
 
 export const Accordion = function H2(
