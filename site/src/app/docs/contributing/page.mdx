@@ -25,10 +25,10 @@ If you need any help, feel free to reach out to [@nhciao](https://twitter.com/nh
 This repository is structured as follows:
 
 ```
-uvcanvas
-└── lib
-    ├── components
-    └── content
+packages
+├── core
+├── react
+└── uvslides
 
 site
 ├── public
@@ -37,19 +37,18 @@ site
     │   ├── (common)
     │   └── docs
     ├── components
-    │   ├── registry
     │   └── ui
     ├── lib
     └── mdx
 ```
 
-| Path                           | Description                                 |
-| ------------------------------ | ------------------------------------------- |
-| `uvcanvas`                     | The `uvcanvas` package.                     |
-| `uvcanvas/lib/components`      | The React components of the package.        |
-| `site`                         | The Next.js application for `uvcanvas.com`. |
-| `site/src/app/docs`            | The MDX docs for the package.               |
-| `site/src/components/registry` | The registry for the components.            |
+| Path                           | Description                                   |
+| ------------------------------ | --------------------------------------------- |
+| `core`                         | The package of framework agnostic components. |
+| `react`                        | The React components of the package.          |
+| `uvslides`                     | The React components of the package.          |
+| `site`                         | The Next.js application for `uvcanvas.com`.   |
+| `site/src/app/docs`            | The MDX docs for the package.                 |
 
 ## Development
 
@@ -66,7 +65,7 @@ git clone https://github.com/your-username/uvcanvas.git
 ### Navigate to project directory
 
 ```bash
-cd uvcanvas
+cd pacakges/xxx
 ```
 
 ### Create a new Branch
@@ -81,54 +80,19 @@ git checkout -b my-new-branch
 yarn
 ```
 
-## Documentation
-
-The documentation for this project is located in the `site` workspace. You can run the documentation locally by running the following command:
+### Run development server
 
 ```bash
 yarn dev
 ```
 
+This will watch all the packages and start a docs development server to support hot updates to all the code.
+
+## Documentation
+
+The documentation for this project is located in the `site` workspace. You can run the documentation locally by running the following command:
+
 Documentation is written using [MDX](https://mdxjs.com). You can find the documentation files in the `site/src/app/docs` directory.
-
-## Components
-
-We use a registry system for developing components. You can find the source code for the components under `uvcanvas/lib/components`.
-
-When adding or modifying components, please ensure that:
-
-- You update the documentation.
-
-[//]: # "## Commit Convention"
-[//]: #
-[//]: # "Before you create a Pull Request, please check whether your commits comply with"
-[//]: # "the commit conventions used in this repository."
-[//]: #
-[//]: # "When you create a commit we kindly ask you to follow the convention"
-[//]: # "`category(scope or module): message` in your commit message while using one of"
-[//]: # "the following categories:"
-[//]: #
-[//]: # "- `feat / feature`: all changes that introduce completely new code or new"
-[//]: # "features"
-[//]: # "- `fix`: changes that fix a bug (ideally you will additionally reference an"
-[//]: # "issue if present)"
-[//]: # "- `refactor`: any code related change that is not a fix nor a feature"
-[//]: # "- `docs`: changing existing or creating new documentation (i.e. README, docs for"
-[//]: # "usage of a lib or cli usage)"
-[//]: # "- `build`: all changes regarding the build of the software, changes to"
-[//]: # "dependencies or the addition of new dependencies"
-[//]: # "- `test`: all changes regarding tests (adding new tests or changing existing"
-[//]: # "ones)"
-[//]: # "- `ci`: all changes regarding the configuration of continuous integration (i.e."
-[//]: # "github actions, ci system)"
-[//]: # "- `chore`: all changes to the repository that do not fit into any of the above"
-[//]: # "categories"
-[//]: #
-[//]: # "e.g. `feat(components): add new prop to the avatar component`"
-[//]: #
-[//]: # "If you are interested in the detailed specification you can visit"
-[//]: # "https://www.conventionalcommits.org/ or check out the"
-[//]: # "[Angular Commit Message Guidelines](https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#-commit-message-guidelines)."
 
 ## Requests for new components
 
