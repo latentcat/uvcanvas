@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "build:core": "yarn --cwd ../packages/core install && yarn --cwd ../packages/core build",
+    "build:core": "node ./scripts/build.js",
     "start": "next start",
     "lint": "next lint"
   },
