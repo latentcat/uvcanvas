@@ -1,22 +1,28 @@
-const { exec } = require("node:child_process");
+const util = require("util");
+const exec = util.promisify(require("child_process").exec);
 
-function runCommand(command) {
-  exec(command, (error, stdout, stderr) => {
-    console.log(`Run: ${command}`);
-    if (error) {
-      console.error(error);
-      return;
-    }
-    if (stderr) {
-      console.error(stderr);
-      return;
-    }
+async function runCommand(command) {
+  try {
+    const { stdout, stderr } = await exec(command);
     console.log(stdout);
-  });
+    console.error(stderr);
+  } catch (err) {
+    console.error(err);
+  }
 }
 
-[
-  "yarn --cwd ../packages/core install && yarn --cwd ../packages/core build",
-  "yarn --cwd ../packages/react install && yarn --cwd ../packages/react build",
-  "yarn --cwd ../packages/uvslides install && yarn --cwd ../packages/uvslides build",
-].forEach(runCommand);
+async function build() {
+  const modules = [
+    "../packages/core",
+    "../packages/react",
+    "../packages/uvslides",
+  ];
+
+  for (const module of modules) {
+    await runCommand(
+      `yarn --cwd ${module} install && yarn --cwd ${module} build`,
+    );
+  }
+}
+
+build();

@@ -5,7 +5,7 @@ const Zenitho = createUVComponentClass({
   defaultStates: {},
   setup({ glContext: { gl } }) {
     const gradientColors = ["#ef008f", "#6ec3f4", "#7038ff", "#ffba27"];
-    const gradient = new Gradient();
+    const gradient = new Gradient() as any;
     gradient.initGradient({
       el: gl.canvas,
       gradientColors,
