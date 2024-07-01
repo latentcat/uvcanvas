@@ -88,7 +88,7 @@ void main() {
     vec3 rampColor;
     COLOR_RAMP(colors, vUv.x, rampColor);
 
-    float height = snoise(vec2(vUv.x * 2.0 + uTime * 0.2, uTime * 0.5)) * 0.5;
+    float height = snoise(vec2(vUv.x * 2.0 + uTime * 0.1, uTime * 0.25)) * 0.5;
 //    height = pow(height + 1.0, 1.5) - 1.0;
     height = exp(height);
     height = (vUv.y * 2.0 - height + 0.2);
