@@ -1,7 +1,7 @@
 "use client";
 
 import "uvcanvas/dist/components/slides/default_components/styles.css"
-import {Lumiflex, Zenitho, Novatrix, Velustro, Tranquiluxe, Opulento, Slides, defaultComponents} from "uvcanvas";
+import {Lumiflex, Zenitho, Novatrix, Velustro, Tranquiluxe, Opulento, Venturo, Slides, defaultComponents} from "uvcanvas";
 import rawMdx from "./slides.raw.mdx"
 import {sliceMdxString} from "uvcanvas";
 import {TestAnimation} from "./components";
@@ -29,7 +29,7 @@ export default function SlidesExample() {
           Velustro,
           Tranquiluxe,
           Opulento,
-
+          Venturo,
           TestAnimation,
         }}
         className="group"
