@@ -5,6 +5,7 @@ export { Velustro } from "./components/velustro";
 export { Opulento } from "./components/opulento";
 export { Tranquiluxe } from "./components/tranquiluxe";
 export { Venturo } from "./components/venturo";
+export {Xenon} from "./components/xenon";
 export { Slides } from "./components/slides";
 export { defaultComponents } from "./components/slides/default_components";
 export { sliceMdxString } from "./components/slides/slice";
