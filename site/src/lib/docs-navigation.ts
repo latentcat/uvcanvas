@@ -47,6 +47,12 @@ export const componentList: ComponentItemProps[] = [
     desc: "Fork from Shadertoy",
     component: React.lazy(() => import("@/components/registry/Opulento")),
   },
+  {
+    name: "Xenon",
+    id: "xenon",
+    desc: "Made By @Sidd5arth",
+    component: React.lazy(() => import("@/components/registry/Xenon")),
+  },
   // {
   //   name: "Serenex",
   //   id: "serenex",
