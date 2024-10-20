@@ -10,3 +10,4 @@ export { Slides } from "./components/slides";
 export { defaultComponents } from "./components/slides/default_components";
 export { sliceMdxString } from "./components/slides/slice";
 export { SlidesActionButton } from "./components/slides/action_button";
+export type { CommonProps, ControlProps, TimeProps } from "./types/CommonProps";
