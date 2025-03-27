@@ -6,10 +6,13 @@ import { useEffect, useRef } from "react";
 import vert from "./vert.glsl";
 import frag from "./frag.glsl";
 
-interface TranquiluxeProps {}
+interface TranquiluxeProps {
+  color?: [number, number, number];
+}
 
 export function Tranquiluxe(props: TranquiluxeProps) {
   const ctnDom = useRef<HTMLDivElement>(null);
+  const { color, ...rest } = props;
 
   useEffect(() => {
     if (!ctnDom.current) {
@@ -38,7 +41,7 @@ export function Tranquiluxe(props: TranquiluxeProps) {
       fragment: frag,
       uniforms: {
         uTime: { value: 0 },
-        uColor: { value: new Color(0.3, 0.2, 0.5) },
+        uColor: { value: new Color(...(color || [0.3, 0.2, 0.5])) },
         uResolution: {
           value: new Color(
             gl.canvas.width,
@@ -81,7 +84,7 @@ export function Tranquiluxe(props: TranquiluxeProps) {
         width: "100%",
         height: "100%",
       }}
-      {...props}
+      {...rest}
     />
   );
 }
